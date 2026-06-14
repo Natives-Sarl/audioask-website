@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+const APP_URL = 'https://app.audioask.ai';
+---
+
+<Layout
+  title="À propos — AudioAsk"
+  description="AudioAsk est né d'un constat simple : le contenu des podcasts est une source d'information extrêmement riche, et pourtant rarement disponible facilement. Développé depuis la Suisse."
+  activePage="about"
+>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-split">
+        <div>
+          <span class="page-intro">À propos</span>
+          <h1>Construire l'outil qu'on a toujours souhaité avoir.</h1>
+          <p class="lede">AudioAsk est né d'un constat simple : le contenu des podcasts est une source d'information extrêmement riche, et pourtant rarement disponible facilement.</p>
+        </div>
+        <div class="card" style="background: var(--bg-alt); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center; color: var(--ink-3);">
+            <div style="font-size: 48px; margin-bottom: 12px;">🎙️</div>
+            <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;">AudioAsk · 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTRE HISTOIRE -->
+  <section class="section">
+    <div class="container">
+      <div class="hero-split" style="gap: 64px; align-items: center;">
+        <div>
+          <h2>Faire des podcasts une base de connaissance plus accessible</h2>
+          <p class="lede" style="margin-bottom: 20px;">Le podcast est devenu l'un des formats les plus riches d'aujourd'hui : interviews, analyses, retours d'expérience, débats. Mais ce savoir reste piégé dans l'audio — difficile à chercher, à citer, à partager.</p>
+          <p class="lede">AudioAsk libère ce contenu. Transcription, traduction, IA : les podcasts deviennent une vraie bibliothèque, manipulable et réutilisable comme du texte.</p>
+        </div>
+        <div class="card" style="background: var(--bg-alt); aspect-ratio: 1; display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center; color: var(--ink-3);">
+            <div style="font-size: 40px; margin-bottom: 12px;">📻</div>
+            <div style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.08em;">Genève, Suisse</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="section alt" style="text-align: center; padding: 96px 0;">
+    <div class="container">
+      <div class="eyebrow" style="margin-bottom: 20px;">Notre mission</div>
+      <h2 style="font-size: clamp(28px, 4vw, 54px); max-width: 22ch; margin: 0 auto; letter-spacing: -0.025em; line-height: 1.08;">Rendre le savoir audio aussi accessible et exploitable que le texte.</h2>
+    </div>
+  </section>
+
+  <!-- VALEURS -->
+  <section class="section">
+    <div class="container">
+      <h2>Nos valeurs</h2>
+      <div class="grid-2" style="margin-top: 32px;">
+        <div class="card">
+          <div style="font-size: 30px; margin-bottom: 12px;">🇨🇭</div>
+          <h3>Fabriqué en Suisse</h3>
+          <p>AudioAsk est développé et opéré depuis la Suisse. Nos standards de qualité, de confidentialité et de fiabilité sont ceux qu'on attend d'un produit suisse.</p>
+        </div>
+        <div class="card">
+          <div style="font-size: 30px; margin-bottom: 12px;">📚</div>
+          <h3>Donner accès à plus de connaissance</h3>
+          <p>Notre conviction : la connaissance produite chaque jour en audio doit profiter au plus grand nombre, pas seulement à ceux qui ont 10h libres par semaine. C'est pour ça qu'on construit AudioAsk.</p>
+        </div>
+        <div class="card">
+          <div style="font-size: 30px; margin-bottom: 12px;">🤝</div>
+          <h3>La force du collectif</h3>
+          <p>Chaque transcription faite par un utilisateur bénéficie à toute la communauté. C'est notre vision du logiciel utile : précieux pour l'individu, puissant pour le groupe.</p>
+        </div>
+        <div class="card">
+          <div style="font-size: 30px; margin-bottom: 12px;">⚡</div>
+          <h3>La simplicité d'abord</h3>
+          <p>Nous construisons des outils qui font une chose, et la font très bien. Pas de fonctionnalités inutiles, pas d'interface qui noie l'essentiel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARIFS POUR TOUS -->
+  <section class="section alt">
+    <div class="container">
+      <div class="feature-alt highlight">
+        <div>
+          <div class="eyebrow">
+            <span style="background: var(--accent); color: white; padding: 2px 8px; border-radius: 3px; font-size: 10px;">TARIFS</span>
+            {' '}Un plan pour chaque usage
+          </div>
+          <h2 style="margin: 14px 0 16px; max-width: 22ch;">Un accès pour tous les besoins, du curieux au professionnel.</h2>
+          <p class="lede" style="margin: 0 0 24px;">Du plan gratuit à 19€/mois, AudioAsk s'adapte à votre usage. Que vous écoutiez 2 podcasts par mois ou que vous en exploitiez des dizaines pour votre métier, il existe une formule pour vous.</p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a class="btn btn-primary arrow" href="/tarifs">Découvrir les tarifs</a>
+            <a class="btn arrow" href={`${APP_URL}/signup`}>Commencer gratuitement</a>
+          </div>
+        </div>
+        <div style="display: grid; gap: 12px;">
+          <div style="padding: 16px 20px; background: var(--paper); border: 1.5px solid var(--line-soft); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong>Free</strong>
+              <div style="font-size: 12px; color: var(--ink-3);">Pour découvrir</div>
+            </div>
+            <div style="font-weight: 700; font-size: 24px;">0€</div>
+          </div>
+          <div style="padding: 16px 20px; background: var(--paper); border: 1.5px solid oklch(0.80 0.08 38); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong>Premium</strong>
+              <div style="font-size: 12px; color: var(--accent-ink);">Pour les passionnés</div>
+            </div>
+            <div style="font-weight: 700; font-size: 24px;">3€<small style="font-size: 13px; font-weight: 400; color: var(--ink-3);"> /mois</small></div>
+          </div>
+          <div style="padding: 16px 20px; background: var(--paper); border: 1.5px solid var(--line-soft); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong>Pro</strong>
+              <div style="font-size: 12px; color: var(--ink-3);">Pour les professionnels</div>
+            </div>
+            <div style="font-weight: 700; font-size: 24px;">19€<small style="font-size: 13px; font-weight: 400; color: var(--ink-3);"> /mois + usage</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section tight" style="text-align: center;">
+    <div class="container">
+      <h2 style="margin: 0 auto 14px;">Une question ?</h2>
+      <p class="lede" style="margin: 0 auto 28px;">L'équipe AudioAsk répond personnellement, en 24h ouvrées.</p>
+      <a href="mailto:contact@audioask.ai" class="btn btn-lg" style="font-family: var(--mono);">
+        📧 contact@audioask.ai
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Rejoignez la communauté qui réinvente l'écoute des podcasts.</h2>
+      <a class="btn btn-primary btn-lg arrow" href={`${APP_URL}/signup`}>Créer un compte gratuit</a>
+    </div>
+  </section>
+
+</Layout>

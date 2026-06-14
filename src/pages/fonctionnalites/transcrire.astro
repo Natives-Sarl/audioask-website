@@ -1,0 +1,229 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const APP_URL = 'https://app.audioask.ai';
+---
+
+<Layout
+  title="Transcrire — AudioAsk"
+  description="Convertissez n'importe quel podcast en texte précis, horodaté et consultable. Chapitres automatiques, intervenants identifiés, recherche plein-texte."
+  activePage="features"
+>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-split">
+        <div>
+          <span class="page-intro">Fonctionnalité 01 · Transcrire</span>
+          <h1>Transcrivez n'importe quel podcast en quelques minutes.</h1>
+          <p class="lede">Fini de rembobiner. Fini de prendre des notes à la volée. AudioAsk transforme vos épisodes en texte précis, horodaté et consultable.</p>
+          <div class="hero-ctas" style="margin-top: 28px;">
+            <a class="btn btn-primary btn-lg arrow" href={`${APP_URL}/signup`}>Transcrire mon premier épisode — gratuit</a>
+          </div>
+          <p style="margin-top: 14px; font-size: 13px; color: var(--ink-3);">Transcriptions offertes pour commencer, sans carte.</p>
+        </div>
+        <div class="app-mock">
+          <div class="app-mock-bar">
+            <div class="app-mock-dot" style="background: #ff5f56;"></div>
+            <div class="app-mock-dot" style="background: #febc2e;"></div>
+            <div class="app-mock-dot" style="background: #27c93f;"></div>
+          </div>
+          <div style="padding: 18px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="font-family: var(--mono); font-size: 9px; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase;">En cours</div>
+            <div style="border: 1.5px solid oklch(0.80 0.08 38); padding: 12px; background: var(--accent-soft); border-radius: 6px;">
+              <div style="font-size: 12px; font-weight: 600;">The Knowledge Project · #218</div>
+              <div style="font-family: var(--mono); font-size: 10px; color: var(--accent-ink); margin: 6px 0;">Transcription 67% · 1m 12s restants</div>
+              <div style="height: 4px; background: var(--paper); border-radius: 999px; border: 1px solid oklch(0.80 0.08 38);">
+                <div style="width: 67%; height: 100%; background: var(--accent); border-radius: 999px;"></div>
+              </div>
+            </div>
+            <div style="font-family: var(--mono); font-size: 9px; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase;">Chapitres (auto)</div>
+            <div style="display: grid; gap: 5px; font-size: 11px;">
+              <div style="display: flex; gap: 8px;"><span class="ts">00:00</span><span>Intro &amp; présentation invité</span></div>
+              <div style="display: flex; gap: 8px;"><span class="ts">04:18</span><span>Parcours et premières entreprises</span></div>
+              <div style="display: flex; gap: 8px;"><span class="ts">12:42</span><span>Méthode de décision long-terme</span></div>
+              <div style="display: flex; gap: 8px;"><span class="ts">28:05</span><span>Les 3 livres essentiels</span></div>
+            </div>
+            <div style="font-family: var(--mono); font-size: 9px; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase;">Intervenants</div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <span style="padding: 3px 10px; border: 1px solid oklch(0.80 0.08 38); color: var(--accent-ink); border-radius: 4px; font-size: 11px;">● Hôte</span>
+              <span style="padding: 3px 10px; border: 1px solid #4a8; color: #2a6; border-radius: 4px; font-size: 11px;">● Invité</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section alt">
+    <div class="container">
+      <h2>3 étapes. Aucune compétence technique.</h2>
+      <div class="steps" style="margin-top: 36px;">
+        <div class="step card">
+          <span class="step-num">Étape 01</span>
+          <h4>Ajoutez un channel ou un épisode</h4>
+          <p>Collez l'URL RSS ou cherchez directement dans AudioAsk parmi des milliers de podcasts.</p>
+        </div>
+        <div class="step card">
+          <span class="step-num">Étape 02</span>
+          <h4>Lancez la transcription</h4>
+          <p>Un clic. Notre moteur traite l'audio en 2 à 5 minutes pour un épisode de 60 min.</p>
+        </div>
+        <div class="step card">
+          <span class="step-num">Étape 03</span>
+          <h4>Lisez, cherchez, partagez</h4>
+          <p>Transcription complète avec chapitres, intervenants et horodatage. Exportable en 1 clic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES DÉTAILLÉES -->
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 8px;">Ce que la transcription AudioAsk fait pour vous</h2>
+
+      <div class="feature-alt">
+        <div>
+          <span class="eyebrow">01 · Vitesse</span>
+          <h3>De l'audio au texte en quelques minutes</h3>
+          <p class="lede">Notre moteur traite un épisode de 60 minutes en 2 à 5 minutes. Le résultat est structuré en chapitres thématiques automatiques, sans aucune intervention manuelle.</p>
+        </div>
+        <div class="card" style="background: var(--bg-alt); aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center; color: var(--ink-3);">
+            <div style="font-size: 32px; margin-bottom: 10px;">⚡</div>
+            <div style="font-family: var(--mono); font-size: 12px;">60 min d'audio → ~3 min de traitement</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-alt reverse">
+        <div>
+          <span class="eyebrow">02 · Recherche</span>
+          <h3>Retrouvez n'importe quel passage en 5 secondes</h3>
+          <p class="lede">La transcription est entièrement cherchable. Cliquez sur n'importe quelle ligne pour réécouter exactement ce passage dans le player audio.</p>
+        </div>
+        <div class="card" style="background: var(--bg-alt); aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 24px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <input style="flex: 1; border: 1.5px solid var(--line-soft); padding: 8px 12px; border-radius: 6px; font-family: var(--mono); font-size: 12px; background: var(--paper);" value="Jensen Huang" readonly />
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div class="transcript-line" style="background: var(--paper); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--line-soft);">
+              <span class="ts">14:22</span><span>"<mark style="background: var(--accent-soft);">Jensen Huang</mark> a mentionné que…"</span>
+            </div>
+            <div class="transcript-line" style="background: var(--paper); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--line-soft);">
+              <span class="ts">38:07</span><span>"…ce que <mark style="background: var(--accent-soft);">Jensen Huang</mark> avait anticipé…"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-alt">
+        <div>
+          <span class="eyebrow">03 · Intervenants</span>
+          <h3>Chaque intervenant identifié automatiquement</h3>
+          <p class="lede">AudioAsk distingue l'hôte des invités et attribue chaque prise de parole à son interlocuteur. Vous savez toujours qui a dit quoi.</p>
+        </div>
+        <div class="card" style="background: var(--bg-alt); aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 24px;">
+          <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+            <span style="padding: 3px 10px; border: 1px solid oklch(0.80 0.08 38); color: var(--accent-ink); border-radius: 4px; font-size: 11px; font-family: var(--mono);">● Hôte</span>
+            <span style="padding: 3px 10px; border: 1px solid #4a8; color: #2a6; border-radius: 4px; font-size: 11px; font-family: var(--mono);">● Invité</span>
+          </div>
+          <div class="transcript-line"><span class="ts" style="color: var(--accent-ink);">04:02</span><span style="color: var(--accent-ink);">Hôte : "Parlez-nous de vos débuts…"</span></div>
+          <div class="transcript-line"><span class="ts" style="color: #2a6;">04:12</span><span style="color: #2a6;">Invité : "Tout a commencé en 1993…"</span></div>
+          <div class="transcript-line"><span class="ts" style="color: var(--accent-ink);">06:30</span><span style="color: var(--accent-ink);">Hôte : "Et comment avez-vous su que…"</span></div>
+        </div>
+      </div>
+
+      <div class="feature-alt reverse highlight">
+        <div>
+          <div class="eyebrow">
+            <span style="background: var(--accent); color: white; padding: 2px 8px; border-radius: 3px; font-size: 10px;">EFFET RÉSEAU</span>
+            {' '}04 · Communauté
+          </div>
+          <h3 style="margin-top: 12px;">Profitez du travail de toute la communauté</h3>
+          <p class="lede">Si un autre utilisateur AudioAsk a déjà transcrit l'épisode que vous cherchez, vous y accédez directement — sans consommer vos crédits. Plus la communauté grandit, plus votre bibliothèque grandit sans effort.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 16px; padding: 24px;">
+          <div class="badge accent" style="font-size: 12px; padding: 8px 16px;">✓ Déjà dans la bibliothèque</div>
+          <div style="font-family: var(--mono); font-size: 11px; color: var(--accent-ink);">0 crédits consommés</div>
+          <p style="text-align: center; font-size: 13px; color: var(--ink-2); max-width: 22ch;">Accès instantané à des milliers d'épisodes transcrits par la communauté</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR QUI -->
+  <section class="section alt">
+    <div class="container">
+      <h2>Conçu pour celles et ceux qui ne veulent plus rien manquer</h2>
+      <div class="grid-3" style="margin-top: 32px;">
+        <div class="card">
+          <div class="icon-sq">💼</div>
+          <h3>Le professionnel pressé</h3>
+          <p>Vous suivez 8 podcasts sectoriels. Vous en écoutez 2 par semaine. AudioAsk transforme les 6 autres en lecture rapide.</p>
+        </div>
+        <div class="card">
+          <div class="icon-sq">📰</div>
+          <h3>Le journaliste / chercheur</h3>
+          <p>Citez précisément, vérifiez en 10 secondes, exportez la citation avec sa référence horodatée.</p>
+        </div>
+        <div class="card">
+          <div class="icon-sq">👥</div>
+          <h3>L'équipe en veille</h3>
+          <p>Une transcription faite par un membre profite à toute l'équipe. Plus de doublons, plus d'oublis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container-narrow">
+      <h2>Questions fréquentes sur la transcription</h2>
+      <div style="margin-top: 28px;">
+        <div class="faq-item">
+          <div class="faq-question"><span class="faq-q">Combien de temps prend une transcription ?</span><div class="faq-icon">+</div></div>
+          <div class="faq-answer">En général, environ 3 à 5 minutes pour 1h d'audio. Les épisodes courts (30 min) sont traités en 1 à 2 minutes. Le traitement dépend de la charge du serveur, mais c'est toujours bien plus rapide que l'écoute en temps réel.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span class="faq-q">Quelles langues sont supportées ?</span><div class="faq-icon">+</div></div>
+          <div class="faq-answer">AudioAsk transcrit dans plus de 50 langues, dont le français, l'anglais, l'allemand, l'espagnol, l'italien, le portugais, le japonais, le mandarin et bien d'autres. La détection de la langue est automatique.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span class="faq-q">La transcription est-elle précise pour les termes techniques ?</span><div class="faq-icon">+</div></div>
+          <div class="faq-answer">Notre moteur utilise un modèle de reconnaissance vocale de pointe, entraîné sur des contenus audio variés. Pour les termes très spécialisés (médical, juridique, technologique), la précision est très bonne mais peut nécessiter de légères corrections.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span class="faq-q">Puis-je transcrire un podcast privé ?</span><div class="faq-icon">+</div></div>
+          <div class="faq-answer">Oui, vous pouvez importer l'URL directe d'un fichier audio ou RSS privé (avec authentification) depuis votre compte. Les transcriptions de podcasts privés ne sont pas partagées dans la bibliothèque communautaire.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span class="faq-q">Les transcriptions sont-elles stockées en sécurité ?</span><div class="faq-icon">+</div></div>
+          <div class="faq-answer">Toutes les données sont hébergées en Europe, conformément au RGPD. Les transcriptions de vos épisodes privés ne sont accessibles qu'à vous. Les épisodes publics partagés dans la bibliothèque communautaire sont marqués comme tels.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Transcrivez votre premier épisode dans les 5 prochaines minutes.</h2>
+      <p class="lede">Transcriptions offertes par mois. Aucune carte de crédit requise.</p>
+      <a class="btn btn-primary btn-lg arrow" href={`${APP_URL}/signup`}>Commencer maintenant</a>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
+  item.querySelector('.faq-question')?.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>

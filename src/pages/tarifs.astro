@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+const APP_URL = 'https://app.audioask.ai';
+---
+
+<Layout
+  title="Tarifs AudioAsk — Free, Premium 3€, Pro 19€/mois"
+  description="Trouvez le plan AudioAsk fait pour vous. Commencez gratuitement, passez à Premium pour 3€/mois ou activez Pro à 19€/mois + usage."
+  activePage="tarifs"
+>
+
+  <!-- HERO -->
+  <section class="hero hero-centered">
+    <div class="container">
+      <span class="page-intro">Tarifs</span>
+      <h1>Trouvez le plan AudioAsk<br>fait pour vous.</h1>
+      <p class="lede" style="margin: 0 auto 0;">Commencez gratuitement. Passez à Premium pour 3€. Activez Pro quand vous en avez besoin — facturation à l'usage, sans surprise.</p>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section class="section">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <div class="plan">
+          <div class="plan-name">Free</div>
+          <div class="plan-price">0€</div>
+          <div class="plan-tagline">Pour découvrir</div>
+          <ul>
+            <li><strong>Transcriptions / mois</strong></li>
+            <li><strong>Analyses IA / mois</strong></li>
+            <li>Accès bibliothèque communautaire</li>
+            <li>Recherche plein-texte</li>
+            <li class="no">Traduction</li>
+            <li class="no">Automatisations</li>
+          </ul>
+          <a class="btn arrow" href={`${APP_URL}/signup`} style="width: 100%; justify-content: center;">Commencer</a>
+        </div>
+
+        <div class="plan featured">
+          <div class="plan-badge">RECOMMANDÉ</div>
+          <div class="plan-name">Premium</div>
+          <div class="plan-price">3€<small> /mois</small></div>
+          <div class="plan-tagline">Pour les passionnés</div>
+          <ul>
+            <li><strong>Transcriptions / mois</strong></li>
+            <li><strong>Analyses IA / mois</strong></li>
+            <li>Bibliothèque communautaire</li>
+            <li>Recherche plein-texte</li>
+            <li>Traduction (12 langues)</li>
+            <li>1 channel automatisé</li>
+          </ul>
+          <a class="btn btn-primary arrow" href={`${APP_URL}/signup?plan=premium`} style="width: 100%; justify-content: center;">Essayer Premium</a>
+        </div>
+
+        <div class="plan">
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">19€<small> /mois + usage</small></div>
+          <div class="plan-tagline">Pour les professionnels</div>
+          <ul>
+            <li><strong>10h de transcription incluses</strong></li>
+            <li><strong>25M caractères d'IA inclus</strong></li>
+            <li>Channels automatisés illimités</li>
+            <li>Prompts personnalisés &amp; export</li>
+            <li>Espace équipe partagé</li>
+            <li>Support prioritaire</li>
+          </ul>
+          <div class="plan-usage">
+            Au-delà :<br>
+            • 2€ / heure de transcription<br>
+            • 2€ / million de caractères d'IA<br>
+            <span style="color: var(--accent-ink);">→ Facturation transparente</span>
+          </div>
+          <a class="btn arrow" href="/pro" style="width: 100%; justify-content: center;">Découvrir le plan Pro</a>
+        </div>
+
+      </div>
+      <p style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--ink-3);">
+        Pas d'engagement · résiliation en 1 clic · paiement sécurisé
+      </p>
+    </div>
+  </section>
+
+  <!-- PRO À L'USAGE -->
+  <section class="section alt">
+    <div class="container">
+      <h2>Le plan Pro, c'est 19€ de base, puis vous payez ce que vous consommez.</h2>
+      <p class="lede" style="max-width: 56ch; margin-bottom: 32px;">Aucun plafond surprise. Vous voyez en temps réel votre consommation. Vous arrêtez quand vous voulez.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="eyebrow">01 · Abonnement</div>
+          <h3 style="font-size: 22px; margin: 8px 0 10px;">19€ / mois</h3>
+          <p>Accès complet à toutes les fonctionnalités + 10h de transcription + 25M caractères d'IA inclus chaque mois.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">02 · Au-delà</div>
+          <h3 style="font-size: 22px; margin: 8px 0 10px;">2€ / h · 2€ / M car.</h3>
+          <p>Vous dépassez l'inclus ? Vous ne payez que la différence. Pas de tier supérieur à débloquer.</p>
+        </div>
+        <div class="card" style="border-color: oklch(0.80 0.08 38);">
+          <div class="eyebrow">03 · Promesse</div>
+          <h3 style="font-size: 22px; margin: 8px 0 10px;">Facturation transparente</h3>
+          <p>Dashboard temps réel : heures consommées, caractères IA, projection fin de mois. Aucune surfacturation cachée.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLEAU COMPARATIF -->
+  <section class="section">
+    <div class="container">
+      <h2>Comparaison complète</h2>
+      <p class="lede" style="margin-bottom: 28px;">Toutes les différences en un coup d'œil.</p>
+      <div style="border: 1.5px solid var(--line-soft); border-radius: 10px; overflow: hidden;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Free</th>
+              <th class="featured">Premium</th>
+              <th>Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Prix</td><td>0€</td><td>3€ / mois</td><td>19€ / mois + usage</td></tr>
+            <tr><td>Transcriptions incluses</td><td>quota / mois</td><td>quota / mois</td><td>10h / mois</td></tr>
+            <tr><td>Analyses IA incluses</td><td>quota / mois</td><td>quota / mois</td><td>25M caractères</td></tr>
+            <tr><td>Dépassement</td><td>—</td><td>—</td><td>2€/h · 2€/M car.</td></tr>
+            <tr><td>Bibliothèque communautaire</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Recherche plein-texte</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Traduction (12 langues)</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Channels automatisés</td><td>—</td><td>1</td><td>Illimités</td></tr>
+            <tr><td>Prompts personnalisés</td><td>—</td><td>—</td><td>✓ partagés</td></tr>
+            <tr><td>Export PDF / MD / SRT</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td>Espace équipe + permissions</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td>Support</td><td>Email</td><td>Prioritaire</td><td>Dédié + SLA</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ BILLING -->
+  <section class="section alt">
+    <div class="container-narrow">
+      <h2>Questions sur la facturation</h2>
+      <div style="margin-top: 28px;" id="faq">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q">Puis-je changer de plan à tout moment ?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">Oui, vous pouvez passer à un plan supérieur ou inférieur à tout moment depuis votre compte. Le changement est effectif immédiatement, avec proratisation de la facturation.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q">Que se passe-t-il si je dépasse ma limite Free ou Premium ?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">Sur les plans Free et Premium, vous recevez une notification quand vous approchez de votre quota mensuel. Vous pouvez upgrader en cours de mois pour débloquer plus de capacité. Il n'y a pas de surfacturation automatique sur ces plans.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q">Comment fonctionne la facturation à l'usage du plan Pro ?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">Le plan Pro inclut 10h de transcription et 25M caractères d'IA par mois. Au-delà, vous êtes facturé 2€/h de transcription et 2€/million de caractères. Votre dashboard temps réel vous montre exactement votre consommation et votre projection de fin de mois.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q">Comment fonctionne la bibliothèque communautaire ?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">Quand un utilisateur transcrit un épisode, cette transcription est partagée avec toute la communauté. Si quelqu'un d'autre cherche le même épisode, il y accède directement sans consommer ses propres crédits. Plus la communauté grandit, plus vous accédez à des transcriptions gratuitement.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q">Mes données sont-elles sécurisées ? Où sont-elles hébergées ?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">Vos données sont hébergées en Europe (UE), conformément au RGPD. AudioAsk est développé et opéré depuis la Suisse, avec des standards de confidentialité stricts. Vos données ne sont jamais utilisées pour entraîner des modèles d'IA tiers.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q">Y a-t-il des tarifs pour étudiants, ONG ou associations ?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">Oui, nous proposons des tarifs spéciaux pour les étudiants, les associations à but non lucratif et les ONG. Contactez-nous à contact@audioask.ai avec votre situation et nous vous proposerons une solution adaptée.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Essayez AudioAsk en mode gratuit.</h2>
+      <p class="lede">Aucune carte de crédit requise. Résiliation en 1 clic.</p>
+      <a class="btn btn-primary btn-lg arrow" href={`${APP_URL}/signup`}>Démarrer mon essai</a>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
+  item.querySelector('.faq-question')?.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>

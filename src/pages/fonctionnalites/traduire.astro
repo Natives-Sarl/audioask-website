@@ -1,0 +1,261 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const APP_URL = 'https://app.audioask.ai';
+---
+
+<Layout
+  title="Traduire — AudioAsk"
+  description="La barrière de la langue ne devrait pas vous priver des meilleures idées. AudioAsk traduit les transcriptions en 12 langues et génère un nouvel épisode audio."
+  activePage="features"
+>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-split">
+        <div>
+          <span class="page-intro">Fonctionnalité 04 · Traduire</span>
+          <h1>Les meilleurs podcasts du monde, dans votre langue.</h1>
+          <p class="lede">La barrière de la langue ne devrait pas vous priver des meilleures idées. AudioAsk traduit les transcriptions et génère un nouvel épisode audio dans la langue de votre choix.</p>
+          <div class="hero-ctas" style="margin-top: 28px;">
+            <a class="btn btn-primary btn-lg arrow" href={`${APP_URL}/signup`}>Traduire un épisode</a>
+          </div>
+          <p style="margin-top: 14px; font-size: 13px; color: var(--ink-3);">Inclus dans le plan Premium et Pro.</p>
+        </div>
+        <div class="app-mock">
+          <div class="app-mock-bar">
+            <div class="app-mock-dot" style="background: #ff5f56;"></div>
+            <div class="app-mock-dot" style="background: #febc2e;"></div>
+            <div class="app-mock-dot" style="background: #27c93f;"></div>
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); margin-left: 8px;">Transcript bilingue</span>
+          </div>
+          <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3);">Langue :</div>
+              <div class="lang-badge">EN · original</div>
+              <span style="color: var(--accent);">→</span>
+              <div class="lang-badge active">FR · traduit</div>
+            </div>
+            <div class="translation-side">
+              <div class="translated-line">
+                <span class="ts">04:02</span>
+                <span class="orig">"Strategy is, above all, choosing what not to do."</span>
+              </div>
+              <div class="translated-line">
+                <span class="ts">04:02</span>
+                <span class="trans">"La stratégie, c'est avant tout choisir ce qu'on ne fait pas."</span>
+              </div>
+              <div class="translated-line" style="margin-top: 8px;">
+                <span class="ts">05:27</span>
+                <span class="orig">"And that's exactly what we noticed at our company when…"</span>
+              </div>
+              <div class="translated-line">
+                <span class="ts">05:27</span>
+                <span class="trans">"Et c'est exactement ce qu'on a constaté chez nous quand…"</span>
+              </div>
+              <div class="translated-line" style="margin-top: 8px;">
+                <span class="ts">07:11</span>
+                <span class="orig">"So concretely, in daily practice…"</span>
+              </div>
+              <div class="translated-line">
+                <span class="ts">07:11</span>
+                <span class="trans">"Donc concrètement, dans la pratique quotidienne…"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODÈLE COLLABORATIF -->
+  <section class="section dark">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <h2 style="color: white;">Un modèle collaboratif</h2>
+        <p class="lede" style="color: #b0a898;">Chaque traduction faite par un utilisateur enrichit la bibliothèque partagée. Si un autre membre cherche le même épisode dans la même langue, il y accède instantanément — sans consommer ses crédits.</p>
+      </div>
+      <div style="margin-top: 40px; display: flex; gap: 24px; align-items: baseline; flex-wrap: wrap;">
+        <div class="stat-big">12 langues</div>
+        <div style="font-size: 18px; color: #b0a898; max-width: 22ch;">disponibles dès aujourd'hui</div>
+      </div>
+      <div style="margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap;">
+        {['🇫🇷 Français', '🇬🇧 English', '🇩🇪 Deutsch', '🇪🇸 Español', '🇮🇹 Italiano', '🇵🇹 Português', '🇳🇱 Nederlands', '🇵🇱 Polski', '🇷🇺 Русский', '🇯🇵 日本語', '🇨🇳 中文', '🇧🇷 Português (BR)'].map(lang => (
+          <span style="background: #2a2420; border: 1px solid #3a3028; border-radius: 6px; padding: 6px 12px; font-size: 13px; color: #c0b8a8;">{lang}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section alt">
+    <div class="container">
+      <h2>3 étapes pour franchir la barrière de la langue</h2>
+      <div class="steps" style="margin-top: 36px;">
+        <div class="step card">
+          <span class="step-num">Étape 01</span>
+          <h4>Choisissez un épisode</h4>
+          <p>Dans n'importe quelle langue. Anglais, allemand, espagnol, italien, portugais et 7 autres.</p>
+        </div>
+        <div class="step card">
+          <span class="step-num">Étape 02</span>
+          <h4>Sélectionnez votre langue</h4>
+          <p>FR, DE, ES, IT… AudioAsk traduit l'intégralité de la transcription en quelques secondes.</p>
+        </div>
+        <div class="step card">
+          <span class="step-num">Étape 03</span>
+          <h4>Lisez, interrogez, écoutez</h4>
+          <p>Texte traduit côte-à-côte avec l'original. Posez vos questions dans votre langue.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES DÉTAILLÉES -->
+  <section class="section">
+    <div class="container">
+      <div class="feature-alt">
+        <div>
+          <span class="eyebrow">01 · Traduction de la transcription</span>
+          <h3>D'une langue à l'autre en un clic</h3>
+          <p class="lede">Sélectionnez votre langue cible, AudioAsk traduit l'intégralité de la transcription. La traduction est fluide et naturelle, pas mécanique.</p>
+        </div>
+        <div class="card" style="background: var(--bg-alt); padding: 24px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="lang-badge">EN · original</div>
+            <span style="color: var(--accent); font-size: 16px;">→</span>
+            <div class="lang-badge active">FR · traduit</div>
+            <div class="lang-badge" style="opacity: 0.5;">DE</div>
+            <div class="lang-badge" style="opacity: 0.5;">ES</div>
+            <div class="lang-badge" style="opacity: 0.5;">IT</div>
+          </div>
+          <div class="translated-line">
+            <span class="ts">12:00</span>
+            <span class="trans">"La stratégie, c'est avant tout choisir ce qu'on ne fait pas."</span>
+          </div>
+          <div class="translated-line">
+            <span class="ts">12:08</span>
+            <span class="trans">"Et ça, beaucoup d'entreprises l'oublient en voulant tout faire."</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-alt reverse">
+        <div>
+          <span class="eyebrow">02 · Translation audio</span>
+          <h3>Générez un nouvel épisode audio dans votre langue.</h3>
+          <p class="lede">AudioAsk propose une traduction de la transcription mais également la génération d'un nouvel épisode audio dans la langue de votre choix. Écoutez comme si le podcast avait été enregistré en français.</p>
+        </div>
+        <div class="card" style="background: var(--bg-alt); padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em;">Épisode audio généré</div>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div class="play-btn" style="width: 36px; height: 36px; font-size: 12px;">▶</div>
+            <div style="flex: 1;">
+              <div style="font-size: 13px; font-weight: 600;">Acquired #119 — Version française</div>
+              <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); margin-top: 4px;">2h 47min · 2 voix</div>
+            </div>
+          </div>
+          <div class="progress-bar"></div>
+          <div style="display: flex; gap: 8px; font-family: var(--mono); font-size: 10px; color: var(--ink-3);">
+            <span>12:42</span>
+            <span>/</span>
+            <span>2:47:01</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-alt">
+        <div>
+          <span class="eyebrow">03 · Choix des voix</span>
+          <h3>Choisissez la voix de chaque intervenant·e</h3>
+          <p class="lede">Sélectionnez une voix parmi un large choix pour chacun·e des intervenant·es. La traduction devient une vraie écoute, pas une lecture à voix synthétique uniforme.</p>
+        </div>
+        <div class="card" style="background: var(--bg-alt); padding: 24px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Voix par intervenant</div>
+          {[
+            { label: '● Hôte', voice: 'Voix masculine · Naturelle', color: 'var(--accent-ink)' },
+            { label: '● Invité', voice: 'Voix féminine · Dynamique', color: '#2a6' },
+          ].map(item => (
+            <div style={`display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--paper); border: 1px solid var(--line-soft); border-radius: 6px;`}>
+              <span style={`color: ${item.color}; font-size: 12px; font-weight: 600;`}>{item.label}</span>
+              <div style="flex: 1; font-size: 12px; color: var(--ink-2);">{item.voice}</div>
+              <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); border: 1px solid var(--line-soft); padding: 3px 8px; border-radius: 4px;">▾</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR QUI -->
+  <section class="section alt">
+    <div class="container">
+      <h2>AudioAsk s'adapte à votre profil</h2>
+      <div class="grid-3" style="margin-top: 32px;">
+        <div class="card">
+          <div class="icon-sq">🎧</div>
+          <h3>Amateurs de podcasts</h3>
+          <p>Plus jamais peur de manquer un épisode important. Écoutez les meilleurs podcasts mondiaux dans votre langue.</p>
+        </div>
+        <div class="card">
+          <div class="icon-sq">🎙️</div>
+          <h3>Éditeurs de podcast</h3>
+          <p>Rendez votre catalogue accessible à une audience internationale. Proposez vos épisodes en plusieurs langues.</p>
+        </div>
+        <div class="card">
+          <div class="icon-sq">📡</div>
+          <h3>Agences médias</h3>
+          <p>Accédez au contenu mondial pour votre veille, sans barrière de langue. Citations et analyses multilingues.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTOMATISATION BONUS -->
+  <section class="section">
+    <div class="container">
+      <div class="feature-alt highlight">
+        <div>
+          <div class="eyebrow">
+            <span style="background: var(--accent); color: white; padding: 2px 8px; border-radius: 3px; font-size: 10px;">EN BONUS</span>
+            {' '}Automatisation
+          </div>
+          <h3 style="margin-top: 12px;">Automatisez la transcription et la traduction de vos podcasts</h3>
+          <p class="lede">AudioAsk propose une transcription et traduction automatique de vos podcasts. Définissez le prompt à appliquer et choisissez de recevoir le résultat directement par email — sans repasser dans l'app.</p>
+          <a class="btn arrow" href="/fonctionnalites/automatiser" style="margin-top: 18px;">En savoir plus sur l'automatisation</a>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column; gap: 12px; padding: 24px;">
+          <div class="auto-phase">
+            <div class="auto-phase-label">Automatisé · Channel EN → Résumé FR</div>
+            <div style="font-size: 12px; color: var(--ink-2);">Acquired — 3 channels en EN</div>
+          </div>
+          <div class="auto-arrow">↓</div>
+          <div style="padding: 10px 14px; border-left: 3px solid var(--accent); background: var(--paper); border-radius: 0 6px 6px 0; font-size: 12px;">
+            <strong>Email reçu ce matin</strong><br>
+            <span style="color: var(--ink-3);">Résumé FR · Acquired #189</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Le savoir mondial, dans votre langue.</h2>
+      <p class="lede">Traduisez votre premier épisode gratuitement avec le plan Premium.</p>
+      <a class="btn btn-primary btn-lg arrow" href={`${APP_URL}/signup?plan=premium`}>Essayer la traduction</a>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
+  item.querySelector('.faq-question')?.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>

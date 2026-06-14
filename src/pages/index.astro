@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+const APP_URL = 'https://app.audioask.ai';
+---
+
+<Layout title="AudioAsk — L'application vraiment faite pour les amateurs de podcasts">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-split">
+        <div>
+          <h1>L'application vraiment faite pour les amateurs de podcasts.</h1>
+          <p class="lede">Vous souhaitez retenir, retrouver et partager ce que vous écoutez. AudioAsk vous propose une nouvelle expérience pour apprécier encore plus vos podcasts.</p>
+          <div class="hero-ctas" style="margin-top: 28px;">
+            <a class="btn btn-primary btn-lg arrow" href={`${APP_URL}/signup`}>Essayer gratuitement</a>
+            <a class="btn btn-lg" href="/tarifs">Voir les plans</a>
+          </div>
+          <p style="margin-top: 14px; font-size: 13px; color: var(--ink-3);">✓ Gratuit. Sans carte de crédit.</p>
+        </div>
+        <div class="app-mock" style="min-height: 340px;">
+          <div class="app-mock-bar">
+            <div class="app-mock-dot" style="background: #ff5f56;"></div>
+            <div class="app-mock-dot" style="background: #febc2e;"></div>
+            <div class="app-mock-dot" style="background: #27c93f;"></div>
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); margin-left: 8px;">AudioAsk — Ma bibliothèque</span>
+          </div>
+          <div class="app-mock-inner">
+            <div class="app-pane">
+              <div class="app-nav-label">Ma bibliothèque</div>
+              <div class="app-nav-item on">▶ En cours d'écoute</div>
+              <div class="app-nav-item">★ Favoris</div>
+              <div class="app-nav-item">📚 Playlists</div>
+              <div class="app-nav-item">🔍 Recherche globale</div>
+              <div class="app-nav-label" style="margin-top: 10px;">Mes channels · 12</div>
+              <div class="app-nav-item">○ The Knowledge Project</div>
+              <div class="app-nav-item">○ Acquired</div>
+              <div class="app-nav-item">○ Lex Fridman</div>
+            </div>
+            <div class="app-pane" style="gap: 4px;">
+              <div style="font-weight: 600; font-size: 13px; margin-bottom: 4px;">Acquired · #119 (Nvidia)</div>
+              <div style="font-family: var(--mono); font-size: 9px; color: var(--ink-3);">2h 47min · transcrit · 18 chapitres</div>
+              <div style="margin-top: 8px;">
+                <div class="transcript-line"><span class="ts">00:00</span><span>Bienvenue dans cet épisode où nous allons retracer l'histoire de…</span></div>
+                <div class="transcript-line"><span class="ts">04:18</span><span>Avant Nvidia, le marché des GPU était dominé par…</span></div>
+                <div class="transcript-line"><span class="ts">12:42</span><span class="highlighted">"On a parié sur CUDA quand personne n'y croyait."</span></div>
+                <div class="transcript-line"><span class="ts">28:05</span><span>Et c'est exactement à ce moment que tout a basculé…</span></div>
+              </div>
+            </div>
+            <div class="app-pane">
+              <div class="app-nav-label">Demander à l'épisode</div>
+              <div class="demo-bubble q" style="font-size: 10px; padding: 5px 8px;">Quels sont les 3 paris clés ?</div>
+              <div class="demo-bubble a" style="font-size: 10px; padding: 5px 8px;">
+                1. CUDA en 2006<br>2. Rachat de Mellanox<br>3. Bet sur l'IA générative
+                <span class="citation" style="font-size: 9px;">"On a parié sur CUDA…" — 12:42</span>
+              </div>
+            </div>
+            <div class="app-player">
+              <div class="play-btn">▶</div>
+              <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-3);">12:42</span>
+              <div class="progress-bar"></div>
+              <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-3);">2:47:01</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUI CHANGE -->
+  <section class="section">
+    <div class="container">
+      <div class="row between" style="align-items: flex-end; margin-bottom: 40px;">
+        <div>
+          <h2>Une vraie app de podcasts,<br>pensée pour les gens qui écoutent vraiment.</h2>
+          <p class="lede" style="margin: 0;">Ces petites fonctionnalités qui rendent l'écoute plus agréable.</p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="icon-sq">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 2.5h10v16l-5-3.5-5 3.5V2.5z"/>
+              <path d="M7.5 7.5h5M7.5 10h3.5"/>
+            </svg>
+          </div>
+          <h3>Des signets sur la timeline, comme des post-it sonores</h3>
+          <p>Marquez les passages qui comptent en un tap. Ajoutez un commentaire. Revenez-y plus tard, ou partagez-les. Le tout sur une timeline interactive.</p>
+        </div>
+        <div class="card">
+          <div class="icon-sq">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="9" cy="9" r="5.5"/>
+              <path d="M13 13l4 4"/>
+            </svg>
+          </div>
+          <h3>Une recherche qui retrouve tout, dans tout</h3>
+          <p>Tapez un mot, une idée, un nom. AudioAsk vous emmène pile sur le bon passage, dans tous les épisodes que vous avez transcrits ou marqués.</p>
+        </div>
+        <div class="card">
+          <div class="icon-sq">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="16" height="14" rx="2"/>
+              <path d="M5 8h10M5 11h10M5 14h7"/>
+            </svg>
+          </div>
+          <h3>Des transcriptions précises, en quelques minutes</h3>
+          <p>Convertissez n'importe quel épisode en texte structuré : chapitres automatiques, intervenants identifiés, horodatage cliquable.</p>
+        </div>
+        <div class="card">
+          <div class="icon-sq">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 5h14v10H9l-4 4V15H3V5z"/>
+              <circle cx="7.5" cy="10" r="1" fill="currentColor"/>
+              <circle cx="10" cy="10" r="1" fill="currentColor"/>
+              <circle cx="12.5" cy="10" r="1" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Des analyses IA, avec citations vérifiables</h3>
+          <p>"Résume-moi", "Quels livres sont mentionnés ?", "Que dit l'invité sur X ?". L'IA répond, et chaque élément est ancré dans la transcription.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE PLAN BANNER -->
+  <div class="free-banner">
+    <div class="container">
+      <div class="row between" style="gap: 32px; flex-wrap: wrap; align-items: center;">
+        <div style="flex: 1; min-width: 280px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 10px;">
+            <span style="background: var(--accent); color: white; padding: 2px 8px; border-radius: 3px;">100% gratuit</span>
+            <span>Plan Free · 0€/mois</span>
+          </div>
+          <h3 style="font-size: 26px; margin: 0 0 8px; max-width: 28ch;">Tout commence gratuitement.</h3>
+          <p style="margin: 0; color: var(--ink-2); max-width: 58ch; font-size: 14px;">10 channels suivis, 3 playlists, signets, recherche, transcriptions et analyses IA par mois. De quoi tester en réel sans sortir la carte.</p>
+        </div>
+        <a class="btn arrow" href="/tarifs" style="flex-shrink: 0;">En savoir plus sur le plan Free</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIBLIOTHÈQUE PARTAGÉE -->
+  <section class="section dark">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <h2 style="color: white;">AudioAsk est une plateforme collaborative : chaque transcription lancée enrichit la base commune.</h2>
+        <p class="lede" style="color: #b0a898;">Quand un membre transcrit un épisode, toute la communauté en profite. Vous accédez instantanément à des milliers d'épisodes déjà transcrits — sans dépenser un seul crédit.</p>
+      </div>
+      <div style="margin-top: 40px; display: flex; gap: 24px; align-items: baseline; flex-wrap: wrap;">
+        <div class="stat-big">+185 millions</div>
+        <div style="font-size: 18px; color: #b0a898; max-width: 22ch;">d'épisodes à disposition</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING TEASER -->
+  <section class="section">
+    <div class="container">
+      <h2 class="center" style="margin: 0 auto 12px; max-width: 28ch;">Commencez gratuitement. Passez à 3€ quand vous en voulez plus.</h2>
+      <p class="lede center" style="margin: 0 auto 36px;">Pas d'engagement. Pas de carte de crédit pour démarrer.</p>
+      <div style="max-width: 680px; margin: 0 auto;">
+        <div class="pricing-grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="plan">
+            <div class="plan-name">Free</div>
+            <div class="plan-price">0€</div>
+            <div class="plan-tagline">Pour découvrir</div>
+            <ul>
+              <li>Transcriptions / mois</li>
+              <li>Analyses IA / mois</li>
+              <li>Bibliothèque communautaire</li>
+            </ul>
+            <a class="btn arrow" href={`${APP_URL}/signup`} style="width: 100%; justify-content: center;">Commencer</a>
+          </div>
+          <div class="plan featured">
+            <div class="plan-badge">RECOMMANDÉ</div>
+            <div class="plan-name">Premium</div>
+            <div class="plan-price">3€<small> /mois</small></div>
+            <div class="plan-tagline">Pour les passionnés</div>
+            <ul>
+              <li>Transcriptions / mois</li>
+              <li>Analyses IA / mois</li>
+              <li>Bibliothèque communautaire</li>
+              <li>Traduction multilingue</li>
+            </ul>
+            <a class="btn btn-primary arrow" href={`${APP_URL}/signup?plan=premium`} style="width: 100%; justify-content: center;">Essayer Premium</a>
+          </div>
+        </div>
+        <p style="text-align: center; margin-top: 16px; font-size: 13px; color: var(--ink-3);">
+          Vous voulez plus ? <a href="/pro" style="color: var(--accent-ink); border-bottom: 1px solid currentColor;">Le plan Pro est fait pour vous →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRO TEASER -->
+  <section class="section alt">
+    <div class="container">
+      <div class="card" style="background: var(--bg-dark); color: white; border-color: transparent; padding: 48px;">
+        <div class="grid-2" style="gap: 56px; align-items: center;">
+          <div>
+            <div class="eyebrow" style="color: var(--accent); margin-bottom: 14px;">Pour aller plus loin · Plan Pro</div>
+            <h2 style="color: white; margin: 0 0 16px; max-width: 18ch;">Vous voulez utiliser AudioAsk comme un·e pro ?</h2>
+            <p style="font-size: 16px; color: #b0a898; max-width: 46ch; margin: 0 0 28px; line-height: 1.6;">Si vous transcrivez beaucoup, analysez des channels entiers ou produisez des livrables à partir de podcasts, le plan Pro est fait pour vous.</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <a class="btn btn-primary arrow" href="/pro">Découvrir le plan Pro</a>
+              <a class="btn arrow" href="/tarifs" style="color: white; border-color: #444; background: transparent;">Voir les tarifs</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: #555; margin-bottom: 16px; text-transform: uppercase;">Ce que vous gagnez en Pro</div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; font-size: 14px;">
+              <li style="display: flex; gap: 12px;"><span style="color: var(--accent); font-weight: 700;">+</span><span>Transcription à l'usage, sans plafond mensuel</span></li>
+              <li style="display: flex; gap: 12px;"><span style="color: var(--accent); font-weight: 700;">+</span><span>Analyse cross-épisodes sur tout un channel</span></li>
+              <li style="display: flex; gap: 12px;"><span style="color: var(--accent); font-weight: 700;">+</span><span>Prompts personnalisés illimités &amp; partagés</span></li>
+              <li style="display: flex; gap: 12px;"><span style="color: var(--accent); font-weight: 700;">+</span><span>Export transcripts (txt, srt, vtt) &amp; signets (CSV)</span></li>
+              <li style="display: flex; gap: 12px;"><span style="color: var(--accent); font-weight: 700;">+</span><span>Automations illimitées · webhooks · multi-destinataires</span></li>
+              <li style="display: flex; gap: 12px;"><span style="color: var(--accent); font-weight: 700;">+</span><span>Dashboard de consommation temps réel &amp; plafonds</span></li>
+            </ul>
+            <div style="margin-top: 20px; padding: 12px 16px; border: 1px solid #333; border-radius: 8px; font-family: var(--mono); font-size: 11px; color: #888;">
+              19€/mois · 10h transcription &amp; 25M caractères IA inclus<br>
+              Au-delà : 2€/h · 2€/M car.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Vos podcasts vous donnent plus, à partir d'aujourd'hui.</h2>
+      <p class="lede">Créez votre compte en 30 secondes. Transcriptions offertes pour démarrer.</p>
+      <a class="btn btn-primary btn-lg arrow" href={`${APP_URL}/signup`}>Créer un compte gratuit</a>
+      <p style="margin-top: 16px; font-size: 13px; color: #6a6058;">Déjà un compte ? <a href={`${APP_URL}/login`} style="color: var(--accent);">Se connecter</a></p>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+const APP_URL = 'https://app.audioask.ai';
+---
+
+<Layout
+  title="AudioAsk Pro — L'arsenal complet pour exploiter vos podcasts à l'échelle"
+  description="Plan Pro AudioAsk : transcription à l'usage, IA cross-épisodes, automations illimitées, prompts partagés. 19€/mois + usage."
+  activePage="pro"
+>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-split">
+        <div>
+          <div class="eyebrow">Plan Pro</div>
+          <h1>AudioAsk sous stéroïdes : le plan pro.</h1>
+          <p class="lede">Si vous transcrivez à l'échelle d'un métier, analysez des channels entiers ou produisez des livrables à partir de podcasts — le plan Pro est fait pour vous.</p>
+          <div class="hero-ctas" style="margin-top: 28px;">
+            <a class="btn btn-primary btn-lg arrow" href="/tarifs">Voir les tarifs Pro</a>
+            <a class="btn btn-lg" href={`${APP_URL}/signup?plan=pro`}>Essayer gratuitement</a>
+          </div>
+          <p style="margin-top: 14px; font-size: 13px; color: var(--ink-3);">19€/mois + usage · 10h transcription incluses</p>
+        </div>
+        <div class="card" style="padding: 28px; background: var(--bg-alt);">
+          <div style="font-family: var(--mono); font-size: 10px; color: var(--accent-ink); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px;">Ce que vous gagnez en Pro</div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; font-size: 14px;">
+            <li style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="color: var(--accent); font-weight: 700; font-size: 16px; margin-top: 1px;">✓</span>
+              <div><strong>Transcription à l'usage</strong><br><span style="color: var(--ink-3); font-size: 13px;">10h incluses, puis 2€/h — jamais bloqué</span></div>
+            </li>
+            <li style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="color: var(--accent); font-weight: 700; font-size: 16px; margin-top: 1px;">✓</span>
+              <div><strong>IA cross-épisodes</strong><br><span style="color: var(--ink-3); font-size: 13px;">Interrogez un channel entier d'un coup</span></div>
+            </li>
+            <li style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="color: var(--accent); font-weight: 700; font-size: 16px; margin-top: 1px;">✓</span>
+              <div><strong>Automations illimitées</strong><br><span style="color: var(--ink-3); font-size: 13px;">Channels surveillés, email automatique, webhook</span></div>
+            </li>
+            <li style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="color: var(--accent); font-weight: 700; font-size: 16px; margin-top: 1px;">✓</span>
+              <div><strong>Prompts personnalisés partagés</strong><br><span style="color: var(--ink-3); font-size: 13px;">Bibliothèque d'équipe, exports illimités</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HUB FEATURES -->
+  <section class="section alt">
+    <div class="container">
+      <div class="row between" style="align-items: flex-end; margin-bottom: 40px;">
+        <div>
+          <h2>L'arsenal complet<br>pour exploiter vos podcasts à l'échelle</h2>
+          <p class="lede" style="margin: 0;">Quatre outils. Une seule plateforme. Construit pour les équipes qui transforment l'écoute en livrable.</p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="eyebrow">01 · Transcription</div>
+          <h3>Sans plafond mensuel</h3>
+          <p>10h incluses par mois, puis 2€/h de dépassement. Pas de tier supérieur à acheter. Vous transcrivez autant que votre mois le demande.</p>
+          <a class="btn btn-sm arrow" href="/fonctionnalites/transcrire" style="margin-top: 16px;">En savoir plus</a>
+        </div>
+        <div class="card">
+          <div class="eyebrow">02 · IA cross-épisodes</div>
+          <h3>Interrogez tout un channel d'un coup</h3>
+          <p>Posez une question sur l'ensemble d'un podcast — toutes saisons confondues. Détecter des tendances, comparer des invités, croiser des thèmes.</p>
+          <a class="btn btn-sm arrow" href="/fonctionnalites/interroger" style="margin-top: 16px;">En savoir plus</a>
+        </div>
+        <div class="card">
+          <div class="eyebrow">03 · Automations</div>
+          <h3>Channels illimités en pilote automatique</h3>
+          <p>Surveillance RSS, transcription automatique, analyse IA, email de résumé — ou webhook vers votre outil préféré. Configurez une fois, recevez toujours.</p>
+          <a class="btn btn-sm arrow" href="/fonctionnalites/automatiser" style="margin-top: 16px;">En savoir plus</a>
+        </div>
+        <div class="card">
+          <div class="eyebrow">04 · Prompts & export</div>
+          <h3>Vos formats, votre bibliothèque</h3>
+          <p>Créez et partagez vos prompts avec votre équipe. Exportez transcripts (TXT, SRT, VTT), signets (CSV) et résultats IA en un clic.</p>
+          <a class="btn btn-sm arrow" href="/fonctionnalites/interroger" style="margin-top: 16px;">En savoir plus</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NETWORK EFFECT -->
+  <section class="section dark">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <h2 style="color: white;">Tous les utilisateurs contribuent à enrichir les transcriptions de vos podcasts</h2>
+        <p class="lede" style="color: #b0a898;">AudioAsk fonctionne comme une bibliothèque partagée. Quand un utilisateur transcrit un épisode, toute la communauté en bénéficie. Plus vous êtes nombreux, moins vous dépensez de crédits.</p>
+      </div>
+      <div style="margin-top: 40px; display: flex; gap: 24px; align-items: baseline; flex-wrap: wrap;">
+        <div class="stat-big">+185 millions</div>
+        <div style="font-size: 18px; color: #b0a898; max-width: 22ch;">d'épisodes à disposition</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="center" style="margin: 0 auto 12px;">Construit pour vos métiers</h2>
+      <p class="lede center" style="margin: 0 auto 36px;">Trois profils pro. Une même promesse : transformer du temps d'écoute en livrable actionnable.</p>
+
+      <div class="persona-tabs" id="persona-tabs" role="tablist">
+        <button class="persona-tab on" data-tab="0" role="tab">Éditeurs de podcast</button>
+        <button class="persona-tab" data-tab="1" role="tab">Agences de communication</button>
+        <button class="persona-tab" data-tab="2" role="tab">Journalistes et médias</button>
+      </div>
+
+      <div id="persona-body">
+        <div class="grid-2" style="align-items: center;">
+          <div>
+            <div class="eyebrow" id="persona-eyebrow">Éditeurs de podcast</div>
+            <h3 id="persona-title" style="font-size: 28px; margin: 0 0 14px; letter-spacing: -0.02em; max-width: 22ch;">Rendez votre catalogue cherchable, partageable et réutilisable.</h3>
+            <p class="lede" id="persona-text" style="margin: 0 0 20px;">Transcrivez automatiquement vos épisodes pour booster votre SEO, alimenter vos newsletters et permettre à vos auditeurs de retrouver n'importe quel passage en quelques secondes.</p>
+            <a class="btn btn-primary arrow" href={`${APP_URL}/signup?plan=pro`}>Démarrer avec le plan Pro</a>
+          </div>
+          <div class="card" style="background: var(--bg-alt);" id="persona-visual">
+            <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;">Cas d'usage typique</div>
+            <div id="persona-usecase" style="font-size: 14px; color: var(--ink-2); line-height: 1.65;">
+              <p style="margin: 0 0 10px;">→ 50 épisodes transcrits automatiquement dès leur sortie</p>
+              <p style="margin: 0 0 10px;">→ Newsletter hebdo générée par IA à partir des résumés</p>
+              <p style="margin: 0;">→ Auditeurs qui cherchent directement dans le catalogue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Passez à l'échelle pro</h2>
+      <p class="lede">Plan Pro — 19€/mois + usage. 10h de transcription &amp; 25M caractères d'IA inclus. Facturation transparente.</p>
+      <a class="btn btn-primary btn-lg arrow" href="/tarifs">Voir les tarifs Pro</a>
+      <p style="margin-top: 16px; font-size: 13px; color: #6a6058;">Vous êtes un amateur de podcasts ? <a href="/" style="color: var(--accent);">Voir la version grand public</a></p>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+const PERSONAS = [
+  {
+    eyebrow: "Éditeurs de podcast",
+    title: "Rendez votre catalogue cherchable, partageable et réutilisable.",
+    text: "Transcrivez automatiquement vos épisodes pour booster votre SEO, alimenter vos newsletters et permettre à vos auditeurs de retrouver n'importe quel passage en quelques secondes.",
+    usecase: `<p style="margin:0 0 10px">→ 50 épisodes transcrits automatiquement dès leur sortie</p><p style="margin:0 0 10px">→ Newsletter hebdo générée par IA à partir des résumés</p><p style="margin:0">→ Auditeurs qui cherchent directement dans le catalogue</p>`
+  },
+  {
+    eyebrow: "Agences de communication",
+    title: "Produisez des briefs clients en minutes, plus en demi-journées.",
+    text: "Votre veille concurrentielle, vos analyses de tendances, vos synthèses de podcasts sectoriels — tout cela en automatique. Vos équipes se concentrent sur la valeur ajoutée.",
+    usecase: `<p style="margin:0 0 10px">→ 10 channels de veille surveillés en continu</p><p style="margin:0 0 10px">→ Brief client généré automatiquement chaque semaine</p><p style="margin:0">→ Bibliothèque partagée accessible à toute l'équipe</p>`
+  },
+  {
+    eyebrow: "Journalistes et médias",
+    title: "Citez précisément. Vérifiez en 10 secondes.",
+    text: "Fact-check instantané, citations horodatées exportables, sources manipulables comme du texte. AudioAsk devient votre outil de travail journalistique quotidien.",
+    usecase: `<p style="margin:0 0 10px">→ Citation exacte avec horodatage en 10 secondes</p><p style="margin:0 0 10px">→ Cross-check sur 200 épisodes en une seule question</p><p style="margin:0">→ Export SRT pour sous-titrage direct</p>`
+  }
+];
+
+const tabs = document.querySelectorAll<HTMLElement>('.persona-tab');
+const eyebrowEl = document.getElementById('persona-eyebrow');
+const titleEl = document.getElementById('persona-title');
+const textEl = document.getElementById('persona-text');
+const usecaseEl = document.getElementById('persona-usecase');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const idx = parseInt(tab.dataset.tab || '0');
+    tabs.forEach(t => t.classList.remove('on'));
+    tab.classList.add('on');
+    const p = PERSONAS[idx];
+    if (eyebrowEl) eyebrowEl.textContent = p.eyebrow;
+    if (titleEl) titleEl.textContent = p.title;
+    if (textEl) textEl.textContent = p.text;
+    if (usecaseEl) usecaseEl.innerHTML = p.usecase;
+  });
+});
+</script>
