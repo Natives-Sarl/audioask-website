@@ -61,29 +61,29 @@ const APP_URL = 'https://dev-app.audioask.ai';
       </svg>
     </button>
   </div>
+</header>
 
-  <!-- Mobile menu -->
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <div class="mobile-menu-inner">
-      <nav class="mobile-nav">
-        <div class="mobile-section-label">Fonctionnalités</div>
-        <a href="/fonctionnalites/transcrire" class="mobile-nav-link">Transcrire</a>
-        <a href="/fonctionnalites/interroger" class="mobile-nav-link">Interroger</a>
-        <a href="/fonctionnalites/automatiser" class="mobile-nav-link">Automatiser</a>
-        <a href="/fonctionnalites/traduire" class="mobile-nav-link">Traduire</a>
-        <div class="mobile-divider"></div>
-        <a href="/pro" class="mobile-nav-link">Pour les pros</a>
-        <a href="/tarifs" class="mobile-nav-link">Tarifs</a>
-        <a href="/a-propos" class="mobile-nav-link">À propos</a>
-        <a href="/blog" class="mobile-nav-link">Blog</a>
-      </nav>
-      <div class="mobile-cta">
-        <a class="btn btn-ghost" href={`${APP_URL}/login`} style="width:100%;justify-content:center;">Se connecter</a>
-        <a class="btn btn-primary" href={`${APP_URL}/signup`} style="width:100%;justify-content:center;">Essayer gratuitement</a>
-      </div>
+<!-- Mobile menu — en dehors du header pour éviter le stacking context de backdrop-filter -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-inner">
+    <nav class="mobile-nav">
+      <div class="mobile-section-label">Fonctionnalités</div>
+      <a href="/fonctionnalites/transcrire" class="mobile-nav-link">Transcrire</a>
+      <a href="/fonctionnalites/interroger" class="mobile-nav-link">Interroger</a>
+      <a href="/fonctionnalites/automatiser" class="mobile-nav-link">Automatiser</a>
+      <a href="/fonctionnalites/traduire" class="mobile-nav-link">Traduire</a>
+      <div class="mobile-divider"></div>
+      <a href="/pro" class="mobile-nav-link">Pour les pros</a>
+      <a href="/tarifs" class="mobile-nav-link">Tarifs</a>
+      <a href="/a-propos" class="mobile-nav-link">À propos</a>
+      <a href="/blog" class="mobile-nav-link">Blog</a>
+    </nav>
+    <div class="mobile-cta">
+      <a class="btn btn-ghost" href={`${APP_URL}/login`} style="width:100%;justify-content:center;">Se connecter</a>
+      <a class="btn btn-primary" href={`${APP_URL}/signup`} style="width:100%;justify-content:center;">Essayer gratuitement</a>
     </div>
   </div>
-</header>
+</div>
 
 <script>
 document.querySelectorAll('[data-lang]').forEach(d => {
