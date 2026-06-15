@@ -98,10 +98,12 @@ document.addEventListener('click', () => {
 
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
-hamburger?.addEventListener('click', () => {
-  const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
-  hamburger.setAttribute('aria-expanded', String(!isOpen));
-  mobileMenu?.classList.toggle('open', !isOpen);
-  document.body.classList.toggle('menu-open', !isOpen);
-});
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+    mobileMenu.classList.toggle('open', !isOpen);
+    document.body.classList.toggle('menu-open', !isOpen);
+  });
+}
 </script>

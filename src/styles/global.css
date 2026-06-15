@@ -1348,15 +1348,10 @@ p { margin: 0; text-wrap: pretty; }
 .mobile-menu {
   display: none;
   position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-  background: var(--cream); overflow-y: auto; z-index: 999;
+  background: var(--cream); overflow-y: auto; z-index: 9999;
   border-top: 1px solid var(--line);
-  transform: translateY(-8px); opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  pointer-events: none;
 }
-.mobile-menu.open {
-  display: block; opacity: 1; transform: none; pointer-events: auto;
-}
+.mobile-menu.open { display: block; }
 body.menu-open { overflow: hidden; }
 
 .mobile-menu-inner {
@@ -1394,7 +1389,6 @@ body.menu-open { overflow: hidden; }
   /* Header */
   .site-nav, .site-header-right { display: none; }
   .hamburger { display: flex; }
-  .mobile-menu { display: block; }
 
   /* Hero */
   .hero { padding: 56px 0 64px; }
