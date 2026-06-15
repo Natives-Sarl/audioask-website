@@ -1,0 +1,229 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const podcasts = await getCollection('podcasts', ({ data }) => !data.draft);
+  return podcasts.map(podcast => ({
+    params: { slug: podcast.id },
+    props: { podcast },
+  }));
+}
+
+const { podcast } = Astro.props;
+const { data } = podcast;
+const APP_URL = 'https://app.audioask.ai';
+const embedSrc = `https://app.audioask.ai/embed/${data.embedId}`;
+---
+
+<Layout title={`${data.pageTitle} | Audioask`} description={data.metaDescription}>
+
+<style>
+  .podcast-hero {
+    padding: 72px 0 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .podcast-tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .podcast-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    color: var(--ink-3);
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+  .podcast-tag.accent {
+    color: var(--accent-ink);
+    background: var(--accent-tint);
+    border-color: transparent;
+  }
+  .podcast-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 0 0 16px;
+  }
+  .podcast-desc {
+    font-size: 18px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    max-width: 64ch;
+    margin: 0;
+  }
+  .widget-section {
+    padding: 56px 0;
+    background: var(--cream-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .widget-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .widget-frame {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .features-section {
+    padding: 72px 0;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  @media (max-width: 720px) {
+    .features-grid { grid-template-columns: 1fr; }
+  }
+  .feat-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .feat-ico {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent-tint);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .feat-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .feat-card p {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .cta-podcast {
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .cta-podcast h2 {
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 12px;
+  }
+  .cta-podcast p {
+    color: var(--ink-2);
+    font-size: 16px;
+    margin: 0 auto 28px;
+    max-width: 50ch;
+  }
+</style>
+
+<!-- HERO -->
+<section class="podcast-hero">
+  <div class="container">
+    <div class="podcast-tags">
+      <span class="podcast-tag">{data.languageFlag} {data.languageLabel}</span>
+      <span class="podcast-tag accent">{data.category}</span>
+      <span class="podcast-tag">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        Transcriptions disponibles
+      </span>
+    </div>
+    <h1 class="podcast-title">{data.pageTitle}</h1>
+    <p class="podcast-desc">{data.description}</p>
+  </div>
+</section>
+
+<!-- WIDGET -->
+<section class="widget-section">
+  <div class="container">
+    <p class="widget-label">● Audioask · Lecteur interactif</p>
+    <div class="widget-frame">
+      <iframe
+        src={embedSrc}
+        width="100%"
+        height="600"
+        frameborder="0"
+        loading="lazy"
+        title={data.iframeTitle}
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="container">
+    <div class="eyebrow"><span class="dot">●</span> Ce que vous pouvez faire</div>
+    <h2 style="margin-top: 16px; font-size: clamp(26px, 3vw, 38px);">
+      Bien plus qu'un lecteur.<br>
+      <span class="serif-it">Un vrai outil de savoir.</span>
+    </h2>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-ico">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        </div>
+        <h4>Transcription complète</h4>
+        <p>Chaque épisode est retranscrit mot pour mot, avec horodatage. Cherchez un passage précis en quelques secondes.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ico">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3z"/></svg>
+        </div>
+        <h4>Interrogez l'IA</h4>
+        <p>Posez vos questions directement à l'épisode. L'IA répond en citant les passages exacts de l'audio.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ico">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <h4>Recherche plein-texte</h4>
+        <p>Trouvez n'importe quel mot, concept ou nom mentionné dans tous les épisodes du channel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-podcast">
+  <div class="container">
+    <p class="eyebrow" style="justify-content: center; display: inline-flex; margin-bottom: 16px;"><span class="dot">●</span> Audioask</p>
+    <h2>Faites pareil avec vos propres podcasts.</h2>
+    <p>Ajoutez n'importe quel podcast, obtenez la transcription complète et commencez à l'interroger. Gratuit pour démarrer.</p>
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <a class="btn btn-primary lg" href={`${APP_URL}/signup`} style="height: 52px; font-size: 15px; padding: 0 24px;">
+        Essayer gratuitement <span class="arrow">→</span>
+      </a>
+      <a class="btn btn-ghost lg" href="/fonctionnalites/transcrire" style="height: 52px; font-size: 15px; padding: 0 24px;">
+        Comment ça marche
+      </a>
+    </div>
+  </div>
+</section>
+
+</Layout>
