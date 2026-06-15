@@ -1,0 +1,289 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact — Audioask"
+  description="Une question, un retour ou une idée ? Écris-nous via le formulaire de contact Audioask."
+  activePage="contact"
+>
+
+<style>
+  .contact-field { margin-bottom: 20px; }
+  .contact-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .contact-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    background: var(--paper);
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .contact-input:focus { border-color: var(--accent); }
+  textarea.contact-input { min-height: 160px; resize: vertical; }
+  select.contact-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8278' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .form-alert {
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+  .form-alert.success {
+    background: #EDF7EE;
+    border: 1px solid #9FD9A3;
+    color: #1D6B22;
+  }
+  .form-alert.error {
+    background: #FEF2F2;
+    border: 1px solid #FCA5A5;
+    color: #991B1B;
+  }
+
+  .contact-hero {
+    text-align: center;
+    padding: 96px 0 72px;
+  }
+  .contact-hero .page-intro {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 18px;
+  }
+  .contact-hero h1 {
+    margin-bottom: 16px;
+  }
+  .contact-hero .lede {
+    margin: 0 auto;
+  }
+
+  .em-serif {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .form-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 32px 96px;
+  }
+
+  .form-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .submit-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  @media (max-width: 640px) {
+    .form-wrap { padding: 0 16px 64px; }
+    .form-card { padding: 24px 20px; }
+    .contact-hero { padding: 72px 16px 48px; }
+  }
+</style>
+
+<!-- hCaptcha -->
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+<!-- HERO -->
+<section class="dotbg contact-hero">
+  <div class="container">
+    <div class="page-intro">Contact</div>
+    <h1>Une question ? <span class="em-serif">Écris-nous.</span></h1>
+    <p class="lede">Un retour sur l'app, un problème technique ou juste l'envie d'échanger — on te répond.</p>
+  </div>
+</section>
+
+<!-- FORMULAIRE -->
+<section class="section paper" style="padding-top: 0; padding-bottom: 0;">
+  <div class="form-wrap">
+    <div class="form-card">
+      <form id="contact-form" action="/contact-handler.php" method="POST" novalidate>
+        <input type="hidden" name="csrf_token" id="csrf_token">
+
+        <div class="contact-field">
+          <label class="contact-label" for="nom">Nom</label>
+          <input
+            class="contact-input"
+            type="text"
+            id="nom"
+            name="nom"
+            autocomplete="name"
+            required
+            placeholder="Ton prénom et nom"
+          >
+        </div>
+
+        <div class="contact-field">
+          <label class="contact-label" for="email">Email</label>
+          <input
+            class="contact-input"
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            required
+            placeholder="ton@email.com"
+          >
+        </div>
+
+        <div class="contact-field">
+          <label class="contact-label" for="sujet">Sujet</label>
+          <select class="contact-input" id="sujet" name="sujet" required>
+            <option value="" disabled selected>Choisir un sujet…</option>
+            <option value="Question produit">Question produit</option>
+            <option value="Problème technique">Problème technique</option>
+            <option value="Partenariat">Partenariat</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="contact-field">
+          <label class="contact-label" for="message">Message</label>
+          <textarea
+            class="contact-input"
+            id="message"
+            name="message"
+            required
+            placeholder="Décris ta demande en quelques lignes…"
+          ></textarea>
+        </div>
+
+        <div class="h-captcha" data-sitekey="HCAPTCHA_SITE_KEY"></div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn btn-primary lg" id="submit-btn">
+            Envoyer le message <span class="arrow">→</span>
+          </button>
+          <span id="submit-spinner" style="display:none; font-size:13px; color:var(--ink-3);">Envoi en cours…</span>
+        </div>
+      </form>
+
+      <div id="form-success" class="form-alert success" style="display:none;">
+        Message envoyé ! On te répond dans les plus brefs délais.
+      </div>
+      <div id="form-error" class="form-alert error" style="display:none;">
+        Une erreur est survenue. Merci de réessayer.
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // CSRF token simple (aléatoire côté client, validé côté PHP)
+  function generateToken(length = 32) {
+    const arr = new Uint8Array(length);
+    crypto.getRandomValues(arr);
+    return Array.from(arr, b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  const tokenEl = document.getElementById('csrf_token') as HTMLInputElement | null;
+  if (tokenEl) {
+    const token = generateToken();
+    tokenEl.value = token;
+    sessionStorage.setItem('contact_csrf', token);
+  }
+
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successEl = document.getElementById('form-success');
+  const errorEl = document.getElementById('form-error');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const spinner = document.getElementById('submit-spinner');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Réinitialiser les messages
+    if (successEl) successEl.style.display = 'none';
+    if (errorEl) errorEl.style.display = 'none';
+
+    // Validation basique côté client
+    const nom = (document.getElementById('nom') as HTMLInputElement)?.value.trim();
+    const email = (document.getElementById('email') as HTMLInputElement)?.value.trim();
+    const sujet = (document.getElementById('sujet') as HTMLSelectElement)?.value;
+    const message = (document.getElementById('message') as HTMLTextAreaElement)?.value.trim();
+
+    if (!nom || !email || !sujet || !message) {
+      if (errorEl) {
+        errorEl.textContent = 'Merci de remplir tous les champs.';
+        errorEl.style.display = 'block';
+      }
+      return;
+    }
+
+    // Vérifier la présence de la réponse hCaptcha
+    const hcaptchaInput = form.querySelector('[name="h-captcha-response"]') as HTMLInputElement | null;
+    if (!hcaptchaInput || !hcaptchaInput.value) {
+      if (errorEl) {
+        errorEl.textContent = 'Merci de compléter le captcha.';
+        errorEl.style.display = 'block';
+      }
+      return;
+    }
+
+    // État chargement
+    if (submitBtn) submitBtn.disabled = true;
+    if (spinner) spinner.style.display = 'inline';
+
+    try {
+      const data = new FormData(form);
+      const response = await fetch('/contact-handler.php', {
+        method: 'POST',
+        body: data,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        form.style.display = 'none';
+        if (successEl) successEl.style.display = 'block';
+      } else {
+        const msg = result.error || 'Une erreur est survenue. Merci de réessayer.';
+        if (errorEl) {
+          errorEl.textContent = msg;
+          errorEl.style.display = 'block';
+        }
+        if (submitBtn) submitBtn.disabled = false;
+        if (spinner) spinner.style.display = 'none';
+      }
+    } catch {
+      if (errorEl) {
+        errorEl.textContent = 'Impossible de contacter le serveur. Vérifie ta connexion.';
+        errorEl.style.display = 'block';
+      }
+      if (submitBtn) submitBtn.disabled = false;
+      if (spinner) spinner.style.display = 'none';
+    }
+  });
+</script>
+
+</Layout>

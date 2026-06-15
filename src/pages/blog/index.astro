@@ -1,0 +1,158 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+function formatDateFr(date: Date): string {
+  return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<!-- ADMIN : Pour ajouter un article, crée un fichier .md dans src/content/blog/ avec le frontmatter suivant :
+title, description, pubDate (YYYY-MM-DD), author, tags (liste), draft (true = non publié)
+Puis pousse sur main pour déployer. -->
+
+<Layout
+  title="Blog — Audioask"
+  description="Actualités, guides et réflexions de l'équipe Audioask sur le podcast, la transcription IA et l'automatisation."
+  activePage="blog"
+>
+  <style>
+    .blog-hero {
+      padding: 80px 0 48px;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+    .blog-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .blog-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .blog-card-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-3);
+      letter-spacing: 0.08em;
+    }
+    .blog-card-title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .blog-card-desc {
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .discover-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent-ink);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      align-self: flex-start;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .discover-link:hover {
+      color: var(--accent);
+      border-color: var(--accent-2);
+    }
+    .discover-link .arrow {
+      display: inline-block;
+      transition: transform 0.15s;
+    }
+    .discover-link:hover .arrow {
+      transform: translateX(2px);
+    }
+    .empty-state {
+      padding: 80px 0;
+      text-align: center;
+      color: var(--ink-3);
+      font-size: 17px;
+    }
+    .tag-pill {
+      display: inline-block;
+      background: var(--accent-tint);
+      color: var(--accent-ink);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+    .tags-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+  </style>
+
+  <section class="section tight blog-hero">
+    <div class="container">
+      <p class="eyebrow"><span class="dot">·</span> Blog</p>
+      <h2 style="margin-top: 12px;">
+        Idées, guides &amp; <em class="serif-it">actualités</em>
+      </h2>
+      <p class="lede" style="margin-top: 16px;">
+        Réflexions de l'équipe Audioask sur le podcast, la transcription IA, l'automatisation et l'exploitation du savoir audio.
+      </p>
+
+      {posts.length === 0 ? (
+        <div class="empty-state">Aucun article pour l'instant.</div>
+      ) : (
+        <div class="blog-grid">
+          {posts.map(post => (
+            <article class="blog-card">
+              <div class="blog-card-meta">
+                {formatDateFr(post.data.pubDate)}
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <span> · </span>
+                )}
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <span class="tags-row" style="display:inline-flex; gap:4px; vertical-align:middle;">
+                    {post.data.tags.slice(0, 2).map(tag => (
+                      <span class="tag-pill">{tag}</span>
+                    ))}
+                  </span>
+                )}
+              </div>
+              <h2 class="blog-card-title">{post.data.title}</h2>
+              <p class="blog-card-desc">{post.data.description}</p>
+              <a class="discover-link" href={`/blog/${post.slug}`}>
+                Lire l'article <span class="arrow">→</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>
