@@ -1,0 +1,190 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDateFr(date: Date): string {
+  return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+const APP_URL = 'https://dev-app.audioask.ai';
+---
+
+<Layout
+  title={`${post.data.title} — Audioask`}
+  description={post.data.description}
+  activePage="blog"
+>
+  <style>
+    .article-hero {
+      padding: 80px 0 56px;
+      border-bottom: 1px solid var(--line);
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .article-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-3);
+      letter-spacing: 0.08em;
+    }
+    .tag-pill {
+      display: inline-block;
+      background: var(--accent-tint);
+      color: var(--accent-ink);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+    .article-author {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--ink-3);
+    }
+    .article-author strong {
+      color: var(--ink-2);
+      font-weight: 500;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-3);
+      transition: color 0.15s;
+      margin-bottom: 40px;
+    }
+    .back-link:hover {
+      color: var(--ink);
+    }
+    .article-body {
+      padding: 64px 0 80px;
+    }
+    :global(.prose) {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    :global(.prose h2) {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 48px 0 20px;
+    }
+    :global(.prose h3) {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 32px 0 14px;
+    }
+    :global(.prose p) {
+      color: var(--ink-2);
+      font-size: 17px;
+      line-height: 1.7;
+      margin: 0 0 20px;
+    }
+    :global(.prose a) {
+      color: var(--accent-ink);
+      border-bottom: 1px solid var(--accent);
+    }
+    :global(.prose strong) {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    :global(.prose ul) {
+      padding-left: 20px;
+      color: var(--ink-2);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    :global(.prose li) {
+      margin-bottom: 8px;
+    }
+    .article-cta {
+      background: var(--night);
+      border-radius: 24px;
+      padding: 48px;
+      margin-top: 64px;
+      text-align: center;
+      color: var(--night-text);
+    }
+    .article-cta h3 {
+      color: var(--night-text);
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+    }
+    .article-cta p {
+      color: var(--night-text-2);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+    .back-link-bottom {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-3);
+      transition: color 0.15s;
+      margin-top: 56px;
+    }
+    .back-link-bottom:hover {
+      color: var(--ink);
+    }
+  </style>
+
+  <section class="article-hero">
+    <div class="container">
+      <div style="max-width: 720px; margin: 0 auto;">
+        <a class="back-link" href="/blog">← Tous les articles</a>
+        <div class="article-meta">
+          <span class="article-date">{formatDateFr(post.data.pubDate)}</span>
+          {post.data.tags && post.data.tags.map(tag => (
+            <span class="tag-pill">{tag}</span>
+          ))}
+        </div>
+        <h1 style="font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1.05;">
+          {post.data.title}
+        </h1>
+        <p class="article-author">Par <strong>{post.data.author}</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="container">
+      <div class="prose">
+        <Content />
+
+        <div class="article-cta">
+          <h3>Prêt à aller plus loin ?</h3>
+          <p>Essayez Audioask gratuitement — sans carte de crédit, sans engagement.</p>
+          <a href={APP_URL} class="btn btn-primary lg">
+            Essayer gratuitement <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <a class="back-link-bottom" href="/blog">← Tous les articles</a>
+      </div>
+    </div>
+  </section>
+</Layout>
