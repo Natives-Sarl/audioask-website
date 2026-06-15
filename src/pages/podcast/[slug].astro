@@ -12,8 +12,8 @@ export async function getStaticPaths() {
 
 const { podcast } = Astro.props;
 const { data } = podcast;
-const APP_URL = 'https://app.audioask.ai';
-const embedSrc = `https://app.audioask.ai/embed/${data.embedId}`;
+const APP_URL = 'https://dev-app.audioask.ai';
+const embedSrc = `https://dev-app.audioask.ai/embed/${data.embedId}`;
 ---
 
 <Layout title={`${data.pageTitle} | Audioask`} description={data.metaDescription}>
