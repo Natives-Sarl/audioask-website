@@ -6,11 +6,12 @@ export async function getStaticPaths() {
   const podcasts = await getCollection('podcasts', ({ data }) => !data.draft);
   return podcasts.map(podcast => ({
     params: { slug: podcast.id },
-    props: { podcast },
+    props: { podcast, allPodcasts: podcasts },
   }));
 }
 
-const { podcast } = Astro.props;
+const { podcast, allPodcasts } = Astro.props;
+const otherPodcasts = allPodcasts.filter((p: typeof podcast) => p.id !== podcast.id);
 const { data } = podcast;
 const APP_URL = 'https://dev-app.audioask.ai';
 const embedSrc = `https://dev-app.audioask.ai/embed/${data.embedId}`;
@@ -81,6 +82,38 @@ const embedSrc = `https://dev-app.audioask.ai/embed/${data.embedId}`;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .other-podcasts-section {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .other-podcasts-section .eyebrow {
+    margin-bottom: 16px;
+  }
+  .other-podcasts-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .podcast-link-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink-2);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .podcast-link-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-tint);
   }
   .features-section {
     padding: 72px 0;
@@ -181,6 +214,22 @@ const embedSrc = `https://dev-app.audioask.ai/embed/${data.embedId}`;
     </div>
   </div>
 </section>
+
+<!-- AUTRES PODCASTS -->
+{otherPodcasts.length > 0 && (
+  <section class="other-podcasts-section">
+    <div class="container">
+      <div class="eyebrow"><span class="dot">●</span> Autres podcasts sur Audioask</div>
+      <div class="other-podcasts-tags">
+        {otherPodcasts.map((p: typeof podcast) => (
+          <a href={`/podcast/${p.id}`} class="podcast-link-tag">
+            {p.data.languageFlag} {p.data.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
 
 <!-- FEATURES -->
 <section class="features-section">
