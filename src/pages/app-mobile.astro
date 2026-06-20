@@ -1,0 +1,441 @@
+---
+import Layout from '../layouts/Layout.astro';
+const APP_URL = 'https://dev-app.audioask.ai';
+---
+
+<Layout
+  title="App mobile Audioask — Bientôt sur iOS et Android"
+  description="Audioask arrive sur mobile. Toute votre bibliothèque, vos signets et vos automations dans une vraie app iOS et Android. Inscrivez-vous pour être notifié à la sortie."
+  activePage=""
+>
+
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Audioask", "item": "https://www.audioask.ai" },
+      { "@type": "ListItem", "position": 2, "name": "App mobile", "item": "https://www.audioask.ai/app-mobile" }
+    ]
+  })} />
+</Fragment>
+
+<!-- HERO -->
+<section class="hero dotbg mobile-hero">
+  <div class="container">
+    <div class="mobile-hero-inner">
+      <div class="mobile-hero-copy">
+        <div class="hero-eyebrow">
+          <span class="pill">Bientôt disponible</span>
+          <span>iOS &amp; Android</span>
+        </div>
+        <h1>Audioask dans<br><span class="em-serif">votre poche.</span></h1>
+        <p class="lede">Toute votre bibliothèque, vos signets et vos automations dans une vraie app mobile. Même compte, même expérience — où que vous soyez.</p>
+
+        <!-- NOTIFY FORM -->
+        <div class="notify-block" id="notify-block">
+          <p class="notify-label">Être notifié à la sortie de l'app</p>
+          <form class="notify-form" id="notify-form" novalidate>
+            <input
+              type="email"
+              id="notify-email"
+              name="email"
+              placeholder="votre@email.com"
+              required
+              autocomplete="email"
+            />
+            <button type="submit" class="btn btn-primary">Me notifier <span class="arrow">→</span></button>
+          </form>
+          <p class="notify-meta">Aucun spam. Juste un email le jour de la sortie.</p>
+          <div class="notify-success" id="notify-success" style="display: none;">
+            <span class="notify-success-icon">✓</span>
+            C'est noté ! Vous serez notifié dès que l'app est disponible.
+          </div>
+          <div class="notify-error" id="notify-error" style="display: none;"></div>
+        </div>
+      </div>
+
+      <!-- Phone mockup (large) -->
+      <div class="mobile-hero-visual">
+        <div class="phone-frame phone-hero">
+          <div class="phone-screen">
+            <!-- Status + notch -->
+            <div style="height: 32px; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 20px 4px; position: relative;">
+              <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-2); font-weight: 600;">9:41</span>
+              <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 90px; height: 22px; background: var(--ink); border-radius: 0 0 16px 16px;"></div>
+              <span style="font-size: 10px; color: var(--ink-3);">●●●</span>
+            </div>
+            <!-- Feed view -->
+            <div style="padding: 12px 18px 0; flex: 1; overflow: hidden;">
+              <div style="font-size: 22px; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 16px;">Feed</div>
+              <!-- Episode 1 active -->
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--accent-soft); border-radius: 14px; border: 1px solid var(--accent); margin-bottom: 10px;">
+                <img src="/assets/acquired-cover.jpg" alt="Acquired" style="width: 48px; height: 48px; border-radius: 10px; object-fit: cover; flex-shrink: 0;">
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">#119 — Nvidia</div>
+                  <div style="font-size: 11px; color: var(--ink-3); margin-top: 3px;">Acquired · 2h 47min</div>
+                  <div style="margin-top: 6px; background: var(--paper); border-radius: 4px; height: 3px; overflow: hidden;"><div style="background: var(--accent); height: 3px; width: 30%;"></div></div>
+                </div>
+                <span style="width: 32px; height: 32px; background: var(--ink); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--cream); font-size: 11px; flex-shrink: 0; padding-left: 2px;">▶</span>
+              </div>
+              <!-- Episode 2 -->
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--paper); border-radius: 14px; border: 1px solid var(--line); margin-bottom: 10px;">
+                <img src="/assets/pod-tkp.jpg" alt="TKP" style="width: 48px; height: 48px; border-radius: 10px; object-fit: cover; flex-shrink: 0;">
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">#362 — Pensée lente</div>
+                  <div style="font-size: 11px; color: var(--ink-3); margin-top: 3px;">The Knowledge Project · 1h 12min</div>
+                </div>
+                <span style="width: 32px; height: 32px; background: var(--cream-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink-2); font-size: 11px; flex-shrink: 0; padding-left: 2px;">▶</span>
+              </div>
+              <!-- Episode 3 -->
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--paper); border-radius: 14px; border: 1px solid var(--line);">
+                <img src="/assets/pod-lex.jpg" alt="Lex" style="width: 48px; height: 48px; border-radius: 10px; object-fit: cover; flex-shrink: 0;">
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">#460 — Zuckerberg</div>
+                  <div style="font-size: 11px; color: var(--ink-3); margin-top: 3px;">Lex Fridman · 3h 05min</div>
+                </div>
+                <span style="width: 32px; height: 32px; background: var(--cream-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink-2); font-size: 11px; flex-shrink: 0; padding-left: 2px;">▶</span>
+              </div>
+            </div>
+            <!-- Mini player -->
+            <div style="margin: 12px 14px 10px; padding: 12px 14px; background: var(--ink); border-radius: 16px; display: flex; align-items: center; gap: 12px;">
+              <img src="/assets/pod-acquired.jpg" alt="" style="width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+              <div style="flex: 1; min-width: 0;">
+                <div style="font-size: 12px; font-weight: 600; color: var(--cream); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">#119 — Nvidia</div>
+                <div style="font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px;">Acquired</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+                <span style="font-size: 13px; color: rgba(255,255,255,0.5);">«</span>
+                <span style="width: 34px; height: 34px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; padding-left: 2px;">▶</span>
+                <span style="font-size: 13px; color: rgba(255,255,255,0.5);">»</span>
+              </div>
+            </div>
+            <!-- Tab bar -->
+            <div style="display: flex; align-items: center; justify-content: space-around; padding: 10px 4px; border-top: 1px solid var(--line);">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M3 4h10M3 8h10M3 12h6"/></svg>
+                <span style="font-size: 9px; color: var(--accent); font-weight: 600;">Feed</span>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="var(--ink-3)" stroke-width="1.6"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/></svg>
+                <span style="font-size: 9px; color: var(--ink-3);">Recherche</span>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="var(--ink-3)" stroke-width="1.6"><path d="M3 2h10M3 7h10M3 12h6"/></svg>
+                <span style="font-size: 9px; color: var(--ink-3);">Playlists</span>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="var(--ink-3)" stroke-width="1.6"><circle cx="8" cy="6" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+                <span style="font-size: 9px; color: var(--ink-3);">Profil</span>
+              </div>
+            </div>
+            <!-- Home indicator -->
+            <div style="height: 26px; display: flex; align-items: center; justify-content: center;">
+              <div style="width: 110px; height: 4px; background: var(--ink); border-radius: 2px; opacity: 0.15;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QU'ON RETROUVE SUR MOBILE -->
+<section class="section paper">
+  <div class="container">
+    <div class="center-text" style="max-width: 640px; margin: 0 auto; text-align: center;">
+      <div class="eyebrow"><span class="dot">●</span> Même expérience, partout</div>
+      <h2 style="margin-top: 16px;">Tout ce que vous aimez sur Audioask,<br><span class="serif-it">dans votre poche.</span></h2>
+    </div>
+
+    <div class="mob-feat-grid">
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h12M4 12h12M4 18h7"/><path d="M18 13l5 3-5 3z"/></svg>
+        </div>
+        <div>
+          <h3>Feed &amp; playlists</h3>
+          <p>Votre feed personnalisé, vos channels favoris et vos playlists thématiques — disponibles hors ligne.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div>
+          <h3>Signets &amp; favoris</h3>
+          <p>Marquez les passages importants en un tap. Retrouvez-les depuis n'importe quel appareil.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        </div>
+        <div>
+          <h3>Transcriptions</h3>
+          <p>Lisez les transcriptions de vos épisodes. Naviguez dans le texte et passez au bon passage en un tap.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3z"/></svg>
+        </div>
+        <div>
+          <h3>Questions &amp; réponses IA</h3>
+          <p>Interrogez un épisode avec vos prompts sauvegardés, relisez vos réponses favorites n'importe où.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+        </div>
+        <div>
+          <h3>Notifications d'automation</h3>
+          <p>Soyez alerté dès qu'un nouvel épisode de vos channels automatisés a été traité et livré.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+        </div>
+        <div>
+          <h3>Recherche globale</h3>
+          <p>Trouvez un passage, un nom, une idée dans tous vos épisodes transcrits — depuis votre téléphone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÊME COMPTE -->
+<section class="section dark">
+  <div class="container">
+    <div style="max-width: 680px; margin: 0 auto; text-align: center;">
+      <div class="eyebrow" style="color: var(--accent); justify-content: center;"><span class="dot">●</span> Un seul compte</div>
+      <h2 style="margin-top: 20px;">Commencez sur le web,<br>continuez sur mobile.</h2>
+      <p class="lede" style="margin-top: 20px; color: var(--night-text-2);">Votre bibliothèque, vos signets, vos playlists et vos automations sont synchronisés instantanément entre tous vos appareils. Commencez un épisode sur le web, terminez-le dans le métro.</p>
+      <div style="margin-top: 36px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a class="btn btn-primary" href={`${APP_URL}/signup`}>Créer un compte gratuit <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="/" style="color: var(--night-text); border-color: var(--night-line-2);">Découvrir Audioask</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTIFY BAS DE PAGE -->
+<section class="section">
+  <div class="container">
+    <div class="notify-bottom">
+      <div>
+        <h2>Ne ratez pas la sortie.</h2>
+        <p class="lede" style="margin-top: 12px; max-width: 44ch;">Inscrivez votre email et soyez parmi les premiers à recevoir l'app dès qu'elle est disponible sur l'App Store et Google Play.</p>
+      </div>
+      <div class="notify-block notify-block-inline" id="notify-block-2">
+        <form class="notify-form" id="notify-form-2" novalidate>
+          <input
+            type="email"
+            id="notify-email-2"
+            name="email"
+            placeholder="votre@email.com"
+            required
+            autocomplete="email"
+          />
+          <button type="submit" class="btn btn-primary">Me notifier <span class="arrow">→</span></button>
+        </form>
+        <p class="notify-meta">Aucun spam. Juste un email le jour de la sortie.</p>
+        <div class="notify-success" id="notify-success-2" style="display: none;">
+          <span class="notify-success-icon">✓</span>
+          C'est noté ! Vous serez notifié dès que l'app est disponible.
+        </div>
+        <div class="notify-error" id="notify-error-2" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+/* ---- HERO ---- */
+.mobile-hero { padding-bottom: 80px; }
+.mobile-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding-top: 40px;
+}
+.mobile-hero-copy { text-align: left; }
+.mobile-hero-copy .hero-eyebrow { display: inline-flex; margin-bottom: 28px; }
+.mobile-hero-copy h1 { font-size: clamp(36px, 5vw, 56px); }
+.mobile-hero-copy .lede { margin: 20px 0 0; font-size: 18px; max-width: 44ch; }
+.mobile-hero-visual { display: flex; justify-content: center; }
+
+/* ---- PHONE LARGE ---- */
+.phone-frame {
+  background: var(--ink);
+  border-radius: 50px;
+  padding: 12px;
+  box-shadow: var(--shadow-lg);
+}
+.phone-screen {
+  background: var(--cream);
+  border-radius: 39px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.phone-hero { max-width: 300px; width: 100%; }
+
+/* ---- NOTIFY FORM ---- */
+.notify-block { margin-top: 32px; }
+.notify-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-bottom: 10px;
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.notify-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.notify-form input[type="email"] {
+  flex: 1;
+  min-width: 200px;
+  height: 46px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  padding: 0 16px;
+  font-size: 14px;
+  color: var(--ink);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.notify-form input[type="email"]:focus { border-color: var(--accent); }
+.notify-form input[type="email"]::placeholder { color: var(--ink-3); }
+.notify-meta {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.notify-success {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--ink);
+}
+.notify-success-icon { color: var(--accent); font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.notify-error {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #c0392b;
+  padding: 10px 14px;
+  background: rgba(192,57,43,0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(192,57,43,0.2);
+}
+
+/* ---- FEATURES GRID ---- */
+.mob-feat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 40px;
+  margin-top: 56px;
+}
+.mob-feat { display: flex; gap: 18px; align-items: flex-start; }
+.mob-feat-ico {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--accent-tint);
+  color: var(--accent-ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.mob-feat h3 { font-size: 16px; margin-bottom: 6px; }
+.mob-feat p { font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+
+/* ---- NOTIFY BOTTOM ---- */
+.notify-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.notify-block-inline { margin-top: 0; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .mobile-hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .mobile-hero-visual { order: -1; }
+  .phone-hero { max-width: 240px; }
+  .mob-feat-grid { grid-template-columns: 1fr 1fr; gap: 24px 32px; }
+  .notify-bottom { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 600px) {
+  .mob-feat-grid { grid-template-columns: 1fr; }
+  .mobile-hero-copy h1 { font-size: 32px; }
+  .notify-form { flex-direction: column; }
+  .notify-form input[type="email"] { min-width: auto; }
+  .notify-form .btn { justify-content: center; }
+}
+</style>
+
+<script>
+function setupNotifyForm(formId, emailId, successId, errorId) {
+  const form = document.getElementById(formId);
+  const emailInput = document.getElementById(emailId);
+  const successEl = document.getElementById(successId);
+  const errorEl = document.getElementById(errorId);
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorEl.textContent = 'Merci d\'entrer une adresse email valide.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Envoi…';
+    try {
+      const res = await fetch('/notify-handler.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'email=' + encodeURIComponent(email),
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.style.display = 'none';
+        successEl.style.display = 'flex';
+      } else {
+        errorEl.textContent = data.error || 'Une erreur est survenue. Réessaie dans un instant.';
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = 'Me notifier <span class="arrow">→</span>';
+      }
+    } catch {
+      errorEl.textContent = 'Impossible d\'envoyer la requête. Vérifie ta connexion.';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = 'Me notifier <span class="arrow">→</span>';
+    }
+  });
+}
+
+setupNotifyForm('notify-form', 'notify-email', 'notify-success', 'notify-error');
+setupNotifyForm('notify-form-2', 'notify-email-2', 'notify-success-2', 'notify-error-2');
+</script>

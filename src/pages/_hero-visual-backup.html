@@ -1,0 +1,199 @@
+<!--
+  BACKUP HERO PRODUIT ANIMÉ — version originale
+  Sauvegardé lors de la refonte de juin 2026
+  Pour restaurer : remplacer le bloc .product-dual dans index.astro par ce contenu
+  et restaurer le JS d'animation en bas de page.
+-->
+
+<!-- Product mockup stage (ORIGINAL — avec floating cards et animations) -->
+<div class="product-stage" id="product-stage">
+
+  <!-- Floating annotations -->
+  <div class="float seq" style="top: 38px; left: -8px; max-width: 220px; animation-delay: 0.5s;">
+    <span class="lbl">Bibliothèque commune</span>
+    <span class="val" style="font-family: var(--serif); font-size: 26px; line-height: 1; color: var(--accent-ink); letter-spacing: -0.02em;">+185M</span>
+    <span style="font-size: 12px; color: var(--ink-3);">épisodes déjà accessibles</span>
+  </div>
+
+  <div class="float seq" style="top: 220px; left: -28px; max-width: 200px; animation-delay: 1.3s;">
+    <span class="lbl">Signet · 12:42</span>
+    <span style="font-size: 13px; color: var(--ink); line-height: 1.4;">« On a parié sur CUDA quand personne n'y croyait. »</span>
+    <span style="font-size: 11px; color: var(--ink-3); margin-top: 2px;">— Jensen Huang</span>
+  </div>
+
+  <div class="float seq" style="top: 110px; right: -16px; max-width: 240px; animation-delay: 2.1s;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="width: 22px; height: 22px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center;">⚡</span>
+      <span class="lbl" style="margin: 0;">Automation</span>
+    </div>
+    <span style="font-size: 13px; color: var(--ink); line-height: 1.4;">Chaque nouvel épisode de <b>Acquired</b> sera traité automatiquement.</span>
+  </div>
+
+  <div class="float seq" style="bottom: 90px; right: -36px; max-width: 220px; animation-delay: 2.9s;">
+    <span class="lbl">Recherche globale</span>
+    <span style="font-size: 13px; color: var(--ink); line-height: 1.4;">3 épisodes parlent de <span style="background: var(--accent-soft); padding: 1px 4px; border-radius: 3px; color: var(--accent-ink);">tokenomics</span></span>
+  </div>
+
+  <!-- Main app card -->
+  <div class="app-card" id="hero-app">
+    <div class="app-toolbar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="url">audioask.ai/feed/channel/acquired</span>
+    </div>
+    <div class="app-shell">
+      <!-- Sidebar -->
+      <aside class="app-side">
+        <div class="brand"><span class="brand-mark">A</span><span>Audioask</span></div>
+        <div class="nav">
+          <div class="nav-item">
+            <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h10M3 8h10M3 12h6"/></svg>
+            Feed
+          </div>
+          <div class="nav-item">
+            <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/></svg>
+            Recherche
+          </div>
+          <div class="nav-item on">
+            <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 3v11M5 3v11M9 3l4 11M12 3v11"/></svg>
+            My Audioask
+          </div>
+        </div>
+        <div class="group-label">CHANNELS FAVORIS</div>
+        <div class="nav">
+          <div class="channel on"><img class="ch-cover" src="/assets/pod-acquired.jpg" alt="">Acquired</div>
+          <div class="channel"><img class="ch-cover" src="/assets/pod-tkp.jpg" alt="">The Knowledge Project</div>
+          <div class="channel"><img class="ch-cover" src="/assets/pod-lex.jpg" alt="">Lex Fridman</div>
+          <div class="channel"><img class="ch-cover" src="/assets/pod-huberman.jpg" alt="">Huberman Lab</div>
+        </div>
+        <div class="group-label">PLAYLISTS</div>
+        <div class="nav">
+          <div class="channel"><span style="width:14px;height:14px;border-radius:3px;background:rgba(26,22,20,0.10);"></span>Business · 12</div>
+          <div class="channel"><span style="width:14px;height:14px;border-radius:3px;background:rgba(26,22,20,0.10);"></span>Pour le trajet · 6</div>
+        </div>
+      </aside>
+
+      <!-- Main pane -->
+      <main class="app-main">
+        <div class="crumbs">FEED › CHANNEL · <span class="curr">ACQUIRED</span></div>
+        <div class="ep-head">
+          <div class="ep-cover" style="padding: 0; overflow: hidden;">
+            <img src="/assets/acquired-cover.jpg" alt="Acquired" style="width: 88px; height: 88px; object-fit: cover; display: block; border-radius: 12px;">
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <div class="ep-title">#119 — Nvidia&nbsp;: la décennie qui change tout</div>
+            <div class="ep-author">Ben Gilbert &amp; David Rosenthal · 2h 47min</div>
+            <div class="ep-stats">
+              <div class="ep-stat"><b>126</b>passages</div>
+              <div class="ep-stat"><b>2</b>intervenants</div>
+              <div class="ep-stat"><b>4</b>réponses favorites</div>
+              <div class="ep-stat"><b>7</b>signets</div>
+            </div>
+          </div>
+          <div class="ep-actions">
+            <span class="chip"><span style="color: var(--ink-3); font-size: 14px;">↗</span>Partager</span>
+            <span class="chip accent">✦ Audioask</span>
+          </div>
+        </div>
+
+        <div class="transcript">
+          <div class="t-row">
+            <span class="ts">00:00</span>
+            <span><span class="speak host">BEN</span>Bienvenue dans cet épisode où nous allons retracer l'histoire de Nvidia, de ses débuts en 1993 à sa position actuelle…</span>
+          </div>
+          <div class="t-row">
+            <span class="ts">04:18</span>
+            <span><span class="speak host">DAVID</span>Avant Nvidia, le marché des GPU était dominé par 3DFX, Matrox, ATI…</span>
+          </div>
+          <div class="t-row bookmarked">
+            <span class="ts">12:42</span>
+            <span><span class="speak guest">JENSEN</span><span class="quote">« On a parié sur CUDA quand personne n'y croyait. C'est devenu notre fossé concurrentiel le plus profond. »</span></span>
+          </div>
+          <div class="t-row">
+            <span class="ts">19:30</span>
+            <span><span class="speak host">BEN</span>Et c'est exactement à ce moment-là que la stratégie a basculé. Le marché des datacenters…</span>
+          </div>
+          <div class="t-row">
+            <span class="ts">28:05</span>
+            <span><span class="speak guest">JENSEN</span>Notre conviction&nbsp;: chaque watt utilisé doit servir à accélérer un calcul utile.</span>
+          </div>
+          <div class="t-row">
+            <span class="ts">38:50</span>
+            <span><span class="speak host">DAVID</span>Le tournant de 2022, c'est l'explosion de la demande pour l'IA générative…</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- AI panel -->
+      <aside class="app-ai">
+        <div class="ai-head">
+          <span class="ai-spark">✦</span>
+          <span class="ai-title">Audioask</span>
+          <span style="margin-left: auto; font-size: 10px; color: var(--ink-3); font-family: var(--mono);">SUR CET ÉPISODE</span>
+        </div>
+        <div class="ai-body">
+          <div class="ai-bubble q">Quels sont les 3 paris clés racontés dans cet épisode&nbsp;?</div>
+          <div class="ai-bubble a">
+            <div><span class="num">1.</span> Le pari sur <b>CUDA</b> en 2006 — investir massivement dans une couche logicielle propriétaire.</div>
+            <div style="margin-top: 6px;"><span class="num">2.</span> Le rachat de <b>Mellanox</b> en 2019 pour verrouiller le datacenter.</div>
+            <div style="margin-top: 6px;"><span class="num">3.</span> Le bet sur l'<b>IA générative</b> en 2018, deux ans avant ChatGPT.</div>
+            <div class="ai-cite">
+              <span>↩</span><span>3 citations · </span><span class="ts">12:42</span><span class="ts">52:10</span><span class="ts">1:47:18</span>
+            </div>
+          </div>
+          <div class="ai-input">
+            <span style="color: var(--ink-3);">✎</span>
+            <span>Une autre question…</span>
+            <span class="send">→</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Player -->
+    <div class="app-player">
+      <div class="player-now">
+        <img class="cv" src="/assets/pod-acquired.jpg" alt="" style="object-fit:cover;">
+        <div>
+          <div class="ti">#119 — Nvidia</div>
+          <div class="sb">Acquired</div>
+        </div>
+      </div>
+      <div class="player-ctl">
+        <span class="player-btn">«</span>
+        <span class="player-btn play">▶</span>
+        <span class="player-btn">»</span>
+        <span class="player-ts">12:42</span>
+        <span class="player-bar"><span class="fill"></span><span class="dot" style="left: 30%;"></span></span>
+        <span class="player-ts">2:47:01</span>
+      </div>
+      <div class="player-right">
+        <span style="padding: 2px 8px; border-radius: 6px; background: var(--cream-2); color: var(--ink-2);">×1.5</span>
+        <span>⋯</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Float below card -->
+  <div class="float seq" style="bottom: -24px; left: 8%; max-width: 200px; animation-delay: 3.7s;">
+    <span class="lbl">Transcrit en</span>
+    <span class="val" style="font-family: var(--serif); font-size: 28px; line-height: 1; letter-spacing: -0.02em;">2&nbsp;min&nbsp;48</span>
+    <span style="font-size: 11px; color: var(--ink-3);">pour 2h 47min d'audio</span>
+  </div>
+</div>
+
+<!-- JS ANIMATION ORIGINALE (à remettre dans le <script> en bas de index.astro) -->
+<!--
+<script>
+(function () {
+  const stage = document.getElementById('product-stage');
+  if (!stage) return;
+  if (!('IntersectionObserver' in window)) { stage.classList.add('in-view'); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { stage.classList.add('in-view'); io.disconnect(); }
+    });
+  }, { threshold: 0.35 });
+  io.observe(stage);
+})();
+</script>
+-->
