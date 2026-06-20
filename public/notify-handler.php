@@ -52,7 +52,7 @@ if (!$already_registered) {
     }
 
     // Notification email à l'équipe
-    $to      = 'hello@audioask.ai';
+    $to      = 'chollet@natives.ch';
     $subject = '=?UTF-8?B?' . base64_encode("Audioask App Mobile — Nouvelle inscription liste d'attente") . '?=';
     $body    = "Nouvelle inscription sur la liste d'attente de l'app mobile Audioask\n";
     $body   .= str_repeat('-', 50) . "\n\n";

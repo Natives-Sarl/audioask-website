@@ -49,7 +49,7 @@ if (mb_strlen($message, 'UTF-8') < 10) respond(false, 'Le message est trop court
 if (mb_strlen($message, 'UTF-8') > 5000) respond(false, 'Le message est trop long (5 000 caractères max).');
 
 // 5. Envoi email
-$to      = 'hello@audioask.ai';
+$to      = 'chollet@natives.ch';
 $subject = '=?UTF-8?B?' . base64_encode('Contact Audioask : ' . $sujet) . '?=';
 
 $body  = "Nouveau message via le formulaire de contact Audioask\n";
