@@ -35,7 +35,7 @@ jobs:
 
       - name: Deploy dist/ via rsync
         run: |
-          rsync -az --delete \
+          rsync -azv --checksum --delete \
             -e "ssh -i ~/.ssh/deploy_key -p 22 \
                 -o StrictHostKeyChecking=yes \
                 -o BatchMode=yes \
