@@ -1,5 +1,5 @@
 # Bloquer l'accès direct aux fichiers de données
-<Files "waitlist.csv">
+<FilesMatch "\.(csv|log)$">
     Order allow,deny
     Deny from all
-</Files>
+</FilesMatch>
