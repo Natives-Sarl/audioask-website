@@ -1376,6 +1376,26 @@ body.menu-open { overflow: hidden; }
   display: flex; flex-direction: column; gap: 10px;
   padding: 24px 20px 0;
 }
+.mobile-lang-switch {
+  display: flex; gap: 8px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--line);
+}
+.mobile-lang-item {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 16px;
+  font-size: 15px; font-weight: 500; color: var(--ink-2);
+  text-decoration: none;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  transition: background 0.15s;
+}
+.mobile-lang-item.on {
+  color: var(--ink);
+  background: var(--cream-2);
+  border-color: var(--line-2);
+  font-weight: 600;
+}
 
 /* ================================================================
    RESPONSIVE — 768px (tablette / mobile large)

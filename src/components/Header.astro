@@ -90,17 +90,11 @@ const altHref = alternatePath ?? (isFr ? '/en/' : '/');
             <>
               <a href="/" class="on">🇫🇷 Français</a>
               <a href={altHref}>🇬🇧 English</a>
-              <a href="#">🇩🇪 Deutsch <span class="soon">PROCHAINEMENT</span></a>
-              <a href="#">🇮🇹 Italiano <span class="soon">PROCHAINEMENT</span></a>
-              <a href="#">🇪🇸 Español <span class="soon">PROCHAINEMENT</span></a>
             </>
           ) : (
             <>
               <a href={altHref}>🇫🇷 Français</a>
               <a href="/en/" class="on">🇬🇧 English</a>
-              <a href="#">🇩🇪 Deutsch <span class="soon">COMING SOON</span></a>
-              <a href="#">🇮🇹 Italiano <span class="soon">COMING SOON</span></a>
-              <a href="#">🇪🇸 Español <span class="soon">COMING SOON</span></a>
             </>
           )}
         </div>
@@ -137,6 +131,10 @@ const altHref = alternatePath ?? (isFr ? '/en/' : '/');
       <a href={links.pricing} class="mobile-nav-link">{nav.pricing}</a>
       <a href={links.about}   class="mobile-nav-link">{nav.about}</a>
     </nav>
+    <div class="mobile-lang-switch">
+      <a href={isFr ? '/' : altHref} class={`mobile-lang-item${isFr ? ' on' : ''}`}>🇫🇷 Français</a>
+      <a href={isFr ? altHref : '/en/'} class={`mobile-lang-item${!isFr ? ' on' : ''}`}>🇬🇧 English</a>
+    </div>
     <div class="mobile-cta">
       <a class="btn btn-ghost" href={`${APP_URL}/login`}  style="width:100%;justify-content:center;">{nav.login}</a>
       <a class="btn btn-primary" href={`${APP_URL}/signup`} style="width:100%;justify-content:center;">{nav.signup}</a>
