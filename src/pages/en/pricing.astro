@@ -141,26 +141,26 @@ const APP_URL = 'https://dev-app.audioask.ai';
     <div class="eyebrow center"><span class="dot">●</span> FAQ</div>
     <h2 style="text-align: center; margin-top: 16px;">Billing questions.</h2>
     <div class="faq" style="margin-top: 48px;">
-      <details class="faq-item">
-        <summary>Is the free plan really free, forever?</summary>
-        <p>Yes. No credit card, no trial period. The free plan gives you access to the core features permanently. Upgrade only when you want more quota.</p>
-      </details>
-      <details class="faq-item">
-        <summary>How is billing handled?</summary>
-        <p>Subscription billing is monthly, via Paddle (our payment processor). You can cancel at any time from your account settings — your plan stays active until the end of the paid period.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What happens if I exceed my monthly quota?</summary>
-        <p>On Free and Premium, processing stops until the next monthly reset. On Pro, usage continues at the pay-per-use rates (€2/h transcription, €2/M AI characters).</p>
-      </details>
-      <details class="faq-item">
-        <summary>Do unused credits roll over?</summary>
-        <p>No. Monthly quotas reset on your billing date each month.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Can I switch plans at any time?</summary>
-        <p>Yes — upgrade or downgrade at any time. Upgrades take effect immediately; downgrades apply at the next billing cycle.</p>
-      </details>
+      <div class="faq-item">
+        <span>Is the free plan really free, forever?</span><span class="plus">+</span>
+        <div class="faq-answer">Yes. No credit card, no trial period. The free plan gives you access to the core features permanently. Upgrade only when you want more quota.</div>
+      </div>
+      <div class="faq-item">
+        <span>How is billing handled?</span><span class="plus">+</span>
+        <div class="faq-answer">Subscription billing is monthly, via Paddle (our payment processor). You can cancel at any time from your account settings — your plan stays active until the end of the paid period.</div>
+      </div>
+      <div class="faq-item">
+        <span>What happens if I exceed my monthly quota?</span><span class="plus">+</span>
+        <div class="faq-answer">On Free and Premium, processing stops until the next monthly reset. On Pro, usage continues at the pay-per-use rates (€2/h transcription, €2/M AI characters).</div>
+      </div>
+      <div class="faq-item">
+        <span>Do unused credits roll over?</span><span class="plus">+</span>
+        <div class="faq-answer">No. Monthly quotas reset on your billing date each month.</div>
+      </div>
+      <div class="faq-item">
+        <span>Can I switch plans at any time?</span><span class="plus">+</span>
+        <div class="faq-answer">Yes — upgrade or downgrade at any time. Upgrades take effect immediately; downgrades apply at the next billing cycle.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -180,3 +180,13 @@ const APP_URL = 'https://dev-app.audioask.ai';
 }
 </style>
 </Layout>
+
+<script>
+document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>

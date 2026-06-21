@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import MobileTease from '../../../components/MobileTease.astro';
 const APP_URL = 'https://dev-app.audioask.ai';
 ---
 
@@ -10,174 +11,324 @@ const APP_URL = 'https://dev-app.audioask.ai';
   lang="en"
   alternatePath="/fonctionnalites/automatiser"
 >
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.audioask.ai/en" },
+      { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://www.audioask.ai/en/features" },
+      { "@type": "ListItem", "position": 3, "name": "Automate", "item": "https://www.audioask.ai/en/features/automate" }
+    ]
+  })} />
+</Fragment>
 
-<!-- HERO -->
-<section class="hero dotbg">
-  <div class="container" style="max-width: 860px; text-align: center;">
-    <div class="eyebrow" style="justify-content: center;"><span class="dot">●</span> Automate</div>
-    <h1 style="margin-top: 18px;">New episodes processed<br><span class="em-serif">while you sleep.</span></h1>
-    <p class="lede" style="margin: 20px auto 0; max-width: 54ch;">Set it once. Every new episode from a channel is transcribed, analyzed by AI, and delivered where you want it — your library, email, or Slack.</p>
-    <div class="hero-ctas" style="justify-content: center; margin-top: 32px;">
-      <a class="btn btn-primary lg" href={`${APP_URL}/signup`}>Try for free <span class="arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- SETUP FLOW -->
-<section class="section paper">
-  <div class="container">
-    <div class="eyebrow center"><span class="dot">●</span> Setup in 3 steps</div>
-    <h2 style="text-align: center; margin-top: 16px;">Configure once,<br><span class="serif-it">forget forever.</span></h2>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px;">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h3>Pick a channel</h3>
-        <p>Choose which podcast channel to automate. Audioask watches for new episodes in real time — no RSS polling needed on your end.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h3>Define your prompt</h3>
-        <p>Choose what you want AI to do with each new episode: executive brief, key quotes, bullet points. Pick from your saved prompts or write a custom one.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h3>Choose delivery</h3>
-        <p>Results go to your Audioask library, your inbox (formatted email), or a Slack channel of your choice. Mix and match.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow center"><span class="dot">●</span> How it works</div>
-    <h2 style="text-align: center; margin-top: 16px;">Automation that<br><span class="serif-it">works like you do.</span></h2>
-
-    <div class="feat-grid" style="margin-top: 56px; grid-template-columns: repeat(3, 1fr);">
-
-      <div class="feat-card">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+  <!-- HERO -->
+  <section class="hero dotbg">
+    <div class="container">
+      <div class="hero-copy">
+        <div class="page-intro" style="margin-bottom: 24px;">Feature 03 · Automate</div>
+        <h1>Configure once.<br><span class="em-serif">Receive automatically</span> with every new episode.</h1>
+        <p class="lede">
+          Pick a channel, save a prompt, choose where to deliver: every new episode triggers your workflow without any intervention.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary lg" href={`${APP_URL}/signup`}>Set up my first automation <span class="arrow">→</span></a>
+          <a class="btn lg" href="/en/pricing">See plans</a>
         </div>
-        <h3>Activate, adjust, or pause at any time</h3>
-        <p>Toggle automation per channel with one click. Pause when you're on holiday, resume on your return. No subscription changes needed.</p>
-        <div class="feat-visual" style="background: var(--cream-2);">
-          <div style="position: absolute; inset: 20px; display: flex; flex-direction: column; gap: 8px;">
-            {[
-              { name: "Acquired", active: true },
-              { name: "The Knowledge Project", active: true },
-              { name: "Lex Fridman", active: false },
-            ].map(ch => (
-              <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; font-size: 12.5px;">
-                <span style={`width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: ${ch.active ? 'var(--accent)' : 'var(--ink-3)'};`}></span>
-                <span style="flex: 1;">{ch.name}</span>
-                <span style={`font-family: var(--mono); font-size: 9px; padding: 2px 7px; border-radius: 999px; ${ch.active ? 'background: var(--accent-soft); color: var(--accent-ink);' : 'background: var(--cream-3); color: var(--ink-3);'}`}>{ch.active ? 'ACTIVE' : 'PAUSED'}</span>
-              </div>
-            ))}
+      </div>
+
+      <!-- 3-phase flow visual -->
+      <div class="auto-flow" style="margin-top: 60px;">
+        <div class="auto-step">
+          <div class="eyebrow"><span style="color: var(--accent);">01</span> · Channel</div>
+          <h4 style="margin-top: 6px; font-size: 17px;">Pick a channel</h4>
+          <div style="margin-top: 8px; padding: 12px 14px; background: var(--cream-2); border-radius: 10px; display: flex; align-items: center; gap: 10px;">
+            <img src="/assets/pod-acquired.jpg" alt="Acquired" style="width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-size: 13px; font-weight: 600;">Acquired</div>
+              <div style="font-size: 11px; color: var(--ink-3);">142 episodes</div>
+            </div>
+            <span class="chip accent" style="font-size: 10px; height: 22px; padding: 0 8px;">✓</span>
+          </div>
+        </div>
+
+        <div class="auto-arrow">→</div>
+
+        <div class="auto-step">
+          <div class="eyebrow"><span style="color: var(--accent);">02</span> · Prompt</div>
+          <h4 style="margin-top: 6px; font-size: 17px;">Define an AI prompt</h4>
+          <div style="margin-top: 8px; padding: 12px 14px; background: var(--cream-2); border-radius: 10px; font-size: 12.5px; color: var(--ink-2); line-height: 1.4; font-family: var(--mono);">
+            Summarize this episode in 5<br>actionable points for a client brief.
+          </div>
+          <div style="margin-top: 8px; font-size: 11px; color: var(--ink-3); font-family: var(--mono); letter-spacing: 0.05em;">OR NONE — TRANSCRIPTION ONLY</div>
+        </div>
+
+        <div class="auto-arrow">→</div>
+
+        <div class="auto-step">
+          <div class="eyebrow"><span style="color: var(--accent);">03</span> · Delivery</div>
+          <h4 style="margin-top: 6px; font-size: 17px;">Choose delivery</h4>
+          <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 8px;">
+            <div style="padding: 10px 12px; background: var(--accent-tint); border: 1px solid var(--accent); border-radius: 8px; display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--accent-ink);"><span>✓</span> Library</div>
+            <div style="padding: 10px 12px; background: var(--accent-tint); border: 1px solid var(--accent); border-radius: 8px; display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--accent-ink);"><span>✓</span> Email</div>
+            <div style="padding: 10px 12px; background: var(--cream-2); border: 1px solid var(--line); border-radius: 8px; display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-3);"><span>○</span> Webhook · Slack <span class="chip" style="margin-left: auto; height: 18px; padding: 0 6px; font-size: 9px; background: var(--ink); color: var(--cream); border: 0;">PRO</span></div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="feat-card">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h18v4H3zM3 10h18M3 14h18v4H3z"/></svg>
+  <!-- HOW IT WORKS -->
+  <section class="section alt">
+    <div class="container">
+      <div class="row between" style="align-items: flex-end; flex-wrap: wrap; gap: 32px;">
+        <div>
+          <div class="eyebrow"><span class="dot">●</span> How it works</div>
+          <h2 style="margin-top: 16px;">A 30-second setup,<br><span class="serif-it">a workflow for the whole year.</span></h2>
         </div>
-        <h3>Detects new episodes within minutes</h3>
-        <p>Audioask checks RSS feeds every hour. A new episode published this morning? It's in your library — transcribed and analyzed — before lunch.</p>
-        <div class="feat-visual">
-          <div style="position: absolute; inset: 20px; display: flex; flex-direction: column; gap: 8px;">
-            <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.08em;">AUTOMATION LOG · ACQUIRED</div>
-            {[
-              { ep: "#119 — Nvidia", time: "34 min ago", status: "✓ Delivered" },
-              { ep: "#118 — Costco", time: "Yesterday", status: "✓ Delivered" },
-              { ep: "#117 — Hermès", time: "May 10", status: "✓ Delivered" },
-            ].map(log => (
-              <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; display: flex; gap: 10px; align-items: center; font-size: 11.5px;">
-                <span style="color: var(--accent); font-size: 9px;">●</span>
-                <div style="flex: 1; min-width: 0;">
-                  <div style="font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{log.ep}</div>
-                  <div style="color: var(--ink-3); font-size: 10px;">{log.time}</div>
+      </div>
+
+      <div class="feature-alt" style="margin-top: 48px; border-top: 0;">
+        <div>
+          <div class="eyebrow"><span style="color: var(--accent);">01</span> · Toggle</div>
+          <h3 style="margin-top: 12px;">Activate in one click from a channel.</h3>
+          <p>On each followed channel, an "Auto" toggle. Enable it, configure it. Disable it whenever you want.</p>
+        </div>
+        <div class="demo" style="padding: 28px;">
+          <div style="background: var(--paper); border-radius: 14px; border: 1px solid var(--line); padding: 22px; box-shadow: var(--shadow-md);">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+              <span style="width: 28px; height: 28px; border-radius: 8px; background: var(--accent-tint); color: var(--accent); display: flex; align-items: center; justify-content: center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+              </span>
+              <b style="font-size: 16px;">Configure automation</b>
+              <span style="margin-left: auto; color: var(--ink-3);">✕</span>
+            </div>
+            <div style="background: var(--cream); border-radius: 10px; padding: 12px 14px; display: flex; align-items: center; gap: 12px;">
+              <img src="/assets/pod-acquired.jpg" alt="Acquired" style="width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+              <div>
+                <div style="font-size: 14px; font-weight: 600;">Acquired</div>
+                <div style="font-size: 11.5px; color: var(--ink-3);">Every new episode will be processed automatically</div>
+              </div>
+            </div>
+            <div style="margin-top: 14px;">
+              <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 6px;">📖 AI PROMPT</div>
+              <div style="background: var(--cream); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; font-size: 13px; color: var(--ink);">— No prompt (transcription only) —</div>
+            </div>
+            <div style="margin-top: 14px;">
+              <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 6px;">RESULT DELIVERY</div>
+              <div style="background: var(--accent-tint); border: 1px solid var(--accent); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px;">
+                <span style="color: var(--accent);">📚</span>
+                <div style="flex: 1;">
+                  <div style="font-size: 12.5px; font-weight: 600; color: var(--accent-ink);">Save to library</div>
+                  <div style="font-size: 11px; color: var(--accent-deep);">Accessible in My Audioask → Results</div>
                 </div>
-                <span style="font-family: var(--mono); font-size: 9px; color: var(--accent); flex-shrink: 0;">{log.status}</span>
+                <span style="width: 18px; height: 18px; background: var(--accent); border-radius: 4px; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">✓</span>
               </div>
-            ))}
+              <div style="background: var(--cream); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin-top: 6px; display: flex; align-items: center; gap: 10px;">
+                <span style="color: var(--ink-3);">✉</span>
+                <div style="flex: 1;">
+                  <div style="font-size: 12.5px; font-weight: 600;">Send by email</div>
+                  <div style="font-size: 11px; color: var(--ink-3);">Email as soon as transcription is ready</div>
+                </div>
+                <span style="width: 18px; height: 18px; background: var(--paper); border: 1px solid var(--line-2); border-radius: 4px;"></span>
+              </div>
+            </div>
+            <div style="margin-top: 18px; display: flex; gap: 10px; justify-content: flex-end;">
+              <span class="chip" style="height: 32px; padding: 0 14px; font-size: 13px;">Cancel</span>
+              <span class="chip accent" style="height: 32px; padding: 0 14px; font-size: 13px;">✓ Save</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="feat-card">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+      <div class="feature-alt reverse">
+        <div>
+          <div class="eyebrow"><span style="color: var(--accent);">02</span> · Detection</div>
+          <h3 style="margin-top: 12px;">Audioask detects every new episode.</h3>
+          <p>As soon as a new episode is published on the followed channel, Audioask transcribes it, applies your prompt, and delivers the result.</p>
         </div>
-        <h3>Results delivered where you work</h3>
-        <p>Library, formatted email, or Slack — pick one or all three. The email includes the AI analysis, key quotes, and a link back to the full transcript.</p>
-        <div class="feat-visual" style="background: var(--cream-2);">
-          <div style="position: absolute; inset: 16px;">
-            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;">
-              <div style="font-family: var(--mono); font-size: 9px; color: var(--ink-3); margin-bottom: 10px;">EMAIL PREVIEW</div>
-              <div style="font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 4px;">✦ Audioask · Acquired #119</div>
-              <div style="font-size: 10.5px; color: var(--ink-2); line-height: 1.5; margin-bottom: 8px;">New episode transcribed &amp; analyzed · Nvidia: the decade that changed everything</div>
-              <div style="font-size: 11px; color: var(--ink-2); line-height: 1.6; padding-top: 8px; border-top: 1px dashed var(--line);">
-                <div><b style="color: var(--accent);">1.</b> Bet on CUDA in 2006</div>
-                <div><b style="color: var(--accent);">2.</b> Acquired Mellanox in 2019</div>
-                <div><b style="color: var(--accent);">3.</b> Bet on generative AI in 2018</div>
+        <div class="demo" style="padding: 22px; aspect-ratio: auto;">
+          <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 12px;">AUTOMATION LOG · ACQUIRED</div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; gap: 12px; font-size: 12.5px;">
+              <span style="color: var(--accent); font-size: 16px;">●</span>
+              <div style="flex: 1;">
+                <div style="font-weight: 600;">#119 — Nvidia: the decade</div>
+                <div style="color: var(--ink-3); font-size: 11px;">Detected 12 min ago · Transcribed in 2:48 · Summary sent by email</div>
               </div>
-              <div style="margin-top: 10px; padding: 6px 12px; background: var(--accent); color: white; border-radius: 6px; text-align: center; font-size: 11px; font-weight: 600;">Read the full transcript →</div>
+              <span class="chip accent-soft" style="height: 22px; font-size: 10.5px; padding: 0 8px;">✓ Delivered</span>
+            </div>
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; gap: 12px; font-size: 12.5px;">
+              <span style="color: var(--accent); font-size: 16px;">●</span>
+              <div style="flex: 1;">
+                <div style="font-weight: 600;">#118 — Costco</div>
+                <div style="color: var(--ink-3); font-size: 11px;">Yesterday · Library + email</div>
+              </div>
+              <span class="chip accent-soft" style="height: 22px; font-size: 10.5px; padding: 0 8px;">✓ Delivered</span>
+            </div>
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; gap: 12px; font-size: 12.5px;">
+              <span style="color: var(--accent); font-size: 16px;">●</span>
+              <div style="flex: 1;">
+                <div style="font-weight: 600;">#117 — Hermès</div>
+                <div style="color: var(--ink-3); font-size: 11px;">May 10 · Library + email</div>
+              </div>
+              <span class="chip accent-soft" style="height: 22px; font-size: 10.5px; padding: 0 8px;">✓ Delivered</span>
+            </div>
+          </div>
+          <div style="margin-top: 14px; padding: 10px 14px; background: var(--cream); border-radius: 8px; font-size: 11.5px; color: var(--ink-3); display: flex; gap: 8px; align-items: center;">
+            <span style="color: var(--accent);">▶</span> Next Audioask check: in 6h.
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-alt">
+        <div>
+          <div class="eyebrow"><span style="color: var(--accent);">03</span> · Delivery</div>
+          <h3 style="margin-top: 12px;">Library, email — and more with Pro.</h3>
+          <p>Choose where results arrive. With Pro, unlock webhooks, Slack &amp; Teams integrations.</p>
+        </div>
+        <div class="demo" style="padding: 22px; aspect-ratio: auto;">
+          <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 14px;">AVAILABLE DESTINATIONS</div>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+            <div style="padding: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; display: flex; gap: 10px; align-items: center;">
+              <span style="font-size: 22px;">📚</span>
+              <div><div style="font-size: 13px; font-weight: 600;">Library</div><div style="font-size: 11px; color: var(--ink-3);">All plans</div></div>
+            </div>
+            <div style="padding: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; display: flex; gap: 10px; align-items: center;">
+              <span style="font-size: 22px;">✉</span>
+              <div><div style="font-size: 13px; font-weight: 600;">Email</div><div style="font-size: 11px; color: var(--ink-3);">All plans</div></div>
+            </div>
+            <div style="padding: 14px; background: var(--paper); border: 1px solid var(--accent); border-radius: 10px; display: flex; gap: 10px; align-items: center;">
+              <span style="color: var(--accent);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+              </span>
+              <div><div style="font-size: 13px; font-weight: 600;">Webhook</div><div style="font-size: 11px; color: var(--accent-ink); font-family: var(--mono);">PRO</div></div>
+            </div>
+            <div style="padding: 14px; background: var(--paper); border: 1px solid var(--accent); border-radius: 10px; display: flex; gap: 10px; align-items: center;">
+              <span style="font-size: 22px;">💬</span>
+              <div><div style="font-size: 13px; font-weight: 600;">Slack / Teams</div><div style="font-size: 11px; color: var(--accent-ink); font-family: var(--mono);">PRO</div></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FAQ -->
-<section class="section paper">
-  <div class="container" style="max-width: 720px;">
-    <div class="eyebrow center"><span class="dot">●</span> FAQ</div>
-    <h2 style="text-align: center; margin-top: 16px;">Questions about<br><span class="serif-it">automation.</span></h2>
-    <div class="faq" style="margin-top: 48px;">
-      <details class="faq-item">
-        <summary>How long after publication does an episode get processed?</summary>
-        <p>Our system checks feeds every hour. Once a new episode is detected, transcription and AI analysis run back-to-back. Total delay: typically under 2 hours after the episode publishes.</p>
-      </details>
-      <details class="faq-item">
-        <summary>How many channels can I automate?</summary>
-        <p>Premium plan: 1 automated channel. Pro plan: unlimited channels.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What credits does automation consume?</summary>
-        <p>Each automated episode consumes transcription credits (per hour of audio) and AI analysis credits (per analysis run). These come from your monthly quota. You'll be notified if you run low.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Can I automate different prompts for different channels?</summary>
-        <p>Yes — each channel has its own automation config: its own prompt, delivery destinations, and on/off toggle. Fully independent.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What delivery options are available?</summary>
-        <p>Library (always), email (your account email), and Slack (via webhook — copy your workspace webhook URL in settings). More integrations coming soon.</p>
-      </details>
+  <!-- AI PROMO -->
+  <section class="section">
+    <div class="container">
+      <div class="feature-alt highlight">
+        <div>
+          <div class="eyebrow">
+            <span style="background: var(--accent); color: white; padding: 2px 8px; border-radius: 3px; font-size: 10px;">AI</span>
+            {' '}Winning combination
+          </div>
+          <h3 style="margin-top: 12px;">Automation becomes truly powerful with AI.</h3>
+          <p class="lede">Every new episode is not only transcribed but also analyzed by AI according to your prompts. Summary, key quotes, fact-checks, follow-up questions — your monitoring becomes a real conversation, not just a list.</p>
+          <a class="btn btn-primary arrow" href="/en/features/ask" style="margin-top: 18px;">Discover AI analysis <span class="arrow">→</span></a>
+        </div>
+        <div class="demo" style="padding: 0; overflow: hidden; aspect-ratio: auto; gap: 0;">
+          <!-- Email window -->
+          <div style="background: var(--cream-2); padding: 10px 14px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 8px;">
+            <div style="display: flex; gap: 5px;">
+              <span style="width: 10px; height: 10px; border-radius: 50%; background: #f87171; opacity: .7;"></span>
+              <span style="width: 10px; height: 10px; border-radius: 50%; background: #fbbf24; opacity: .7;"></span>
+              <span style="width: 10px; height: 10px; border-radius: 50%; background: #4ade80; opacity: .7;"></span>
+            </div>
+            <div style="flex: 1; text-align: center; font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.05em;">Inbox</div>
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--accent); background: var(--accent-tint); border-radius: 10px; padding: 1px 7px;">1</span>
+          </div>
+          <!-- Email list item (selected) -->
+          <div style="background: var(--accent-tint); border-bottom: 1px solid var(--line); padding: 11px 16px; display: flex; gap: 10px; align-items: flex-start; cursor: default;">
+            <div style="width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex-shrink: 0;">A</div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px;">
+                <span style="font-size: 12.5px; font-weight: 700; color: var(--accent-ink);">Audioask</span>
+                <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); white-space: nowrap;">3 min ago</span>
+              </div>
+              <div style="font-size: 12px; font-weight: 600; color: var(--accent-ink); margin-top: 2px;">Acquired #189 — AI summary ready</div>
+              <div style="font-size: 11px; color: var(--accent-deep); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px;">Your analysis of the OpenAI episode is available…</div>
+            </div>
+          </div>
+          <!-- Email body -->
+          <div style="padding: 16px 18px; background: var(--paper);">
+            <div style="padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--line);">
+              <div style="font-size: 14px; font-weight: 700; color: var(--ink);">Acquired · #189 — OpenAI</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 5px; font-size: 11px; color: var(--ink-3);">
+                <span>From: <span style="color: var(--ink-2);">noreply@audioask.ai</span></span>
+                <span>·</span>
+                <span>To: <span style="color: var(--ink-2);">you</span></span>
+              </div>
+            </div>
+            <div style="font-size: 12.5px; color: var(--ink-2); margin-bottom: 12px;">
+              <strong style="color: var(--ink);">Key points:</strong>
+              <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 5px;">
+                <div style="display: flex; gap: 7px;"><span style="color: var(--accent); font-weight: 700; flex-shrink: 0;">1.</span><span>Altman rejoins the board in March 2024</span></div>
+                <div style="display: flex; gap: 7px;"><span style="color: var(--accent); font-weight: 700; flex-shrink: 0;">2.</span><span>Valuation: $157 billion</span></div>
+                <div style="display: flex; gap: 7px;"><span style="color: var(--accent); font-weight: 700; flex-shrink: 0;">3.</span><span>GPT-5 in secret preparation</span></div>
+              </div>
+            </div>
+            <div style="font-size: 11.5px; font-style: italic; color: var(--accent-ink); border-left: 2px solid var(--accent); padding-left: 8px;">"The difference between us and others is…" — 42:17</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<section class="section dark cta-final">
-  <div class="container">
-    <h2>Your first automation,<br><span class="em-serif">in 2 minutes.</span></h2>
-    <p class="lede" style="margin: 0 auto 36px; max-width: 48ch; color: var(--night-text-2);">1 automated channel included in the Premium plan from €3/month.</p>
-    <a class="btn btn-primary lg" href={`${APP_URL}/signup`}>Get started free <span class="arrow">→</span></a>
-  </div>
-</section>
+  <MobileTease lang="en" />
 
-<style>
-.step-card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 28px 24px; }
-.step-num { font-family: var(--mono); font-size: 11px; color: var(--accent-ink); letter-spacing: 0.1em; margin-bottom: 16px; }
-.step-card h3 { font-size: 18px; margin: 0 0 12px; }
-.step-card p { color: var(--ink-2); font-size: 14px; line-height: 1.6; margin: 0; }
-@media (max-width: 768px) {
-  [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
-}
-</style>
+  <!-- FAQ -->
+  <section class="section alt">
+    <div class="container">
+      <div class="center" style="max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow center" style="justify-content: center; display: inline-flex;"><span class="dot">●</span> FAQ</div>
+        <h2 style="margin-top: 16px;">Questions about <span class="serif-it">automation.</span></h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <span>How many automations can I have?</span><span class="plus">+</span>
+          <div class="faq-answer">Premium plan: 1 automated channel. Pro plan: unlimited channels. On the free plan, automation is not available, but you can manually analyze any episode.</div>
+        </div>
+        <div class="faq-item">
+          <span>What happens if I disable an automation?</span><span class="plus">+</span>
+          <div class="faq-answer">Disabling an automation immediately stops monitoring the channel. The history of previous analyses remains available in your library. You can re-enable the automation at any time.</div>
+        </div>
+        <div class="faq-item">
+          <span>Does Audioask consume my credits on each automated episode?</span><span class="plus">+</span>
+          <div class="faq-answer">Yes, each automatically processed episode consumes transcription credits (and AI prompt credits if you configured one). You will receive a notification before your credits run out.</div>
+        </div>
+        <div class="faq-item">
+          <span>Can I change the prompt on an existing automation?</span><span class="plus">+</span>
+          <div class="faq-answer">Yes, you can change the prompt on an automation at any time. The change applies to the next detected episodes. Previously completed analyses are not modified.</div>
+        </div>
+        <div class="faq-item">
+          <span>How long between publication and delivery?</span><span class="plus">+</span>
+          <div class="faq-answer">Audioask monitors RSS feeds every hour. Generally, a new episode is detected within the hour following publication, then automatically transcribed and analyzed. Delivery happens within minutes of processing completing.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section dark cta-final">
+    <div class="container">
+      <h2>Set up your first automation<br><span class="em-serif">in under a minute.</span></h2>
+      <p class="lede" style="margin: 0 auto 36px; max-width: 50ch; color: var(--night-text-2);">
+        1 automated channel included in the Premium plan. Unlimited with Pro.
+      </p>
+      <a class="btn btn-primary lg" href={`${APP_URL}/signup`} style="height: 56px; font-size: 16px; padding: 0 28px;">Configure now <span class="arrow">→</span></a>
+    </div>
+  </section>
+
 </Layout>
+
+<script>
+document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>

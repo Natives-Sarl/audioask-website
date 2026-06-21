@@ -1,11 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import MobileTease from '../../components/MobileTease.astro';
+const APP_URL = 'https://dev-app.audioask.ai';
 ---
 
 <Layout
   title="Audioask mobile app — iOS & Android — Coming soon"
-  description="Audioask is coming to your phone. Listen, transcribe, and ask AI about any podcast — on iOS and Android. Join the waitlist."
+  description="The Audioask app is coming to iPhone and Android. Listen, transcribe and ask AI about your podcasts on the go. Join the waitlist and be notified at launch."
   activePage=""
   lang="en"
   alternatePath="/app-mobile"
@@ -13,73 +13,470 @@ import MobileTease from '../../components/MobileTease.astro';
 
 <!-- HERO -->
 <section class="hero dotbg">
-  <div class="container" style="max-width: 760px; text-align: center;">
-    <div class="eyebrow" style="justify-content: center;"><span class="dot">●</span> Mobile app <span style="margin-left: 8px; font-family: var(--mono); font-size: 10px; padding: 3px 9px; background: var(--ink); color: var(--cream); border-radius: 999px; letter-spacing: 0.06em;">COMING SOON</span></div>
-    <h1 style="margin-top: 18px;">Audioask<br><span class="em-serif">in your pocket.</span></h1>
-    <p class="lede" style="margin: 20px auto 0; max-width: 48ch;">The full Audioask experience — listening, transcription, AI Q&A — on iOS and Android. Be the first to know when it launches.</p>
-
-    <!-- NOTIFY FORM -->
-    <form action="/ajax/notify-mobile.php" method="POST" style="display: flex; gap: 10px; justify-content: center; margin-top: 36px; flex-wrap: wrap;" id="notify-form">
-      <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
-      <input type="email" name="email" required placeholder="Your email address" style="padding: 12px 18px; border: 1px solid var(--line); border-radius: 12px; font-size: 14px; background: var(--paper); color: var(--ink); outline: none; min-width: 260px; font-family: var(--sans);">
-      <button type="submit" class="btn btn-primary" style="height: 48px; padding: 0 24px;">Notify me at launch <span class="arrow">→</span></button>
-    </form>
-    <p style="margin-top: 14px; font-size: 13px; color: var(--ink-3);">No spam — one email when we launch. That's it.</p>
-  </div>
-</section>
-
-<!-- PHONE PREVIEW -->
-<MobileTease uid="mobile" lang="en" />
-
-<!-- FEATURES -->
-<section class="section">
   <div class="container">
-    <div class="eyebrow center"><span class="dot">●</span> What's coming</div>
-    <h2 style="text-align: center; margin-top: 16px;">Everything you love<br><span class="serif-it">on your phone.</span></h2>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;">
-      {[
-        { icon: "🎧", title: "Native podcast player", desc: "Variable speed playback, sleep timer, smart chapter navigation — everything you expect from a great mobile podcast app." },
-        { icon: "📄", title: "Transcription on demand", desc: "Tap to transcribe any episode. Get the full text with timestamps and speaker labels — searchable instantly." },
-        { icon: "✦", title: "AI in your pocket", desc: "Ask questions about any episode while you're on the go. Get cited answers without being near a computer." },
-        { icon: "🔖", title: "Bookmarks while listening", desc: "One tap to pin a moment. Revisit your bookmarks later with full transcript context." },
-        { icon: "⚡", title: "Automations", desc: "New episodes from your automated channels land in your mobile library as soon as they're processed." },
-        { icon: "🔄", title: "Full sync with web", desc: "Your library, bookmarks, saved prompts, and AI results — all in sync between web and mobile in real time." },
-      ].map(f => (
-        <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 24px;">
-          <div style="font-size: 26px; margin-bottom: 14px;">{f.icon}</div>
-          <h3 style="font-size: 16px; margin: 0 0 10px;">{f.title}</h3>
-          <p style="color: var(--ink-2); font-size: 14px; line-height: 1.6; margin: 0;">{f.desc}</p>
+    <div class="mobile-hero-grid">
+
+      <!-- Copy + form -->
+      <div class="mobile-hero-copy">
+        <div class="hero-eyebrow">
+          <span class="pill">Coming soon</span>
+          <span>iOS &amp; Android</span>
         </div>
-      ))}
+        <h1>Audioask in<br><span class="em-serif">your pocket.</span></h1>
+        <p class="lede">Your full library, bookmarks and automations in a real mobile app. Same account, same experience — wherever you are.</p>
+        <div class="notify-block" id="notify-block">
+          <p class="notify-label">Get notified when the app launches</p>
+          <form class="notify-form" id="notify-form" novalidate>
+            <input type="text" name="website" style="display:none;" autocomplete="off" tabindex="-1">
+            <input type="email" id="notify-email" name="email" placeholder="your@email.com" required autocomplete="email"/>
+            <button type="submit" class="btn btn-primary">Notify me <span class="arrow">→</span></button>
+          </form>
+          <p class="notify-meta">No spam. Just one email on launch day.</p>
+          <div class="notify-success" id="notify-success" style="display: none;">
+            <span class="notify-success-icon">✓</span>
+            Got it! You'll be notified as soon as the app is available.
+          </div>
+          <div class="notify-error" id="notify-error" style="display: none;"></div>
+        </div>
+      </div>
+
+      <!-- Animated phone (hidden on mobile) -->
+      <div class="mobile-hero-visual" aria-hidden="true">
+        <div class="aa-phone" id="aaHero">
+          <div class="aa-island"></div>
+          <div class="aa-screens" id="aaScreens"></div>
+        </div>
+        <div class="aa-dots" id="aaDots"></div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- SYNC SECTION — DARK -->
-<section class="section dark">
-  <div class="container" style="max-width: 760px; text-align: center;">
-    <div class="eyebrow" style="color: var(--accent); justify-content: center;"><span class="dot">●</span> Seamless sync</div>
-    <h2 style="margin-top: 16px;">Start on web.<br><span class="serif-it">Continue on mobile.</span></h2>
-    <p class="lede" style="margin: 20px auto 0; max-width: 48ch; color: var(--night-text-2);">Everything stays in sync. Pick up an episode mid-sentence. Your bookmarks, transcripts, and AI results follow you everywhere.</p>
+<!-- FEATURES -->
+<section class="section paper">
+  <div class="container">
+    <div class="center-text" style="max-width: 640px; margin: 0 auto; text-align: center;">
+      <div class="eyebrow"><span class="dot">●</span> Same experience, everywhere</div>
+      <h2 style="margin-top: 16px;">Everything you love about Audioask,<br><span class="serif-it">in your pocket.</span></h2>
+    </div>
+
+    <div class="mob-feat-grid">
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h12M4 12h12M4 18h7"/><path d="M18 13l5 3-5 3z"/></svg>
+        </div>
+        <div>
+          <h3>Feed &amp; playlists</h3>
+          <p>Your personalised feed, favourite channels and themed playlists — available offline.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div>
+          <h3>Bookmarks &amp; favourites</h3>
+          <p>Mark key moments with one tap. Find them again from any device.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        </div>
+        <div>
+          <h3>Transcriptions</h3>
+          <p>Read episode transcripts. Navigate the text and jump to the right moment with a tap.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3z"/></svg>
+        </div>
+        <div>
+          <h3>AI Q&amp;A</h3>
+          <p>Ask questions about any episode with your saved prompts. Review your favourite answers anywhere.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+        </div>
+        <div>
+          <h3>Automation notifications</h3>
+          <p>Get alerted as soon as a new episode from your automated channels has been processed and delivered.</p>
+        </div>
+      </div>
+      <div class="mob-feat">
+        <div class="mob-feat-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+        </div>
+        <div>
+          <h3>Global search</h3>
+          <p>Find a passage, a name, or an idea across all your transcribed episodes — from your phone.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- SECOND NOTIFY FORM -->
-<section class="section paper">
-  <div class="container" style="max-width: 640px; text-align: center;">
-    <h2>Be among the first<br><span class="serif-it">to try it.</span></h2>
-    <p style="color: var(--ink-2); font-size: 15px; margin: 16px 0 28px;">Leave your email and we'll reach out as soon as the beta opens.</p>
-    <form action="/ajax/notify-mobile.php" method="POST" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;" id="notify-form-2">
-      <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
-      <input type="email" name="email" required placeholder="Your email address" style="padding: 12px 18px; border: 1px solid var(--line); border-radius: 12px; font-size: 14px; background: var(--paper); color: var(--ink); outline: none; min-width: 240px; font-family: var(--sans);">
-      <button type="submit" class="btn btn-primary" style="height: 48px; padding: 0 22px;">Join waitlist <span class="arrow">→</span></button>
-    </form>
+<!-- SAME ACCOUNT — DARK -->
+<section class="section dark">
+  <div class="container">
+    <div style="max-width: 680px; margin: 0 auto; text-align: center;">
+      <div class="eyebrow" style="color: var(--accent); justify-content: center;"><span class="dot">●</span> One account</div>
+      <h2 style="margin-top: 20px;">Start on web,<br>continue on mobile.</h2>
+      <p class="lede" style="margin-top: 20px; color: var(--night-text-2);">Your library, bookmarks, playlists and automations are synced instantly across all your devices. Start an episode on the web, finish it on the go.</p>
+      <div style="margin-top: 36px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a class="btn btn-primary" href={`${APP_URL}/signup`}>Create a free account <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="/en/" style="color: var(--night-text); border-color: var(--night-line-2);">Discover Audioask</a>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- BOTTOM NOTIFY FORM -->
+<section class="section">
+  <div class="container">
+    <div class="notify-bottom">
+      <div>
+        <h2>Don't miss the launch.</h2>
+        <p class="lede" style="margin-top: 12px; max-width: 44ch;">Leave your email and be among the first to get the app when it lands on the App Store and Google Play.</p>
+      </div>
+      <div class="notify-block notify-block-inline" id="notify-block-2">
+        <form class="notify-form" id="notify-form-2" novalidate>
+          <input type="text" name="website" style="display:none;" autocomplete="off" tabindex="-1">
+          <input
+            type="email"
+            id="notify-email-2"
+            name="email"
+            placeholder="your@email.com"
+            required
+            autocomplete="email"
+          />
+          <button type="submit" class="btn btn-primary">Notify me <span class="arrow">→</span></button>
+        </form>
+        <p class="notify-meta">No spam. Just one email on launch day.</p>
+        <div class="notify-success" id="notify-success-2" style="display: none;">
+          <span class="notify-success-icon">✓</span>
+          Got it! You'll be notified as soon as the app is available.
+        </div>
+        <div class="notify-error" id="notify-error-2" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style is:global>
+.aa-phone { width: 280px; height: 570px; border-radius: 46px; background: #0E0B0A; padding: 9px; box-shadow: 0 44px 100px -34px rgba(26,22,20,0.55), 0 14px 34px -12px rgba(26,22,20,0.25); transform: rotate(-3deg); flex-shrink: 0; }
+.aa-screens { position: relative; width: 100%; height: 100%; border-radius: 38px; overflow: hidden; background: var(--cream); }
+.aa-island { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; background: #0E0B0A; border-radius: 13px; z-index: 9; }
+.aa-screen { position: absolute; inset: 0; display: flex; flex-direction: column; opacity: 0; transform: translateY(14px) scale(0.99); transition: opacity .55s ease, transform .55s cubic-bezier(.22,1,.36,1); pointer-events: none; }
+.aa-screen.on { opacity: 1; transform: none; }
+.aa-screens:not([data-js]) .aa-screen:first-child { opacity: 1; transform: none; }
+.aa-sb { display: flex; align-items: center; justify-content: space-between; padding: 15px 22px 6px; font-size: 12px; font-weight: 600; color: var(--ink); }
+.aa-pad { padding: 6px 16px 0; flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+.aa-kick { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.14em; color: var(--ink-3); text-transform: uppercase; }
+.aa-h { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; margin: 2px 0; }
+.aa-chips { display: flex; gap: 6px; margin: 11px 0 9px; }
+.aa-chip { height: 27px; padding: 0 11px; border-radius: 999px; display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; background: var(--paper); border: 1px solid var(--line); white-space: nowrap; }
+.aa-chip.on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.aa-cover { border-radius: 8px; object-fit: cover; flex-shrink: 0; display: block; }
+.aa-ep { display: flex; gap: 10px; align-items: center; padding: 10px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 7px; }
+.aa-ep .t { font-size: 12px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+.aa-mini { margin: 0 9px; border-radius: 15px; background: var(--ink); color: var(--cream); display: flex; align-items: center; gap: 9px; padding: 8px 10px; }
+.aa-mini .pl { margin-left: auto; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+.aa-tabs { display: flex; justify-content: space-around; padding: 10px 8px 15px; }
+.aa-tab { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 8.5px; color: var(--ink-3); font-weight: 500; }
+.aa-tab.on { color: var(--accent); }
+.aa-tab svg { width: 17px; height: 17px; }
+.aa-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.aa-badge.accent { background: var(--accent); color: #fff; }
+.aa-badge.soft { background: var(--accent-soft); color: var(--accent-ink); }
+.aa-dots { display: flex; gap: 7px; margin-top: 20px; justify-content: center; }
+.aa-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgba(26,22,20,0.16); transition: width .35s, background .35s; display: block; }
+.aa-dots i.on { width: 22px; border-radius: 4px; background: var(--accent); }
+@media (prefers-reduced-motion: reduce) { .aa-screen { transition: none; } }
+</style>
 
 <style>
-@media (max-width: 768px) {
-  [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+/* ---- HERO ---- */
+.mobile-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+  padding: 48px 0 80px;
+}
+.mobile-hero-copy h1 { font-size: clamp(36px, 5vw, 56px); }
+.mobile-hero-copy .lede { margin: 20px 0 0; font-size: 18px; max-width: 44ch; }
+.mobile-hero-visual { display: flex; flex-direction: column; align-items: center; }
+
+/* ---- NOTIFY FORM ---- */
+.notify-block { margin-top: 32px; }
+.notify-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-bottom: 10px;
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.notify-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.notify-form input[type="email"] {
+  flex: 1;
+  min-width: 200px;
+  height: 46px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  padding: 0 16px;
+  font-size: 14px;
+  color: var(--ink);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.notify-form input[type="email"]:focus { border-color: var(--accent); }
+.notify-form input[type="email"]::placeholder { color: var(--ink-3); }
+.notify-meta {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.notify-success {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--ink);
+}
+.notify-success-icon { color: var(--accent); font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.notify-error {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #c0392b;
+  padding: 10px 14px;
+  background: rgba(192,57,43,0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(192,57,43,0.2);
+}
+
+/* ---- FEATURES GRID ---- */
+.mob-feat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 40px;
+  margin-top: 56px;
+}
+.mob-feat { display: flex; gap: 18px; align-items: flex-start; }
+.mob-feat-ico {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--accent-tint);
+  color: var(--accent-ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.mob-feat h3 { font-size: 16px; margin-bottom: 6px; }
+.mob-feat p { font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+
+/* ---- NOTIFY BOTTOM ---- */
+.notify-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.notify-block-inline { margin-top: 0; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .mobile-hero-grid { grid-template-columns: 1fr; gap: 0; padding: 40px 0 48px; }
+  .mobile-hero-visual { display: none; }
+  .mob-feat-grid { grid-template-columns: 1fr 1fr; gap: 24px 32px; }
+  .notify-bottom { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 600px) {
+  .mob-feat-grid { grid-template-columns: 1fr; }
+  .notify-form { flex-direction: column; }
+  .notify-form input[type="email"] { min-width: auto; }
+  .notify-form .btn { justify-content: center; }
 }
 </style>
-</Layout>
+
+<script>
+(function () {
+  const AA_CONFIG = { screenMs: 4200, pauseOffscreen: true };
+
+  const ICON = {
+    feed: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h10M4 12h10M4 18h6"/><circle cx="19" cy="7" r="1.5"/></svg>`,
+    search: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M16 16l4 4"/></svg>`,
+    play: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h11M4 12h11M4 18h7M19 7v10l4-2z"/></svg>`,
+    lib: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4v16M9 4l4 16M13 4v16M17 6l3 14"/></svg>`,
+  };
+  function tabs(active) {
+    const t = [['feed','Feed'],['search','Search'],['play','Playlists'],['lib','My lib.']];
+    return `<div class="aa-tabs">` + t.map(([k,l]) => `<span class="aa-tab${active===k?' on':''}">${ICON[k]}${l}</span>`).join('') + `</div>`;
+  }
+  const mini = `<div class="aa-mini"><img class="aa-cover" src="/assets/pod-tkp.jpg" style="width:31px;height:31px;"><div><div style="font-size:11px;font-weight:600;">Build the right thing…</div><div style="font-size:9px;color:var(--ink-4);font-family:var(--mono);">17:41 / 52:00</div></div><span class="pl">▶</span></div>`;
+  const sb = `<div class="aa-sb"><span>9:41</span><span style="color:var(--ink);">●●● ⌃ ▭</span></div>`;
+
+  const SCREENS = [
+    /* 1 · FEED */
+    { screen: `${sb}<div class="aa-pad">
+        <div class="aa-kick">Your subscriptions</div><div class="aa-h">Feed</div>
+        <div class="aa-chips"><span class="aa-chip on">All</span><span class="aa-chip"><img class="aa-cover" src="/assets/pod-tkp.jpg" style="width:15px;height:15px;border-radius:4px;">TKP</span><span class="aa-chip">Acquired</span></div>
+        <div class="aa-ep"><img class="aa-cover" src="/assets/pod-tkp.jpg" style="width:38px;height:38px;"><span class="t">Build the right thing, not just build the thing right</span></div>
+        <div class="aa-ep"><img class="aa-cover" src="/assets/pod-acquired.jpg" style="width:38px;height:38px;"><span class="t">Patagonia: building a brand that says no to growth</span></div>
+        <div class="aa-ep"><img class="aa-cover" src="/assets/pod-lex.jpg" style="width:38px;height:38px;"><span class="t">The 4-day week: we actually tried it</span></div>
+        <div class="aa-ep"><img class="aa-cover" src="/assets/pod-huberman.jpg" style="width:38px;height:38px;"><span class="t">Taste as a trainable skill</span></div>
+      </div>${mini}${tabs('feed')}`},
+
+    /* 2 · SEARCH */
+    { screen: `${sb}<div class="aa-pad">
+        <div class="aa-h">Search</div>
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:9px 12px;display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink-3);margin:11px 0 13px;">⌕ Podcasts, episodes, topics…</div>
+        <div class="aa-kick" style="margin-bottom:7px;">Recent searches</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:15px;"><span class="aa-chip">⟲ patagonia</span><span class="aa-chip">⟲ nvidia</span><span class="aa-chip">⟲ patience</span></div>
+        <div class="aa-kick" style="margin-bottom:7px;">Discover</div>
+        <div class="aa-ep"><img class="aa-cover" src="/assets/pod-a16z.jpg" style="width:38px;height:38px;"><div style="flex:1;"><div class="t">a16z Podcast</div><div style="font-size:9px;color:var(--ink-3);">Andreessen Horowitz</div></div><span class="aa-badge soft" style="font-size:10px;">+ Follow</span></div>
+        <div class="aa-ep"><img class="aa-cover" src="/assets/pod-founders.jpg" style="width:38px;height:38px;"><div style="flex:1;"><div class="t">Founders</div><div style="font-size:9px;color:var(--ink-3);">David Senra · 300+ eps.</div></div><span class="aa-badge soft" style="font-size:10px;">+ Follow</span></div>
+      </div>${mini}${tabs('search')}`},
+
+    /* 3 · LIBRARY */
+    { screen: `${sb}<div class="aa-pad">
+        <div class="aa-h">Library</div>
+        <div class="aa-chips"><span class="aa-chip on">Channels</span><span class="aa-chip">Episodes</span><span class="aa-chip">Prompts</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;">
+          <div><img class="aa-cover" src="/assets/pod-tkp.jpg" style="width:100%;aspect-ratio:1;border-radius:12px;"><div style="font-size:12px;font-weight:600;margin-top:5px;">The Knowledge Project</div><div style="font-size:9px;color:var(--ink-3);">412 episodes</div></div>
+          <div><img class="aa-cover" src="/assets/pod-huberman.jpg" style="width:100%;aspect-ratio:1;border-radius:12px;"><div style="font-size:12px;font-weight:600;margin-top:5px;">Huberman Lab</div><div style="font-size:9px;color:var(--ink-3);">38 episodes</div></div>
+          <div><img class="aa-cover" src="/assets/pod-acquired.jpg" style="width:100%;aspect-ratio:1;border-radius:12px;"><div style="font-size:12px;font-weight:600;margin-top:5px;">Acquired</div><div style="font-size:9px;color:var(--ink-3);">56 episodes</div></div>
+          <div><img class="aa-cover" src="/assets/pod-lex.jpg" style="width:100%;aspect-ratio:1;border-radius:12px;"><div style="font-size:12px;font-weight:600;margin-top:5px;">Lex Fridman</div><div style="font-size:9px;color:var(--ink-3);">400+ episodes</div></div>
+        </div>
+      </div>${mini}${tabs('lib')}`},
+
+    /* 4 · PLAYER */
+    { screen: `${sb}<div class="aa-pad" style="align-items:center;text-align:center;">
+        <div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin:2px 0 14px;"><span style="color:var(--ink-3);font-size:16px;">⌄</span><span style="font-family:var(--mono);font-size:9px;letter-spacing:0.12em;color:var(--ink-3);">NOW PLAYING</span><span style="color:var(--accent);">♥</span></div>
+        <img class="aa-cover" src="/assets/pod-tkp.jpg" style="width:196px;height:196px;border-radius:18px;box-shadow:0 22px 46px -16px rgba(26,22,20,0.4);">
+        <div style="font-size:15px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-top:16px;">Build the right thing, not just build the thing right</div>
+        <div style="font-size:11px;color:var(--accent-ink);font-weight:600;margin-top:6px;">The Knowledge Project · Shane Parrish</div>
+        <div style="width:100%;margin-top:14px;"><div style="height:4px;background:var(--cream-3);border-radius:2px;position:relative;"><div style="position:absolute;left:0;top:0;bottom:0;width:34%;background:var(--accent);border-radius:2px;"></div><div style="position:absolute;left:34%;top:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:var(--accent);"></div></div><div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;color:var(--ink-3);margin-top:5px;"><span>17:41</span><span>−34:19</span></div></div>
+        <div style="display:flex;align-items:center;gap:18px;margin-top:14px;"><span style="color:var(--ink-2);font-size:13px;">↺15</span><span style="font-size:18px;">⏮</span><span style="width:54px;height:54px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;">▶</span><span style="font-size:18px;">⏭</span><span style="color:var(--ink-2);font-size:13px;">30↻</span></div>
+      </div><div style="height:12px;"></div>`},
+
+    /* 5 · TRANSCRIPT */
+    { screen: `${sb}<div class="aa-pad">
+        <div style="display:flex;align-items:center;gap:9px;margin:4px 0 9px;"><img class="aa-cover" src="/assets/pod-tkp.jpg" style="width:44px;height:44px;border-radius:10px;"><div><div style="font-size:12.5px;font-weight:600;line-height:1.2;">Build the right thing</div><div style="font-size:9px;color:var(--ink-3);font-family:var(--mono);">MAY 28 · 52 MIN</div></div></div>
+        <div style="display:flex;gap:7px;margin-bottom:9px;"><span style="font-size:11px;color:var(--ink-3);">Info</span><span style="font-size:11px;font-weight:600;border-bottom:2px solid var(--accent);padding-bottom:5px;">Transcript</span><span style="font-size:11px;color:var(--ink-3);">Bookmarks</span><span style="font-size:11px;color:var(--ink-3);">Answers</span></div>
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:8px 11px;display:flex;align-items:center;gap:7px;font-size:11px;color:var(--ink-3);margin-bottom:10px;">⌕ Search in transcript…</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:9px;color:var(--accent);font-family:var(--mono);margin-bottom:7px;">● LIVE · following playback</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--ink-3);margin-bottom:3px;">0:00 · SPEAKER_00</div>
+        <div style="font-size:11.5px;line-height:1.5;color:var(--ink-2);margin-bottom:9px;">Welcome to this episode. Today we tackle a question founders ask constantly.</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--accent-ink);margin-bottom:3px;">6:30 · SPEAKER_01</div>
+        <div style="font-size:11.5px;line-height:1.5;color:var(--ink);background:var(--accent-soft);padding:5px 8px;border-radius:6px;">Patience is a verb: keep going, don't just wait.</div>
+      </div>${mini}${tabs('feed')}`},
+
+    /* 6 · ASK */
+    { screen: `${sb}<div class="aa-pad">
+        <div style="display:flex;align-items:center;gap:9px;margin:4px 0 11px;"><span style="width:26px;height:26px;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;">✦</span><div style="flex:1;"><b style="font-size:13px;">Ask</b><div style="font-size:9px;color:var(--ink-3);">Build the right thing…</div></div><span style="color:var(--ink-3);">✕</span></div>
+        <div style="align-self:flex-end;margin-left:auto;background:var(--cream-2);padding:9px 12px;border-radius:13px 13px 4px 13px;font-size:11.5px;max-width:80%;">What are the key points and main arguments?</div>
+        <div style="margin-top:9px;background:var(--paper);border:1px solid var(--line);border-radius:13px 13px 13px 4px;padding:11px 13px;font-size:11.5px;line-height:1.5;">
+          <b>In one sentence</b><div style="color:var(--ink-2);margin-top:3px;">An episode on the difference between <b style="color:var(--ink);">speed</b> and <b style="color:var(--ink);">progress</b>.</div>
+          <b style="display:block;margin-top:8px;">Key points</b>
+          <div style="color:var(--ink-2);margin-top:4px;">• Speed ≠ progress — productive in the wrong direction.</div>
+          <div style="color:var(--ink-2);margin-top:3px;">• Patience is a verb: keep going, don't just wait.</div>
+          <div style="margin-top:8px;font-size:9px;font-family:var(--mono);color:var(--accent-ink);">↩ 4 citations · 06:30 · 17:41 · 34:02</div>
+        </div>
+      </div><div style="padding:0 16px 8px;"><div style="background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:9px 12px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-3);">Ask a question…<span style="margin-left:auto;" class="aa-badge soft">Ask</span></div></div>${tabs('feed')}`},
+  ];
+
+  const scrEl = document.getElementById('aaScreens');
+  const dotsEl = document.getElementById('aaDots');
+  const hero = document.getElementById('aaHero');
+  if (!scrEl || !dotsEl || !hero) return;
+
+  SCREENS.forEach(function (s) {
+    const sc = document.createElement('div'); sc.className = 'aa-screen'; sc.innerHTML = s.screen; scrEl.appendChild(sc);
+    const d = document.createElement('i'); dotsEl.appendChild(d);
+  });
+  const screens = [...scrEl.children], dots = [...dotsEl.children];
+  scrEl.setAttribute('data-js', '');
+
+  let idx = 0, timer = null, playing = false;
+  function render() {
+    screens.forEach(function (e, i) { e.classList.toggle('on', i === idx); });
+    dots.forEach(function (e, i) { e.classList.toggle('on', i === idx); });
+  }
+  function go(n) { idx = (n + screens.length) % screens.length; render(); }
+  function play() { playing = true; clearInterval(timer); timer = setInterval(function () { go(idx + 1); }, AA_CONFIG.screenMs); }
+  function pause() { playing = false; clearInterval(timer); }
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  go(0);
+  if (!reduce) {
+    if (AA_CONFIG.pauseOffscreen && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? play() : pause(); }); }, { threshold: 0.2 }).observe(hero);
+    } else { play(); }
+  }
+})();
+
+function setupNotifyForm(formId, emailId, successId, errorId) {
+  const form = document.getElementById(formId);
+  const emailInput = document.getElementById(emailId);
+  const successEl = document.getElementById(successId);
+  const errorEl = document.getElementById(errorId);
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch('/notify-handler.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'email=' + encodeURIComponent(email),
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.style.display = 'none';
+        successEl.style.display = 'flex';
+      } else {
+        errorEl.textContent = data.error || 'An error occurred. Please try again.';
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = 'Notify me <span class="arrow">→</span>';
+      }
+    } catch {
+      errorEl.textContent = 'Unable to send request. Check your connection.';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = 'Notify me <span class="arrow">→</span>';
+    }
+  });
+}
+
+setupNotifyForm('notify-form', 'notify-email', 'notify-success', 'notify-error');
+setupNotifyForm('notify-form-2', 'notify-email-2', 'notify-success-2', 'notify-error-2');
+</script>

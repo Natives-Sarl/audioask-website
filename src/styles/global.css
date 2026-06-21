@@ -270,7 +270,7 @@ p { margin: 0; text-wrap: pretty; }
   background: var(--paper); border: 1px solid var(--line);
   border-radius: 12px; padding: 6px;
   margin-top: 4px;
-  min-width: 160px;
+  min-width: 210px;
   box-shadow: var(--shadow-md);
   display: none;
   z-index: 60;
