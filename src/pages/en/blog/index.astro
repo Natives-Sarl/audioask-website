@@ -1,23 +1,21 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft && data.lang !== 'en'))
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.lang === 'en'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-function formatDateFr(date: Date): string {
-  return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+function formatDateEn(date: Date): string {
+  return date.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 ---
 
-<!-- ADMIN : Pour ajouter un article, crée un fichier .md dans src/content/blog/ avec le frontmatter suivant :
-title, description, pubDate (YYYY-MM-DD), author, tags (liste), draft (true = non publié)
-Puis pousse sur main pour déployer. -->
-
 <Layout
   title="Blog — Audioask"
-  description="Actualités, guides et réflexions de l'équipe Audioask sur le podcast, la transcription IA et l'automatisation."
+  description="News, guides and thoughts from the Audioask team on podcasting, AI transcription and audio knowledge."
   activePage="blog"
+  lang="en"
+  alternatePath="/blog"
 >
   <style>
     .blog-hero {
@@ -122,20 +120,20 @@ Puis pousse sur main pour déployer. -->
     <div class="container">
       <p class="eyebrow"><span class="dot">·</span> Blog</p>
       <h2 style="margin-top: 12px;">
-        Idées, guides &amp; <em class="serif-it">actualités</em>
+        Ideas, guides &amp; <em class="serif-it">news</em>
       </h2>
       <p class="lede" style="margin-top: 16px;">
-        Réflexions de l'équipe Audioask sur le podcast, la transcription IA, l'automatisation et l'exploitation du savoir audio.
+        Thoughts from the Audioask team on podcasting, AI transcription, automation, and making the most of audio knowledge.
       </p>
 
       {posts.length === 0 ? (
-        <div class="empty-state">Aucun article pour l'instant.</div>
+        <div class="empty-state">No articles yet.</div>
       ) : (
         <div class="blog-grid">
           {posts.map(post => (
             <article class="blog-card">
               <div class="blog-card-meta">
-                {formatDateFr(post.data.pubDate)}
+                {formatDateEn(post.data.pubDate)}
                 {post.data.tags && post.data.tags.length > 0 && (
                   <span> · </span>
                 )}
@@ -149,8 +147,8 @@ Puis pousse sur main pour déployer. -->
               </div>
               <h2 class="blog-card-title">{post.data.title}</h2>
               <p class="blog-card-desc">{post.data.description}</p>
-              <a class="discover-link" href={`/blog/${post.slug}`}>
-                Lire l'article <span class="arrow">→</span>
+              <a class="discover-link" href={`/en/blog/${post.slug}`}>
+                Read article <span class="arrow">→</span>
               </a>
             </article>
           ))}

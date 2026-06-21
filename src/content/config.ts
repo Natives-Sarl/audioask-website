@@ -9,6 +9,7 @@ const blog = defineCollection({
     author: z.string().default("L'équipe Audioask"),
     tags: z.array(z.string()).optional().default([]),
     image: z.string().optional(),
+    lang: z.enum(['fr', 'en']).default('fr'),
     draft: z.boolean().default(false),
   }),
 });

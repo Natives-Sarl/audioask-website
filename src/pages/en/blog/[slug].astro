@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => data.lang !== 'en');
+  const posts = await getCollection('blog', ({ data }) => data.lang === 'en');
   return posts.map(post => ({
     params: { slug: post.slug },
     props: { post },
@@ -28,22 +28,22 @@ const articleJsonLd = {
         "@id": "https://www.audioask.ai/#organization"
       },
       "publisher": { "@id": "https://www.audioask.ai/#organization" },
-      "inLanguage": "fr",
-      "url": `https://www.audioask.ai/blog/${post.slug}`
+      "inLanguage": "en",
+      "url": `https://www.audioask.ai/en/blog/${post.slug}`
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.audioask.ai" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.audioask.ai/blog" },
-        { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://www.audioask.ai/blog/${post.slug}` }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.audioask.ai/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.audioask.ai/en/blog" },
+        { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://www.audioask.ai/en/blog/${post.slug}` }
       ]
     }
   ]
 };
 
-function formatDateFr(date: Date): string {
-  return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+function formatDateEn(date: Date): string {
+  return date.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 const APP_URL = 'https://dev-app.audioask.ai';
@@ -53,6 +53,8 @@ const APP_URL = 'https://dev-app.audioask.ai';
   title={`${post.data.title} — Audioask`}
   description={post.data.description}
   activePage="blog"
+  lang="en"
+  alternatePath="/blog"
 >
 <Fragment slot="head">
   <meta property="og:type" content="article" />
@@ -111,9 +113,7 @@ const APP_URL = 'https://dev-app.audioask.ai';
       transition: color 0.15s;
       margin-bottom: 40px;
     }
-    .back-link:hover {
-      color: var(--ink);
-    }
+    .back-link:hover { color: var(--ink); }
     .article-body {
       padding: 64px 0 80px;
     }
@@ -152,9 +152,7 @@ const APP_URL = 'https://dev-app.audioask.ai';
       font-size: 17px;
       line-height: 1.7;
     }
-    :global(.prose li) {
-      margin-bottom: 8px;
-    }
+    :global(.prose li) { margin-bottom: 8px; }
     .article-cta {
       background: var(--night);
       border-radius: 24px;
@@ -185,9 +183,7 @@ const APP_URL = 'https://dev-app.audioask.ai';
       transition: color 0.15s;
       margin-top: 56px;
     }
-    .back-link-bottom:hover {
-      color: var(--ink);
-    }
+    .back-link-bottom:hover { color: var(--ink); }
     @media (max-width: 480px) {
       .article-hero { padding: 48px 0 32px; }
       .article-body { padding: 40px 0 56px; }
@@ -198,9 +194,9 @@ const APP_URL = 'https://dev-app.audioask.ai';
   <section class="article-hero">
     <div class="container">
       <div style="max-width: 720px; margin: 0 auto;">
-        <a class="back-link" href="/blog">← Tous les articles</a>
+        <a class="back-link" href="/en/blog">← All articles</a>
         <div class="article-meta">
-          <span class="article-date">{formatDateFr(post.data.pubDate)}</span>
+          <span class="article-date">{formatDateEn(post.data.pubDate)}</span>
           {post.data.tags && post.data.tags.map(tag => (
             <span class="tag-pill">{tag}</span>
           ))}
@@ -208,7 +204,7 @@ const APP_URL = 'https://dev-app.audioask.ai';
         <h1 style="font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1.05;">
           {post.data.title}
         </h1>
-        <p class="article-author">Par <strong>{post.data.author}</strong></p>
+        <p class="article-author">By <strong>{post.data.author}</strong></p>
       </div>
     </div>
   </section>
@@ -219,14 +215,14 @@ const APP_URL = 'https://dev-app.audioask.ai';
         <Content />
 
         <div class="article-cta">
-          <h3>Prêt à aller plus loin ?</h3>
-          <p>Essayez Audioask gratuitement — sans carte de crédit, sans engagement.</p>
+          <h3>Ready to go further?</h3>
+          <p>Try Audioask for free — no credit card, no commitment.</p>
           <a href={APP_URL} class="btn btn-primary lg">
-            Essayer gratuitement <span class="arrow">→</span>
+            Get started free <span class="arrow">→</span>
           </a>
         </div>
 
-        <a class="back-link-bottom" href="/blog">← Tous les articles</a>
+        <a class="back-link-bottom" href="/en/blog">← All articles</a>
       </div>
     </div>
   </section>
