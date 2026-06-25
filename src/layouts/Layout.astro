@@ -10,6 +10,7 @@ interface Props {
   ogImage?: string;
   lang?: 'fr' | 'en';
   alternatePath?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -19,11 +20,43 @@ const {
   ogImage = '/og-default.png',
   lang = 'fr',
   alternatePath,
+  noindex = false,
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const ogImageUrl = new URL(ogImage, Astro.site).href;
-const alternateUrl = alternatePath ? new URL(alternatePath, Astro.site).href : null;
+// Normalise le slash final pour que les URLs hreflang correspondent exactement
+// aux canonical/sitemap générés par Astro (évite les incohérences pour Google/Bing).
+const withTrailingSlash = (path: string) => {
+  const u = new URL(path, Astro.site);
+  if (!u.pathname.endsWith('/') && !u.pathname.split('/').pop()?.includes('.')) {
+    u.pathname += '/';
+  }
+  return u.href;
+};
+const alternateUrl = alternatePath ? withTrailingSlash(alternatePath) : null;
+const homeUrl = new URL('/', Astro.site).href;
+
+// JSON-LD global : Organisation + site web (aide Google/Bing à comprendre la marque)
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Audioask',
+  legalName: 'Natives Sàrl',
+  url: homeUrl,
+  logo: new URL('/favicon.svg', Astro.site).href,
+  description: 'Transcription, traduction, IA et automatisation pour vos podcasts.',
+  foundingLocation: 'Carouge, Genève, Suisse',
+  sameAs: [],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Audioask',
+  url: homeUrl,
+  inLanguage: lang === 'en' ? 'en' : 'fr',
+};
 ---
 
 <!doctype html>
@@ -37,11 +70,17 @@ const alternateUrl = alternatePath ? new URL(alternatePath, Astro.site).href : n
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
+  <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+  <meta name="bingbot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+  <meta name="theme-color" content="#E97146" />
+  <meta name="generator" content="Astro" />
+  <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
-  <!-- hreflang -->
-  {alternateUrl && lang === 'fr' && <link rel="alternate" hreflang="en" href={alternateUrl} />}
-  {alternateUrl && lang === 'en' && <link rel="alternate" hreflang="fr" href={alternateUrl} />}
-  <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).href} />
+  <!-- hreflang (bidirectionnel + auto-référencé, recommandé par Google) -->
+  {alternateUrl && <link rel="alternate" hreflang={lang} href={canonicalUrl} />}
+  {alternateUrl && <link rel="alternate" hreflang={lang === 'fr' ? 'en' : 'fr'} href={alternateUrl} />}
+  {alternateUrl && <link rel="alternate" hreflang="x-default" href={lang === 'fr' ? canonicalUrl : alternateUrl} />}
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -52,13 +91,25 @@ const alternateUrl = alternatePath ? new URL(alternatePath, Astro.site).href : n
   <meta property="og:image" content={ogImageUrl} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Audioask" />
   <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'fr_FR'} />
+  <meta property="og:locale:alternate" content={lang === 'en' ? 'fr_FR' : 'en_US'} />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageUrl} />
+  <meta name="twitter:image:alt" content="Audioask" />
+
+  <!-- JSON-LD global : Organisation + site web -->
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+  <!-- Vérification moteurs de recherche : coller les codes fournis par
+       Google Search Console / Bing Webmaster Tools puis décommenter -->
+  <!-- <meta name="google-site-verification" content="VOTRE_CODE_GOOGLE" /> -->
+  <!-- <meta name="msvalidate.01" content="VOTRE_CODE_BING" /> -->
 
   <!-- Slot pour JSON-LD et meta supplémentaires par page -->
   <slot name="head" />
