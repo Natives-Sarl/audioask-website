@@ -13,8 +13,8 @@ export async function getStaticPaths() {
 const { podcast, allPodcasts } = Astro.props;
 const otherPodcasts = allPodcasts.filter((p: typeof podcast) => p.id !== podcast.id);
 const { data } = podcast;
-const APP_URL = 'https://dev-app.audioask.ai';
-const embedSrc = `https://dev-app.audioask.ai/embed/${data.embedId}`;
+const APP_URL = 'https://dev.audioask.ai';
+const embedSrc = `https://dev.audioask.ai/embed/${data.embedId}`;
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
