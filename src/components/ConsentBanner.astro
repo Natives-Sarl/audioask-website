@@ -1,0 +1,140 @@
+---
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+const privacyHref = isFr ? '/confidentialite' : '/en/privacy';
+
+const t = isFr
+  ? {
+      title: 'Nous respectons votre vie privée',
+      body:
+        "Ce site utilise des cookies de mesure d'audience et marketing pour améliorer votre expérience. Vous pouvez les accepter ou les refuser. Les cookies strictement nécessaires au fonctionnement du site sont toujours actifs.",
+      accept: 'Tout accepter',
+      reject: 'Tout refuser',
+      more: 'En savoir plus',
+      aria: 'Bannière de consentement aux cookies',
+    }
+  : {
+      title: 'We respect your privacy',
+      body:
+        'This site uses analytics and marketing cookies to improve your experience. You can accept or reject them. Cookies strictly necessary for the site to work are always active.',
+      accept: 'Accept all',
+      reject: 'Reject all',
+      more: 'Learn more',
+      aria: 'Cookie consent banner',
+    };
+---
+
+<div id="aa-consent-banner" class="aa-consent" role="dialog" aria-modal="false" aria-label={t.aria} aria-live="polite" hidden>
+  <div class="aa-consent-inner">
+    <div class="aa-consent-text">
+      <p class="aa-consent-title">{t.title}</p>
+      <p class="aa-consent-body">
+        {t.body}{' '}
+        <a href={privacyHref}>{t.more}</a>
+      </p>
+    </div>
+    <div class="aa-consent-actions">
+      <button type="button" class="aa-btn aa-btn-ghost" data-reject>{t.reject}</button>
+      <button type="button" class="aa-btn aa-btn-accent" data-accept>{t.accept}</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .aa-consent {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 2147483000;
+    background: var(--paper, #fff);
+    color: var(--ink, #1a1614);
+    border: 1px solid var(--line, #ece5d2);
+    border-radius: 16px;
+    box-shadow: 0 24px 60px -20px rgba(26, 22, 20, 0.45), 0 8px 24px -12px rgba(26, 22, 20, 0.25);
+    padding: 18px 20px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .aa-consent.show { opacity: 1; transform: none; }
+  @media (min-width: 760px) {
+    .aa-consent { left: auto; right: 24px; bottom: 24px; max-width: 440px; padding: 22px 24px; }
+  }
+  .aa-consent-inner { display: flex; flex-direction: column; gap: 16px; }
+  .aa-consent-title { font-weight: 700; font-size: 15px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .aa-consent-body { font-size: 13px; line-height: 1.5; color: var(--ink-2, #4a433d); margin: 0; }
+  .aa-consent-body a { color: var(--accent-ink, #b54e25); text-decoration: underline; }
+  .aa-consent-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .aa-btn {
+    flex: 1 1 auto;
+    min-width: 120px;
+    font: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 11px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .aa-btn-accent { background: var(--accent, #e97146); color: #fff; }
+  .aa-btn-accent:hover { background: var(--accent-ink, #b54e25); }
+  .aa-btn-ghost { background: transparent; color: var(--ink, #1a1614); border-color: var(--line, #ece5d2); }
+  .aa-btn-ghost:hover { background: var(--cream-2, #f4efe3); }
+  @media (prefers-reduced-motion: reduce) {
+    .aa-consent { transition: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var KEY = 'aa-consent';
+    var banner = document.getElementById('aa-consent-banner');
+    if (!banner) return;
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+
+    function show() {
+      banner.hidden = false;
+      requestAnimationFrame(function () { banner.classList.add('show'); });
+    }
+    function hide() {
+      banner.classList.remove('show');
+      window.setTimeout(function () { banner.hidden = true; }, 350);
+    }
+
+    function save(granted) {
+      var v = granted ? 'granted' : 'denied';
+      var choice = {
+        ad_storage: v,
+        ad_user_data: v,
+        ad_personalization: v,
+        analytics_storage: v,
+        functionality_storage: v,
+        personalization_storage: v
+      };
+      try { localStorage.setItem(KEY, JSON.stringify(choice)); } catch (e) {}
+      gtag('consent', 'update', choice);
+      window.dataLayer.push({ event: granted ? 'consent_accepted' : 'consent_rejected' });
+      hide();
+    }
+
+    var acceptBtn = banner.querySelector('[data-accept]');
+    var rejectBtn = banner.querySelector('[data-reject]');
+    if (acceptBtn) acceptBtn.addEventListener('click', function () { save(true); });
+    if (rejectBtn) rejectBtn.addEventListener('click', function () { save(false); });
+
+    // Permet de rouvrir la bannière (lien footer "Gérer les cookies")
+    window.openConsentBanner = show;
+    document.querySelectorAll('[data-open-consent]').forEach(function (el) {
+      el.addEventListener('click', function (e) { e.preventDefault(); show(); });
+    });
+
+    // Affiche la bannière si aucun choix n'a encore été enregistré
+    var hasChoice = false;
+    try { hasChoice = !!localStorage.getItem(KEY); } catch (e) {}
+    if (!hasChoice) show();
+  })();
+</script>
