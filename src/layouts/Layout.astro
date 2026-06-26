@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -80,6 +81,26 @@ const websiteSchema = {
 <html lang={lang}>
 <head>
   <meta charset="utf-8" />
+  <!-- Google Consent Mode v2 — défauts AVANT GTM : tout refusé tant que l'utilisateur n'a pas consenti -->
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'denied',
+      personalization_storage: 'denied',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+    // Réapplique immédiatement un choix déjà enregistré (visiteur récurrent)
+    try {
+      var aaStored = localStorage.getItem('aa-consent');
+      if (aaStored) { gtag('consent', 'update', JSON.parse(aaStored)); }
+    } catch (e) {}
+  </script>
   <!-- Google Tag Manager -->
   <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -147,5 +168,6 @@ const websiteSchema = {
     <slot />
   </main>
   <Footer lang={lang} />
+  <ConsentBanner lang={lang} />
 </body>
 </html>
