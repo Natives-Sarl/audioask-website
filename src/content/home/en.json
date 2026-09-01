@@ -1,0 +1,226 @@
+{
+  "meta": {
+    "title": "Audioask — Get more from your podcasts.",
+    "description": "Audioask takes your podcasts to the next level. Listen, transcribe, and ask AI questions about every episode — and actually use what you listen to."
+  },
+  "hero": {
+    "pill": "Web & mobile app",
+    "eyebrow": "Get more from your podcasts.",
+    "title": "The app <span class=\"em-serif\">built</span><br> for serious<br> podcast listeners.",
+    "lede": "Audioask takes your podcasts to the next level. Listen, transcribe, and ask AI questions about every episode — and actually use what you listen to.",
+    "ctaLabel": "Try for free",
+    "highlights": [
+      "Free. No card required.",
+      "1h of transcription included"
+    ]
+  },
+  "features": {
+    "eyebrow": "What changes for you",
+    "title": "A real podcast app,<br><span class=\"serif-it\">built for people who actually listen.</span>",
+    "lede": "The small features that turn your podcasts into something genuinely valuable.",
+    "soonLabel": "COMING SOON",
+    "basics": [
+      {
+        "label": "Channel subscriptions",
+        "soon": false
+      },
+      {
+        "label": "Audio player · variable speed",
+        "soon": false
+      },
+      {
+        "label": "Playlists & favorites",
+        "soon": false
+      },
+      {
+        "label": "Timestamped bookmarks",
+        "soon": false
+      },
+      {
+        "label": "+185M episodes available",
+        "soon": false
+      },
+      {
+        "label": "Mobile app iOS & Android",
+        "soon": true
+      }
+    ],
+    "dividerLabel": "The features that make the difference",
+    "cards": {
+      "search": {
+        "title": "Search that finds everything, everywhere.",
+        "text": "Type a word, an idea, a name. Audioask takes you straight to the right passage — across all your transcribed or bookmarked episodes."
+      },
+      "transcribe": {
+        "title": "Audio to text in just a few minutes.",
+        "text": "Audioask transcribes your episodes with timestamps and speaker identification. Read, search, share — every word is searchable in minutes.",
+        "ctaLabel": "Learn more about transcription"
+      },
+      "ask": {
+        "title": "Ask questions. Get answers from any episode.",
+        "text": "In plain English, in any language. AI answers with timestamped citations from the transcript — verifiable in one click.",
+        "ctaLabel": "Learn more about AI Q&A"
+      },
+      "prompts": {
+        "title": "Your favorite prompts saved and ready to reuse.",
+        "text": "Save the questions you ask all the time — \"summarize in 5 points\", \"what are the key quotes?\". One click, and AI answers on the episode with citations."
+      },
+      "automate": {
+        "title": "New episodes processed automatically. While you sleep.",
+        "text": "Activate automation on a channel: every new episode is transcribed, analyzed, and delivered where you want it. Library, email, Slack — your choice.",
+        "ctaLabel": "Learn more about automation"
+      },
+      "bookmarks": {
+        "title": "Bookmarks to flag the moments worth revisiting.",
+        "text": "One tap while listening, and the moment is pinned with its timestamp. Re-read, share, or export your bookmarks — in the transcript and in your library. On web and mobile."
+      }
+    }
+  },
+  "discover": {
+    "eyebrow": "Explore in detail",
+    "title": "Key features<br>at a glance.",
+    "linkLabel": "Learn more",
+    "soonBadge": "COMING SOON",
+    "cards": {
+      "transcribe": {
+        "title": "Transcribe",
+        "text": "Audio to structured text in minutes."
+      },
+      "ask": {
+        "title": "Ask AI",
+        "text": "Ask questions, get answers — with citations."
+      },
+      "automate": {
+        "title": "Automate",
+        "text": "Every new episode processed and delivered, hands-free."
+      },
+      "translate": {
+        "title": "Translate",
+        "text": "12 languages, translated transcript and dubbed audio."
+      }
+    }
+  },
+  "library": {
+    "eyebrow": "Network effect",
+    "title": "Turn your podcasts into a <span class=\"serif-it\" style=\"color: var(--accent);\">real</span> knowledge base.",
+    "lede": "When one member transcribes an episode, the whole community benefits. You get instant access to thousands of already-transcribed episodes — without spending a single credit.",
+    "bigNumber": "+185M",
+    "bigNumberCaption": "episodes <span class=\"serif-it\">already</span> available",
+    "tags": [
+      "The Knowledge Project",
+      "Acquired",
+      "Lex Fridman",
+      "Founders",
+      "Hacker News",
+      "Tim Ferriss"
+    ],
+    "tagsMore": "+ thousands more"
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Start for free.<br><span class=\"serif-it\">Upgrade to €3</span> when you want more.",
+    "lede": "No commitment. No credit card to get started.",
+    "soonLabel": "COMING SOON",
+    "free": {
+      "name": "Free",
+      "tagline": "TO EXPLORE",
+      "price": "€0",
+      "period": " /month",
+      "features": [
+        {
+          "label": "1h of transcription / month",
+          "soon": false
+        },
+        {
+          "label": "3 AI episode analyses / month",
+          "soon": false
+        },
+        {
+          "label": "Community library",
+          "soon": false
+        },
+        {
+          "label": "Full-text search",
+          "soon": false
+        }
+      ],
+      "ctaLabel": "Get started free"
+    },
+    "premium": {
+      "name": "Premium",
+      "tag": "RECOMMENDED",
+      "price": "€3",
+      "period": " /month",
+      "tagline": "For enthusiasts",
+      "features": [
+        {
+          "label": "5h of transcription / month",
+          "soon": false
+        },
+        {
+          "label": "30 AI episode analyses / month",
+          "soon": false
+        },
+        {
+          "label": "Multilingual translation",
+          "soon": true
+        },
+        {
+          "label": "1 automated channel",
+          "soon": false
+        },
+        {
+          "label": "Saved prompts",
+          "soon": false
+        }
+      ],
+      "ctaLabel": "Try Premium"
+    },
+    "note": {
+      "before": "Want more? The ",
+      "linkLabel": "Pro plan",
+      "after": " is built for you."
+    }
+  },
+  "pro": {
+    "eyebrow": "Go further · Pro Plan",
+    "title": "Want to use Audioask like a<span class=\"serif-it\" style=\"color: var(--accent);\">·pro</span>?",
+    "text": "If you transcribe more than 10 hours per month, analyze entire channels, or produce deliverables from podcasts, the Pro plan is made for you.",
+    "ctaPrimary": "Discover the Pro plan",
+    "ctaSecondary": "See pricing",
+    "planLabel": "PRO PLAN · €19/MONTH",
+    "items": {
+      "hours": {
+        "name": "20h of transcription / month",
+        "sub": "then €2/h extra"
+      },
+      "ai": {
+        "name": "25M AI characters included",
+        "sub": "then €2/M characters"
+      },
+      "cross": {
+        "name": "Cross-episode AI analysis",
+        "sub": "entire channels"
+      },
+      "prompts": {
+        "name": "Unlimited prompts",
+        "sub": "saved and reusable"
+      },
+      "channels": {
+        "name": "Unlimited automated channels",
+        "sub": "transcription + analysis + delivery"
+      },
+      "export": {
+        "name": "Export PDF / MD / SRT",
+        "sub": "transcripts and analyses"
+      }
+    }
+  },
+  "finalCta": {
+    "title": "Your podcasts give you <span class=\"em-serif\">more</span>,<br>starting today.",
+    "lede": "Create your account in 30 seconds. 1h of transcription included to get started.",
+    "ctaLabel": "Create a free account",
+    "loginNote": "Already have an account?",
+    "loginLabel": "Sign in"
+  }
+}
