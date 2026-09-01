@@ -1,0 +1,131 @@
+# Configuration de l'administration Audioask (Sveltia CMS).
+#
+# Chaque champ décrit ici doit rester aligné avec le schéma Zod de
+# src/content/config.ts : c'est ce schéma qui valide les fichiers au build.
+# Si les deux divergent, le déploiement échoue au lieu de publier une page
+# cassée — mais autant éviter l'aller-retour.
+
+backend:
+  name: github
+  repo: Natives-Sarl/audioask-website
+  branch: main
+  # Message des commits créés depuis l'admin, pour les distinguer dans
+  # l'historique Git des commits de développement.
+  commit_messages:
+    create: 'contenu({{collection}}): ajout de "{{slug}}"'
+    update: 'contenu({{collection}}): mise à jour de "{{slug}}"'
+    delete: 'contenu({{collection}}): suppression de "{{slug}}"'
+    uploadMedia: 'contenu(media): ajout de "{{path}}"'
+    deleteMedia: 'contenu(media): suppression de "{{path}}"'
+
+# Publication directe sur main : chaque enregistrement déclenche le
+# déploiement GitHub Actions (~2 min). Passer à "editorial_workflow" si
+# l'on veut un circuit de relecture par pull request.
+publish_mode: simple
+
+media_folder: public/assets
+public_folder: /assets
+
+collections:
+  # ---------------------------------------------------------------- Blog
+  - name: blog
+    label: Articles de blog
+    label_singular: Article
+    folder: src/content/blog
+    extension: md
+    format: frontmatter
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}} — {{lang}}'
+    sortable_fields: [pubDate, title, lang]
+    view_groups:
+      - label: Langue
+        field: lang
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - name: description
+        label: Description (résumé + balise meta)
+        widget: text
+        hint: Affichée dans la liste des articles et dans les résultats Google. Environ 150 caractères.
+      - name: pubDate
+        label: Date de publication
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        date_format: 'DD.MM.YYYY'
+        time_format: false
+        picker_utc: true
+      - name: lang
+        label: Langue
+        widget: select
+        default: fr
+        options:
+          - { label: Français, value: fr }
+          - { label: English, value: en }
+        hint: Détermine si l'article est publié sous /blog/ (fr) ou /en/blog/ (en).
+      - { name: author, label: Auteur, widget: string, default: "L'équipe Audioask" }
+      - name: tags
+        label: Mots-clés
+        widget: list
+        required: false
+        default: []
+        field: { name: tag, label: Mot-clé, widget: string }
+      - name: image
+        label: Image de couverture
+        widget: image
+        required: false
+      - name: draft
+        label: Brouillon
+        widget: boolean
+        default: false
+        hint: Un brouillon n'est ni publié ni listé sur le site.
+      - { name: body, label: Contenu, widget: markdown }
+
+  # ------------------------------------------------------------ Podcasts
+  - name: podcasts
+    label: Pages podcast
+    label_singular: Podcast
+    folder: src/content/podcasts
+    extension: json
+    format: json
+    create: true
+    slug: '{{slug}}'
+    identifier_field: name
+    summary: '{{name}} — {{category}}'
+    sortable_fields: [name, category]
+    fields:
+      - { name: name, label: Nom du podcast, widget: string }
+      - name: pageTitle
+        label: Titre de la page
+        widget: string
+        hint: Titre affiché en haut de la page et dans l'onglet du navigateur.
+      - name: embedId
+        label: Identifiant du lecteur intégré
+        widget: string
+        hint: UUID de l'embed Audioask, visible dans l'URL du lecteur.
+        pattern: ['^[0-9a-fA-F-]{36}$', 'Doit être un UUID (36 caractères).']
+      - { name: iframeTitle, label: Titre de l'iframe (accessibilité), widget: string }
+      - { name: description, label: Description, widget: text }
+      - name: metaDescription
+        label: Description pour les moteurs de recherche
+        widget: text
+        hint: Environ 150 à 160 caractères.
+      - name: language
+        label: Langue du podcast
+        widget: select
+        default: fr
+        options:
+          - { label: Français, value: fr }
+          - { label: English, value: en }
+          - { label: Deutsch, value: de }
+      - { name: languageLabel, label: Langue (libellé affiché), widget: string, default: Français }
+      - { name: languageFlag, label: Drapeau (emoji), widget: string, default: 🇫🇷 }
+      - { name: category, label: Catégorie, widget: string }
+      - { name: host, label: Animateur, widget: string, required: false }
+      - { name: episodeCount, label: Nombre d'épisodes, widget: number, required: false, value_type: int }
+      - { name: coverImage, label: Image de couverture, widget: image, required: false }
+      - name: draft
+        label: Brouillon
+        widget: boolean
+        default: false
+        hint: Un brouillon n'est pas publié sur le site.
