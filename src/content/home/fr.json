@@ -6,7 +6,7 @@
   "hero": {
     "pill": "App web & mobile",
     "eyebrow": "Vos podcasts vous donnent plus.",
-    "title": "L'application <span class=\"em-serif\">vraiment</span><br> faite pour les amateurs<br> de podcasts.",
+    "title": "L'application <span class=\"em-serif\">vraiment</span><br> faite pour les amateurs<br> de podcasts!",
     "lede": "Audioask donne une nouvelle dimension à vos podcasts. Écoutez, transcrivez, interrogez chaque épisode avec l'IA et exploitez ce que vous écoutez.",
     "ctaLabel": "Essayer gratuitement",
     "highlights": [
@@ -125,7 +125,7 @@
       "name": "Free",
       "tagline": "POUR DÉCOUVRIR",
       "price": "0€",
-      "period": " /mois",
+      "period": "/mois",
       "features": [
         {
           "label": "1h de transcription / mois",
@@ -150,7 +150,7 @@
       "name": "Premium",
       "tag": "RECOMMANDÉ",
       "price": "3€",
-      "period": " /mois",
+      "period": "/mois",
       "tagline": "Pour les passionnés",
       "features": [
         {
@@ -177,9 +177,9 @@
       "ctaLabel": "Essayer Premium"
     },
     "note": {
-      "before": "Vous voulez plus ? Le ",
+      "before": "Vous voulez plus ? Le",
       "linkLabel": "plan Pro",
-      "after": " est fait pour vous."
+      "after": "est fait pour vous."
     }
   },
   "pro": {

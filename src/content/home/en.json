@@ -125,7 +125,7 @@
       "name": "Free",
       "tagline": "TO EXPLORE",
       "price": "€0",
-      "period": " /month",
+      "period": "/month",
       "features": [
         {
           "label": "1h of transcription / month",
@@ -150,7 +150,7 @@
       "name": "Premium",
       "tag": "RECOMMENDED",
       "price": "€3",
-      "period": " /month",
+      "period": "/month",
       "tagline": "For enthusiasts",
       "features": [
         {
@@ -177,9 +177,9 @@
       "ctaLabel": "Try Premium"
     },
     "note": {
-      "before": "Want more? The ",
+      "before": "Want more? The",
       "linkLabel": "Pro plan",
-      "after": " is built for you."
+      "after": "is built for you."
     }
   },
   "pro": {
