@@ -490,7 +490,7 @@ const { hero, features, discover, library, pricing, pro, finalCta } = t;
           <div class="plan-name">{pricing.free.name}</div>
           <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.08em;">{pricing.free.tagline}</span>
         </div>
-        <div class="price">{pricing.free.price}<small>{pricing.free.period}</small></div>
+        <div class="price">{pricing.free.price}<small>&nbsp;{pricing.free.period}</small></div>
         <ul class="plan-feats">
           {pricing.free.features.map(item => (
             <li>{item.label}{item.soon && (<Fragment> <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; padding: 1px 6px; border-radius: 999px; background: var(--ink); color: var(--cream);">{pricing.soonLabel}</span></Fragment>)}</li>
@@ -503,7 +503,7 @@ const { hero, features, discover, library, pricing, pro, finalCta } = t;
           <div class="plan-name">{pricing.premium.name}</div>
           <span class="plan-tag">{pricing.premium.tag}</span>
         </div>
-        <div class="price">{pricing.premium.price}<small>{pricing.premium.period}</small></div>
+        <div class="price">{pricing.premium.price}<small>&nbsp;{pricing.premium.period}</small></div>
         <div class="plan-sub">{pricing.premium.tagline}</div>
         <ul class="plan-feats">
           {pricing.premium.features.map(item => (
@@ -514,7 +514,7 @@ const { hero, features, discover, library, pricing, pro, finalCta } = t;
       </div>
     </div>
     <p class="small center" style="margin-top: 24px;">
-      {pricing.note.before}<a href="/en/professionals" style="color: var(--accent-ink); border-bottom: 1px solid currentColor;">{pricing.note.linkLabel}</a>{pricing.note.after}
+      {pricing.note.before} <a href="/en/professionals" style="color: var(--accent-ink); border-bottom: 1px solid currentColor;">{pricing.note.linkLabel}</a> {pricing.note.after}
     </p>
   </div>
 </section>

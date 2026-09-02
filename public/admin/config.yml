@@ -236,7 +236,7 @@ collections:
                 label: Phrase sous les offres
                 widget: object
                 collapsed: true
-                hint: La phrase est découpée en trois pour que le lien vers la page Pro ne puisse pas être cassé.
+                hint: La phrase est découpée en trois pour que le lien vers la page Pro ne puisse pas être cassé. Les espaces autour du lien sont ajoutés automatiquement, inutile d'en mettre en début ou fin de champ.
                 fields:
                   - { name: before, label: Avant le lien, widget: string, i18n: true }
                   - { name: linkLabel, label: Texte du lien, widget: string, i18n: true }
