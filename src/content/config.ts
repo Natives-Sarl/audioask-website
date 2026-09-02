@@ -129,6 +129,9 @@ const home = defineCollection({
         ctaLabel: z.string(),
       }),
       // Phrase découpée pour garder le lien vers /pro hors des textes éditables.
+      // L'admin supprime les espaces en début et fin de chaque champ à
+      // l'enregistrement : les espaces autour du lien appartiennent au gabarit,
+      // jamais à ces valeurs. Même règle pour « period » ci-dessus.
       note: z.object({
         before: z.string(),
         linkLabel: z.string(),

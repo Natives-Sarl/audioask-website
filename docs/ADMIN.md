@@ -180,7 +180,11 @@ mais la publication ne part pas.
 5. **Marquer chaque champ `i18n: true`**, à tous les niveaux d'imbrication. Un
    champ sans cette marque n'existe que dans la langue par défaut : il
    disparaîtrait de la version anglaise.
-6. Vérifier que le rendu n'a pas bougé : construire avant et après, et comparer
+6. **Ne jamais faire porter de sens à un espace en début ou fin de champ.**
+   L'admin les supprime à l'enregistrement : une valeur `" /mois"` revient
+   `"/mois"`, et deux textes concaténés se retrouvent collés. Les séparateurs
+   (espaces, espaces insécables) appartiennent au gabarit.
+7. Vérifier que le rendu n'a pas bougé : construire avant et après, et comparer
    le HTML produit (`dist/`) — c'est la méthode utilisée pour l'accueil.
 
 ### Mettre à jour Sveltia CMS
