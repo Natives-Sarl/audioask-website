@@ -1,12 +1,45 @@
 # Administration des contenus
 
-L'interface d'édition est disponible sur **https://www.audioask.ai/admin**.
+L'interface d'édition est disponible sur **https://www.audioask.ai/admin** en
+production, et sur **http://localhost:4321/admin/** avec `npm run dev`.
 
 Elle repose sur [Sveltia CMS](https://github.com/sveltia/sveltia-cms), un CMS
 open source « git-based » : il n'y a ni base de données, ni service tiers qui
 héberge le contenu. L'interface lit et écrit directement les fichiers du dépôt
 GitHub. Chaque enregistrement crée un commit, l'action de déploiement publie le
 site dans les deux minutes qui suivent.
+
+---
+
+## Essayer sans rien publier
+
+Le mode **dépôt local** ouvre l'admin sur les fichiers de votre machine : pas de
+token, pas de commit, rien qui parte en ligne. C'est la bonne façon de prendre
+l'outil en main.
+
+```sh
+git pull
+npm install     # la première fois seulement
+npm run dev
+```
+
+Ouvrir **http://localhost:4321/admin/** dans **Chrome ou Edge** (le mode local
+repose sur une API que Firefox et Safari n'implémentent pas), puis :
+
+1. Cliquer **Work with Local Repository**.
+2. Sélectionner le dossier du dépôt `audioask-website` et autoriser l'accès.
+3. Modifier un texte, enregistrer.
+
+L'enregistrement écrit directement dans `src/content/`. Le site local se
+recharge tout seul : http://localhost:4321/ et http://localhost:4321/en/
+montrent le résultat immédiatement.
+
+Pour vérifier ce qui a été touché, puis revenir en arrière :
+
+```sh
+git diff --stat     # un texte de la page d'accueil doit modifier fr.json ET en.json
+git checkout .      # annule tout
+```
 
 ---
 

@@ -1,3 +1,12 @@
+---
+// Page servie telle quelle : c'est l'interface d'administration, elle ne
+// partage rien avec le reste du site (ni Layout, ni styles). Elle vit ici
+// plutôt que dans public/ pour que l'adresse /admin/ fonctionne aussi avec le
+// serveur de développement, qui ne sert pas les index de dossier.
+// La configuration des collections reste dans public/admin/config.yml, chargée
+// par le CMS au démarrage.
+---
+
 <!doctype html>
 <html lang="fr">
   <head>
@@ -23,6 +32,6 @@
       (npm pack @sveltia/cms) et le poser dans public/admin/sveltia-cms.js,
       puis remplacer l'URL par "/admin/sveltia-cms.js".
     -->
-    <script src="https://unpkg.com/@sveltia/cms@0.204.0/dist/sveltia-cms.js"></script>
+    <script is:inline src="https://unpkg.com/@sveltia/cms@0.204.0/dist/sveltia-cms.js"></script>
   </body>
 </html>
