@@ -1,0 +1,6 @@
+# L'interface d'administration ne doit jamais être indexée. L'en-tête complète
+# la balise meta robots de index.html, pour les fichiers qui n'en ont pas
+# (config.yml notamment).
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>

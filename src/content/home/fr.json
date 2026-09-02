@@ -1,0 +1,226 @@
+{
+  "meta": {
+    "title": "Audioask — Vos podcasts vous donnent plus.",
+    "description": "Audioask donne une nouvelle dimension à vos podcasts. Écoutez, transcrivez, interrogez chaque épisode avec l'IA et exploitez ce que vous écoutez."
+  },
+  "hero": {
+    "pill": "App web & mobile",
+    "eyebrow": "Vos podcasts vous donnent plus.",
+    "title": "L'application <span class=\"em-serif\">vraiment</span><br> faite pour les amateurs<br> de podcasts.",
+    "lede": "Audioask donne une nouvelle dimension à vos podcasts. Écoutez, transcrivez, interrogez chaque épisode avec l'IA et exploitez ce que vous écoutez.",
+    "ctaLabel": "Essayer gratuitement",
+    "highlights": [
+      "Gratuit. Sans carte.",
+      "1h de transcription offerte"
+    ]
+  },
+  "features": {
+    "eyebrow": "Ce qui change pour vous",
+    "title": "Une vraie app de podcasts,<br><span class=\"serif-it\">pensée pour les gens qui écoutent vraiment.</span>",
+    "lede": "Ces petites fonctionnalités qui donnent de la valeur à vos podcasts.",
+    "soonLabel": "prochainement",
+    "basics": [
+      {
+        "label": "Abonnement aux channels",
+        "soon": false
+      },
+      {
+        "label": "Lecteur audio · vitesse variable",
+        "soon": false
+      },
+      {
+        "label": "Playlists & favoris",
+        "soon": false
+      },
+      {
+        "label": "Signets temporels",
+        "soon": false
+      },
+      {
+        "label": "+185M épisodes disponibles",
+        "soon": false
+      },
+      {
+        "label": "App mobile iOS & Android",
+        "soon": true
+      }
+    ],
+    "dividerLabel": "Les fonctionnalités qui font la différence",
+    "cards": {
+      "search": {
+        "title": "Une recherche qui retrouve tout, dans tout.",
+        "text": "Tapez un mot, une idée, un nom. Audioask vous emmène pile sur le bon passage, dans tous les épisodes que vous avez transcrits ou marqués."
+      },
+      "transcribe": {
+        "title": "De l'audio au texte en quelques minutes.",
+        "text": "Audioask transcrit vos épisodes avec horodatage et identification des intervenants. Lisez, cherchez, partagez — chaque mot est consultable en quelques minutes.",
+        "ctaLabel": "En savoir plus sur la transcription"
+      },
+      "ask": {
+        "title": "Posez des questions à vos épisodes. Notre IA vous répond.",
+        "text": "En langage naturel, dans votre langue. L'IA répond avec des citations horodatées issues de la transcription — vérifiables en un clic.",
+        "ctaLabel": "En savoir plus sur l'interprétation IA"
+      },
+      "prompts": {
+        "title": "Vos prompts préférés enregistrés et prêts au réemploi.",
+        "text": "Enregistrez les questions que vous posez tout le temps — « résume en 5 points », « quelles citations clés ? ». Un clic, et l'IA répond sur l'épisode, citations à l'appui."
+      },
+      "automate": {
+        "title": "Les nouveaux épisodes traités automatiquement. Pendant que vous dormez.",
+        "text": "Activez l'automatisation d'un channel : chaque nouvel épisode est transcrit, analysé et livré là où vous le souhaitez. Bibliothèque, email, Slack — au choix.",
+        "ctaLabel": "En savoir plus sur l'automatisation"
+      },
+      "bookmarks": {
+        "title": "Des signets pour marquer les moments que vous souhaitez retrouver.",
+        "text": "Un tap pendant l'écoute, et le moment est épinglé avec son horodatage. Relisez, partagez ou exportez vos signets — dans la transcription comme dans votre bibliothèque. Sur web et sur mobile."
+      }
+    }
+  },
+  "discover": {
+    "eyebrow": "Explorer en détail",
+    "title": "Les fonctionnalités clés<br>en un coup d'œil.",
+    "linkLabel": "En savoir plus",
+    "soonBadge": "PROCHAINEMENT",
+    "cards": {
+      "transcribe": {
+        "title": "Transcrire",
+        "text": "De l'audio au texte structuré en quelques minutes."
+      },
+      "ask": {
+        "title": "Interroger",
+        "text": "Posez vos questions, l'épisode répond — avec citations."
+      },
+      "automate": {
+        "title": "Automatiser",
+        "text": "Chaque nouvel épisode traité et livré, tout seul."
+      },
+      "translate": {
+        "title": "Traduire",
+        "text": "12 langues, transcription traduite et audio doublé."
+      }
+    }
+  },
+  "library": {
+    "eyebrow": "Effet réseau",
+    "title": "Faire de vos podcasts une <span class=\"serif-it\" style=\"color: var(--accent);\">véritable</span> base de connaissance.",
+    "lede": "Quand un membre transcrit un épisode, toute la communauté en profite. Vous accédez instantanément à des milliers d'épisodes déjà transcrits — sans dépenser un seul crédit.",
+    "bigNumber": "+185M",
+    "bigNumberCaption": "épisodes <span class=\"serif-it\">déjà</span> à disposition",
+    "tags": [
+      "The Knowledge Project",
+      "Acquired",
+      "Lex Fridman",
+      "Génération DIY",
+      "Hacker News",
+      "Tim Ferriss"
+    ],
+    "tagsMore": "+ des milliers"
+  },
+  "pricing": {
+    "eyebrow": "Tarifs",
+    "title": "Commencez gratuitement.<br><span class=\"serif-it\">Passez à 3€</span> quand vous en voulez plus.",
+    "lede": "Pas d'engagement. Pas de carte de crédit pour démarrer.",
+    "soonLabel": "PROCHAINEMENT",
+    "free": {
+      "name": "Free",
+      "tagline": "POUR DÉCOUVRIR",
+      "price": "0€",
+      "period": " /mois",
+      "features": [
+        {
+          "label": "1h de transcription / mois",
+          "soon": false
+        },
+        {
+          "label": "3 analyses IA d'épisodes / mois",
+          "soon": false
+        },
+        {
+          "label": "Bibliothèque communautaire",
+          "soon": false
+        },
+        {
+          "label": "Recherche plein-texte",
+          "soon": false
+        }
+      ],
+      "ctaLabel": "Commencer gratuitement"
+    },
+    "premium": {
+      "name": "Premium",
+      "tag": "RECOMMANDÉ",
+      "price": "3€",
+      "period": " /mois",
+      "tagline": "Pour les passionnés",
+      "features": [
+        {
+          "label": "5h de transcription / mois",
+          "soon": false
+        },
+        {
+          "label": "30 analyses IA d'épisodes / mois",
+          "soon": false
+        },
+        {
+          "label": "Traduction multilingue",
+          "soon": true
+        },
+        {
+          "label": "1 channel automatisé",
+          "soon": false
+        },
+        {
+          "label": "Prompts sauvegardés",
+          "soon": false
+        }
+      ],
+      "ctaLabel": "Essayer Premium"
+    },
+    "note": {
+      "before": "Vous voulez plus ? Le ",
+      "linkLabel": "plan Pro",
+      "after": " est fait pour vous."
+    }
+  },
+  "pro": {
+    "eyebrow": "Pour aller plus loin · Plan Pro",
+    "title": "Vous voulez utiliser Audioask comme un<span class=\"serif-it\" style=\"color: var(--accent);\">·e pro</span> ?",
+    "text": "Si vous transcrivez plus de 10 heures par mois, analysez des channels entiers ou produisez des livrables à partir de podcasts, le plan Pro est fait pour vous.",
+    "ctaPrimary": "Découvrir le plan Pro",
+    "ctaSecondary": "Voir les tarifs",
+    "planLabel": "PLAN PRO · 19€/MOIS",
+    "items": {
+      "hours": {
+        "name": "20h de transcription / mois",
+        "sub": "puis 2€/h supplémentaire"
+      },
+      "ai": {
+        "name": "25M caractères IA inclus",
+        "sub": "puis 2€/M caractères"
+      },
+      "cross": {
+        "name": "Analyse cross-épisodes",
+        "sub": "d'un channel entier"
+      },
+      "prompts": {
+        "name": "Prompts illimités",
+        "sub": "sauvegardés et réutilisables"
+      },
+      "channels": {
+        "name": "Channels automatisés illimités",
+        "sub": "transcription + analyse + livraison"
+      },
+      "export": {
+        "name": "Export PDF / MD / SRT",
+        "sub": "transcriptions et analyses"
+      }
+    }
+  },
+  "finalCta": {
+    "title": "Vos podcasts vous donnent <span class=\"em-serif\">plus</span>,<br>à partir d'aujourd'hui.",
+    "lede": "Créez votre compte en 30 secondes. 1h de transcription offerte pour démarrer.",
+    "ctaLabel": "Créer un compte gratuit",
+    "loginNote": "Déjà un compte ?",
+    "loginLabel": "Se connecter"
+  }
+}

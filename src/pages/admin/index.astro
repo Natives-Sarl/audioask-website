@@ -1,0 +1,37 @@
+---
+// Page servie telle quelle : c'est l'interface d'administration, elle ne
+// partage rien avec le reste du site (ni Layout, ni styles). Elle vit ici
+// plutôt que dans public/ pour que l'adresse /admin/ fonctionne aussi avec le
+// serveur de développement, qui ne sert pas les index de dossier.
+// La configuration des collections reste dans public/admin/config.yml, chargée
+// par le CMS au démarrage.
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- L'admin ne doit jamais être indexée ni suivie par les moteurs. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Administration — Audioask</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <!--
+      Sveltia CMS : CMS open source « git-based ». Rien n'est stocké sur un
+      serveur tiers ; l'interface lit et écrit directement les fichiers du dépôt
+      GitHub via le token de la personne connectée.
+
+      La version est volontairement figée pour éviter qu'une mise à jour amont
+      casse l'admin sans prévenir. Pour mettre à jour : changer le numéro
+      ci-dessous après avoir vérifié le changelog.
+      https://github.com/sveltia/sveltia-cms/releases
+
+      Si l'on souhaite un jour se passer du CDN, télécharger le fichier
+      (npm pack @sveltia/cms) et le poser dans public/admin/sveltia-cms.js,
+      puis remplacer l'URL par "/admin/sveltia-cms.js".
+    -->
+    <script is:inline src="https://unpkg.com/@sveltia/cms@0.204.0/dist/sveltia-cms.js"></script>
+  </body>
+</html>

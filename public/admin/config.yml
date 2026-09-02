@@ -1,0 +1,396 @@
+# Configuration de l'administration Audioask (Sveltia CMS).
+#
+# Chaque champ décrit ici doit rester aligné avec le schéma Zod de
+# src/content/config.ts : c'est ce schéma qui valide les fichiers au build.
+# Si les deux divergent, le déploiement échoue au lieu de publier une page
+# cassée — mais autant éviter l'aller-retour.
+
+backend:
+  name: github
+  repo: Natives-Sarl/audioask-website
+  branch: main
+  # Message des commits créés depuis l'admin, pour les distinguer dans
+  # l'historique Git des commits de développement.
+  commit_messages:
+    create: 'contenu({{collection}}): ajout de "{{slug}}"'
+    update: 'contenu({{collection}}): mise à jour de "{{slug}}"'
+    delete: 'contenu({{collection}}): suppression de "{{slug}}"'
+    uploadMedia: 'contenu(media): ajout de "{{path}}"'
+    deleteMedia: 'contenu(media): suppression de "{{path}}"'
+
+# Publication directe sur main : chaque enregistrement déclenche le
+# déploiement GitHub Actions (~2 min). Passer à "editorial_workflow" si
+# l'on veut un circuit de relecture par pull request.
+publish_mode: simple
+
+# Pages bilingues : le français et l'anglais s'éditent côte à côte dans le même
+# écran, chaque langue dans son propre fichier (fr.json / en.json).
+# Le blog et les podcasts n'utilisent pas ce mode : leurs contenus ne sont pas
+# des traductions l'un de l'autre et gardent des adresses distinctes par langue.
+i18n:
+  structure: multiple_files
+  locales: [fr, en]
+  default_locale: fr
+
+media_folder: public/assets
+public_folder: /assets
+
+collections:
+  # ------------------------------------------------------- Pages du site
+  # Collection « files » : la liste des entrées est figée, on modifie les textes
+  # d'une page existante. Les liens, les icônes et la maquette de l'application
+  # restent dans les gabarits .astro. Le schéma qui valide ces fichiers au build
+  # est dans src/content/config.ts : les deux doivent rester alignés.
+  #
+  # Le {{locale}} du chemin donne une seule entrée pour les deux langues :
+  # l'éditeur affiche le français et l'anglais côte à côte, et un enregistrement
+  # écrit fr.json et en.json ensemble. Chaque champ porte « i18n: true » : sans
+  # cette marque, il n'existerait que dans la langue par défaut.
+  - name: pages
+    label: Pages du site
+    i18n: true
+    files:
+      - name: home
+        label: Accueil
+        file: src/content/home/{{locale}}.json
+        i18n: true
+        description: Textes de la page d'accueil — www.audioask.ai/ et /en/
+        fields:
+          - name: meta
+            i18n: true
+            label: Référencement (Google, partages)
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Titre de la page, widget: string, i18n: true }
+              - name: description
+                i18n: true
+                label: Description
+                widget: text
+                hint: Environ 150 à 160 caractères. Sert aussi d'aperçu lors des partages.
+          - name: hero
+            i18n: true
+            label: En-tête (haut de page)
+            widget: object
+            fields:
+              - { name: pill, label: Pastille, widget: string, i18n: true }
+              - { name: eyebrow, label: Surtitre, widget: string, i18n: true }
+              - name: title
+                i18n: true
+                label: Titre principal
+                widget: string
+                hint: 'HTML simple accepté : <br> pour un retour à la ligne, <span class="em-serif">mot</span> pour mettre un mot en italique serif.'
+              - { name: lede, label: Chapeau, widget: text, i18n: true }
+              - { name: ctaLabel, label: Libellé du bouton, widget: string, i18n: true }
+              - name: highlights
+                i18n: true
+                label: Arguments sous le bouton
+                widget: list
+                field: { name: item, label: Argument, widget: string, i18n: true }
+          - name: features
+            i18n: true
+            label: Section « Ce qui change pour vous »
+            widget: object
+            collapsed: true
+            fields:
+              - { name: eyebrow, label: Surtitre, widget: string, i18n: true }
+              - name: title
+                i18n: true
+                label: Titre
+                widget: string
+                hint: 'HTML simple accepté : <br>, <span class="serif-it">…</span>.'
+              - { name: lede, label: Chapeau, widget: text, i18n: true }
+              - { name: soonLabel, label: Étiquette « prochainement », widget: string, i18n: true }
+              - name: basics
+                i18n: true
+                label: Fonctionnalités de base (pastilles)
+                widget: list
+                fields:
+                  - { name: label, label: Libellé, widget: string, i18n: true }
+                  - { name: soon, label: Marquer « prochainement », widget: boolean, default: false, i18n: true }
+              - { name: dividerLabel, label: Intertitre avant les cartes, widget: string, i18n: true }
+              - name: cards
+                i18n: true
+                label: Cartes
+                widget: object
+                collapsed: true
+                hint: "L'ordre, les icônes et les illustrations sont fixés dans le gabarit ; seuls les textes se modifient ici."
+                fields:
+                  - name: search
+                    i18n: true
+                    label: 01 · Recherche
+                    widget: object
+                    collapsed: true
+                    fields: &feature_card
+                      - { name: title, label: Titre, widget: string, i18n: true }
+                      - { name: text, label: Texte, widget: text, i18n: true }
+                  - name: transcribe
+                    i18n: true
+                    label: 02 · Transcription
+                    widget: object
+                    collapsed: true
+                    fields: &feature_card_link
+                      - { name: title, label: Titre, widget: string, i18n: true }
+                      - { name: text, label: Texte, widget: text, i18n: true }
+                      - { name: ctaLabel, label: Libellé du lien, widget: string, required: false, i18n: true }
+                  - { name: ask, label: 03 · Interprétation IA, widget: object, collapsed: true, fields: *feature_card_link, i18n: true }
+                  - { name: prompts, label: 04 · Prompts, widget: object, collapsed: true, fields: *feature_card, i18n: true }
+                  - { name: automate, label: 05 · Automatisation, widget: object, collapsed: true, fields: *feature_card_link, i18n: true }
+                  - { name: bookmarks, label: 06 · Signets, widget: object, collapsed: true, fields: *feature_card, i18n: true }
+          - name: discover
+            i18n: true
+            label: Section « Explorer en détail »
+            widget: object
+            collapsed: true
+            fields:
+              - { name: eyebrow, label: Surtitre, widget: string, i18n: true }
+              - name: title
+                i18n: true
+                label: Titre
+                widget: string
+                hint: 'HTML simple accepté : <br>, <span class="serif-it">…</span>.'
+              - { name: linkLabel, label: Libellé des liens, widget: string, i18n: true }
+              - { name: soonBadge, label: Badge « prochainement », widget: string, i18n: true }
+              - name: cards
+                i18n: true
+                label: Cartes
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: transcribe, label: Transcrire, widget: object, collapsed: true, fields: *feature_card, i18n: true }
+                  - { name: ask, label: Interroger, widget: object, collapsed: true, fields: *feature_card, i18n: true }
+                  - { name: automate, label: Automatiser, widget: object, collapsed: true, fields: *feature_card, i18n: true }
+                  - { name: translate, label: Traduire, widget: object, collapsed: true, fields: *feature_card, i18n: true }
+          - name: library
+            i18n: true
+            label: Section « Effet réseau »
+            widget: object
+            collapsed: true
+            fields:
+              - { name: eyebrow, label: Surtitre, widget: string, i18n: true }
+              - name: title
+                i18n: true
+                label: Titre
+                widget: string
+                hint: 'HTML simple accepté : <br>, <span class="serif-it">…</span>.'
+              - { name: lede, label: Chapeau, widget: text, i18n: true }
+              - { name: bigNumber, label: Grand chiffre, widget: string, i18n: true }
+              - name: bigNumberCaption
+                i18n: true
+                label: Légende du grand chiffre
+                widget: string
+                hint: 'HTML simple accepté : <span class="serif-it">…</span>.'
+              - name: tags
+                i18n: true
+                label: Podcasts cités
+                widget: list
+                field: { name: tag, label: Nom, widget: string, i18n: true }
+              - { name: tagsMore, label: Dernière pastille, widget: string, i18n: true }
+          - name: pricing
+            i18n: true
+            label: Section « Tarifs »
+            widget: object
+            collapsed: true
+            fields:
+              - { name: eyebrow, label: Surtitre, widget: string, i18n: true }
+              - name: title
+                i18n: true
+                label: Titre
+                widget: string
+                hint: 'HTML simple accepté : <br>, <span class="serif-it">…</span>.'
+              - { name: lede, label: Chapeau, widget: text, i18n: true }
+              - { name: soonLabel, label: Étiquette « prochainement », widget: string, i18n: true }
+              - name: free
+                i18n: true
+                label: Offre gratuite
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: name, label: Nom de l'offre, widget: string, i18n: true }
+                  - { name: tagline, label: Mention au-dessus du prix, widget: string, i18n: true }
+                  - { name: price, label: Prix, widget: string, i18n: true }
+                  - { name: period, label: Périodicité, widget: string, i18n: true }
+                  - name: features
+                    i18n: true
+                    label: Ce qui est inclus
+                    widget: list
+                    fields: &plan_feature
+                      - { name: label, label: Libellé, widget: string, i18n: true }
+                      - { name: soon, label: Marquer « prochainement », widget: boolean, default: false, i18n: true }
+                  - { name: ctaLabel, label: Libellé du bouton, widget: string, i18n: true }
+              - name: premium
+                i18n: true
+                label: Offre Premium
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: name, label: Nom de l'offre, widget: string, i18n: true }
+                  - { name: tag, label: Étiquette, widget: string, i18n: true }
+                  - { name: price, label: Prix, widget: string, i18n: true }
+                  - { name: period, label: Périodicité, widget: string, i18n: true }
+                  - { name: tagline, label: Sous-titre, widget: string, i18n: true }
+                  - { name: features, label: Ce qui est inclus, widget: list, fields: *plan_feature, i18n: true }
+                  - { name: ctaLabel, label: Libellé du bouton, widget: string, i18n: true }
+              - name: note
+                i18n: true
+                label: Phrase sous les offres
+                widget: object
+                collapsed: true
+                hint: La phrase est découpée en trois pour que le lien vers la page Pro ne puisse pas être cassé.
+                fields:
+                  - { name: before, label: Avant le lien, widget: string, i18n: true }
+                  - { name: linkLabel, label: Texte du lien, widget: string, i18n: true }
+                  - { name: after, label: Après le lien, widget: string, i18n: true }
+          - name: pro
+            i18n: true
+            label: Section « Plan Pro »
+            widget: object
+            collapsed: true
+            fields:
+              - { name: eyebrow, label: Surtitre, widget: string, i18n: true }
+              - name: title
+                i18n: true
+                label: Titre
+                widget: string
+                hint: 'HTML simple accepté : <br>, <span class="serif-it">…</span>.'
+              - { name: text, label: Texte, widget: text, i18n: true }
+              - { name: ctaPrimary, label: Bouton principal, widget: string, i18n: true }
+              - { name: ctaSecondary, label: Bouton secondaire, widget: string, i18n: true }
+              - { name: planLabel, label: Intitulé de l'offre, widget: string, i18n: true }
+              - name: items
+                i18n: true
+                label: Ce que comprend le plan
+                widget: object
+                collapsed: true
+                hint: Les icônes sont fixées dans le gabarit et suivent cet ordre.
+                fields:
+                  - name: hours
+                    i18n: true
+                    label: Heures de transcription
+                    widget: object
+                    collapsed: true
+                    fields: &pro_item
+                      - { name: name, label: Intitulé, widget: string, i18n: true }
+                      - { name: sub, label: Précision, widget: string, i18n: true }
+                  - { name: ai, label: Caractères IA, widget: object, collapsed: true, fields: *pro_item, i18n: true }
+                  - { name: cross, label: Analyse cross-épisodes, widget: object, collapsed: true, fields: *pro_item, i18n: true }
+                  - { name: prompts, label: Prompts, widget: object, collapsed: true, fields: *pro_item, i18n: true }
+                  - { name: channels, label: Channels automatisés, widget: object, collapsed: true, fields: *pro_item, i18n: true }
+                  - { name: export, label: Export, widget: object, collapsed: true, fields: *pro_item, i18n: true }
+          - name: finalCta
+            i18n: true
+            label: Appel à l'action final
+            widget: object
+            collapsed: true
+            fields:
+              - name: title
+                i18n: true
+                label: Titre
+                widget: string
+                hint: 'HTML simple accepté : <br>, <span class="em-serif">…</span>.'
+              - { name: lede, label: Chapeau, widget: text, i18n: true }
+              - { name: ctaLabel, label: Libellé du bouton, widget: string, i18n: true }
+              - { name: loginNote, label: Phrase « déjà un compte », widget: string, i18n: true }
+              - { name: loginLabel, label: Texte du lien de connexion, widget: string, i18n: true }
+  # ---------------------------------------------------------------- Blog
+  - name: blog
+    label: Articles de blog
+    label_singular: Article
+    folder: src/content/blog
+    extension: md
+    format: frontmatter
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}} — {{lang}}'
+    sortable_fields: [pubDate, title, lang]
+    view_groups:
+      - label: Langue
+        field: lang
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - name: description
+        label: Description (résumé + balise meta)
+        widget: text
+        hint: Affichée dans la liste des articles et dans les résultats Google. Environ 150 caractères.
+      - name: pubDate
+        label: Date de publication
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        date_format: 'DD.MM.YYYY'
+        time_format: false
+        picker_utc: true
+      - name: lang
+        label: Langue
+        widget: select
+        default: fr
+        options:
+          - { label: Français, value: fr }
+          - { label: English, value: en }
+        hint: Détermine si l'article est publié sous /blog/ (fr) ou /en/blog/ (en).
+      - { name: author, label: Auteur, widget: string, default: "L'équipe Audioask" }
+      - name: tags
+        label: Mots-clés
+        widget: list
+        required: false
+        default: []
+        field: { name: tag, label: Mot-clé, widget: string }
+      - name: image
+        label: Image de couverture
+        widget: image
+        required: false
+      - name: draft
+        label: Brouillon
+        widget: boolean
+        default: false
+        hint: Un brouillon n'est ni publié ni listé sur le site.
+      - { name: body, label: Contenu, widget: markdown }
+
+  # ------------------------------------------------------------ Podcasts
+  - name: podcasts
+    label: Pages podcast
+    label_singular: Podcast
+    folder: src/content/podcasts
+    extension: json
+    format: json
+    create: true
+    slug: '{{slug}}'
+    identifier_field: name
+    summary: '{{name}} — {{category}}'
+    sortable_fields: [name, category]
+    fields:
+      - { name: name, label: Nom du podcast, widget: string }
+      - name: pageTitle
+        label: Titre de la page
+        widget: string
+        hint: Titre affiché en haut de la page et dans l'onglet du navigateur.
+      - name: embedId
+        label: Identifiant du lecteur intégré
+        widget: string
+        hint: UUID de l'embed Audioask, visible dans l'URL du lecteur.
+        pattern: ['^[0-9a-fA-F-]{36}$', 'Doit être un UUID (36 caractères).']
+      - { name: iframeTitle, label: Titre de l'iframe (accessibilité), widget: string }
+      - { name: description, label: Description, widget: text }
+      - name: metaDescription
+        label: Description pour les moteurs de recherche
+        widget: text
+        hint: Environ 150 à 160 caractères.
+      - name: language
+        label: Langue du podcast
+        widget: select
+        default: fr
+        options:
+          - { label: Français, value: fr }
+          - { label: English, value: en }
+          - { label: Deutsch, value: de }
+      - { name: languageLabel, label: Langue (libellé affiché), widget: string, default: Français }
+      - { name: languageFlag, label: Drapeau (emoji), widget: string, default: 🇫🇷 }
+      - { name: category, label: Catégorie, widget: string }
+      - { name: host, label: Animateur, widget: string, required: false }
+      - { name: episodeCount, label: Nombre d'épisodes, widget: number, required: false, value_type: int }
+      - { name: coverImage, label: Image de couverture, widget: image, required: false }
+      - name: draft
+        label: Brouillon
+        widget: boolean
+        default: false
+        hint: Un brouillon n'est pas publié sur le site.
