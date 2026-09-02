@@ -29,6 +29,10 @@ l'hébergement, et le token peut être révoqué à tout moment.
 4. Ouvrir https://www.audioask.ai/admin, choisir la connexion par token d'accès
    et coller la valeur.
 
+L'interface est en anglais par défaut mais existe en français : elle propose
+généralement de basculer d'elle-même, sinon le réglage se trouve dans les
+préférences du CMS (*Preferences → Language*).
+
 Le token est conservé par le navigateur : la manipulation n'est à refaire qu'en
 cas de changement de machine, de navigateur, ou d'expiration du token.
 
@@ -43,12 +47,14 @@ cas de changement de machine, de navigateur, ou d'expiration du token.
 
 ### Pages du site
 
-**Accueil (français)** et **Accueil (anglais)** — tous les textes de la page
-d'accueil : titres, chapeaux, cartes de fonctionnalités, tarifs, appels à
-l'action, ainsi que le titre et la description utilisés par Google.
+**Accueil** — tous les textes de la page d'accueil : titres, chapeaux, cartes de
+fonctionnalités, tarifs, appels à l'action, ainsi que le titre et la description
+utilisés par Google.
 
-Les deux langues sont indépendantes : modifier la page française ne change rien
-à la page anglaise, et inversement.
+Le français et l'anglais s'éditent **dans le même écran**, chaque champ affichant
+ses deux versions. Un seul enregistrement met les deux langues à jour :
+`www.audioask.ai/` et `www.audioask.ai/en/` restent ainsi alignées, sans risque
+d'oublier la traduction d'une modification.
 
 Certains champs acceptent du **HTML simple**, signalé par une aide sous le
 champ :
@@ -66,6 +72,13 @@ texte simple fonctionne toujours.
 
 Création, modification et suppression. Le champ **Langue** décide de l'adresse
 de publication : `fr` publie sous `/blog/`, `en` sous `/en/blog/`.
+
+Le blog n'utilise **pas** l'édition côte à côte des pages, et c'est délibéré : un
+article n'est pas la traduction d'un autre. Chacun a sa propre adresse
+(`/blog/audioask-lancement/` et `/en/blog/audioask-launch/`, pas la même dans
+les deux langues — c'est meilleur pour le référencement), sa propre date, et
+peut exister dans une seule langue. Pour une version anglaise d'un article
+français, on crée un second article avec la langue `English`.
 
 Un article coché **Brouillon** n'est ni listé ni publié : aucune page n'est
 créée pour lui, il reste invisible tant que la case n'est pas décochée.
@@ -128,9 +141,13 @@ mais la publication ne part pas.
    gabarit.
 2. Déclarer la collection et son schéma dans `src/content/config.ts`.
 3. Remplacer les textes du `.astro` par les valeurs lues via `getEntry`.
-4. Ajouter l'entrée correspondante dans `public/admin/config.yml`, sous
-   `collections → pages → files`.
-5. Vérifier que le rendu n'a pas bougé : construire avant et après, et comparer
+4. Ajouter l'entrée dans `public/admin/config.yml`, sous
+   `collections → pages → files`, avec `file: src/content/<page>/{{locale}}.json`
+   et `i18n: true`.
+5. **Marquer chaque champ `i18n: true`**, à tous les niveaux d'imbrication. Un
+   champ sans cette marque n'existe que dans la langue par défaut : il
+   disparaîtrait de la version anglaise.
+6. Vérifier que le rendu n'a pas bougé : construire avant et après, et comparer
    le HTML produit (`dist/`) — c'est la méthode utilisée pour l'accueil.
 
 ### Mettre à jour Sveltia CMS
