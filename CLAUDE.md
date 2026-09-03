@@ -1,8 +1,10 @@
 # Audioask — site commercial
 
 Site vitrine statique (Astro 5, CSS maison, aucun framework front). Bilingue
-français / anglais. Déployé chez Infomaniak par `rsync`, sans Node côté serveur
-— mais PHP est disponible et sert les formulaires.
+français / anglais. Déployé chez Infomaniak par `rsync`, sans aucun code
+exécuté côté serveur : `mail()` y est désactivé, c'est pourquoi les
+formulaires appellent une API externe plutôt que le PHP local
+(`public/contact-handler.php` n'est plus utilisé).
 
 Le français est la langue de travail : commentaires, messages de commit,
 descriptions de PR, libellés de l'admin.

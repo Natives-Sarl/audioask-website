@@ -198,6 +198,9 @@ import Layout from '../layouts/Layout.astro';
 </section>
 
 <script>
+  const ENDPOINT = 'https://dev.audioask.ai/api/contact';
+  const FALLBACK_EMAIL = 'chollet@natives.ch';
+
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const successEl = document.getElementById('form-success');
   const errorEl = document.getElementById('form-error');
@@ -226,31 +229,44 @@ import Layout from '../layouts/Layout.astro';
     if (submitBtn) submitBtn.disabled = true;
     if (spinner) spinner.style.display = 'inline';
 
-    try {
-      const data = new FormData(form);
-      // app.audioask.ai ne sert pas encore cette route : elle reste sur le
-      // domaine de développement. Voir CLAUDE.md, « Deux domaines ».
-      const response = await fetch('https://dev.audioask.ai/api/contact', { method: 'POST', body: data });
-      const result = await response.json();
-
-      if (result.success) {
-        form.style.display = 'none';
-        if (successEl) successEl.style.display = 'block';
-      } else {
-        if (errorEl) {
-          errorEl.textContent = result.error || 'Une erreur est survenue. Merci de réessayer.';
-          errorEl.style.display = 'block';
-        }
-        if (submitBtn) submitBtn.disabled = false;
-        if (spinner) spinner.style.display = 'none';
-      }
-    } catch {
+    // Trois pannes distinctes produisaient le même message « impossible de
+    // contacter le serveur » : réseau injoignable, blocage CORS, et réponse
+    // qui n'est pas du JSON (page 404, blocage d'un pare-feu applicatif).
+    // On les distingue, et l'erreur réelle part dans la console.
+    const fail = (msg: string, detail?: unknown) => {
+      if (detail !== undefined) console.error('[contact]', detail);
       if (errorEl) {
-        errorEl.textContent = 'Impossible de contacter le serveur. Vérifie ta connexion.';
+        errorEl.textContent = msg;
         errorEl.style.display = 'block';
       }
       if (submitBtn) submitBtn.disabled = false;
       if (spinner) spinner.style.display = 'none';
+    };
+
+    let response: Response;
+    try {
+      const data = new FormData(form);
+      // app.audioask.ai ne sert pas encore cette route : elle reste sur le
+      // domaine de développement. Voir CLAUDE.md, « Deux domaines ».
+      response = await fetch(ENDPOINT, { method: 'POST', body: data });
+    } catch (e) {
+      fail('Le serveur est injoignable. Réessaie dans un instant, ou écris-nous à ' + FALLBACK_EMAIL + '.', e);
+      return;
+    }
+
+    let result: { success?: boolean; error?: string };
+    try {
+      result = await response.json();
+    } catch (e) {
+      fail('Le serveur a répondu de façon inattendue (code ' + response.status + '). Écris-nous à ' + FALLBACK_EMAIL + '.', e);
+      return;
+    }
+
+    if (result.success) {
+      form.style.display = 'none';
+      if (successEl) successEl.style.display = 'block';
+    } else {
+      fail(result.error || 'Une erreur est survenue. Merci de réessayer.');
     }
   });
 </script>
