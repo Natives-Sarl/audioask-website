@@ -453,9 +453,9 @@ function setupNotifyForm(formId, emailId, successId, errorId) {
     btn.disabled = true;
     btn.textContent = 'Sending…';
     try {
-      // app.audioask.ai ne sert pas encore cette route : elle reste sur le
-      // domaine de développement. Voir CLAUDE.md, « Deux domaines ».
-      const res = await fetch('https://dev.audioask.ai/api/notify', {
+      // Backend PHP de production : c'est lui qui porte cette route, pas
+      // l'application Next. Voir CLAUDE.md, « Trois domaines ».
+      const res = await fetch('https://api.audioask.ai/api/notify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'email=' + encodeURIComponent(email),
