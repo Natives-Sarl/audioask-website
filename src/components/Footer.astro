@@ -71,6 +71,7 @@ const links = isFr ? {
         <ul>
           <li><a href={links.privacy}>{isFr ? 'Confidentialité' : 'Privacy policy'}</a></li>
           <li><a href={links.legal}>{isFr ? 'Mentions légales' : 'Legal notice'}</a></li>
+          {isFr && <li><a href="/cgu">Conditions générales</a></li>}
           <li><button type="button" class="footer-cookie-btn" data-open-consent>{isFr ? 'Gérer les cookies' : 'Cookie settings'}</button></li>
         </ul>
       </div>
