@@ -68,6 +68,23 @@ collection est le chantier en cours ; la marche à suivre est dans
 d'oubli, le build échoue avec un message clair : le site en ligne n'est jamais
 cassé, mais la publication ne part pas.
 
+## Deux domaines applicatifs
+
+Le site pointe vers deux domaines, et la distinction est volontaire :
+
+| Usage | Domaine |
+|---|---|
+| Liens de connexion et d'inscription (`APP_URL`) | `app.audioask.ai` |
+| Formulaires (`/api/contact`, `/api/notify`) et lecteur podcast (`/embed/`) | `dev.audioask.ai` |
+
+`app.audioask.ai` ne sert pas encore ces trois routes : les y basculer casse
+le formulaire de contact, la liste d'attente mobile et les lecteurs des pages
+podcast — sans que le build ne signale quoi que ce soit. Ne pas « unifier »
+ces domaines avant que ces routes ne répondent sur `app`.
+
+`APP_URL` est par ailleurs redéclaré dans chacun des 22 gabarits qui
+l'utilisent : un changement de domaine se fait donc partout à la fois.
+
 ## Pièges vérifiés
 
 Chacun a coûté un aller-retour. Ils ne se devinent pas à la lecture du code.
