@@ -194,7 +194,7 @@ import Layout from '../../layouts/Layout.astro';
 </section>
 
 <script>
-  const ENDPOINT = 'https://dev.audioask.ai/api/contact';
+  const ENDPOINT = 'https://api.audioask.ai/api/contact';
   const FALLBACK_EMAIL = 'chollet@natives.ch';
 
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
@@ -242,8 +242,8 @@ import Layout from '../../layouts/Layout.astro';
     let response: Response;
     try {
       const data = new FormData(form);
-      // app.audioask.ai ne sert pas encore cette route : elle reste sur le
-      // domaine de développement. Voir CLAUDE.md, « Deux domaines ».
+      // Backend PHP de production : c'est lui qui porte cette route, pas
+      // l'application Next. Voir CLAUDE.md, « Trois domaines ».
       response = await fetch(ENDPOINT, { method: 'POST', body: data });
     } catch (e) {
       fail('The server is unreachable. Try again in a moment, or email us at ' + FALLBACK_EMAIL + '.', e);
