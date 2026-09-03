@@ -14,7 +14,9 @@ const { podcast, allPodcasts } = Astro.props;
 const otherPodcasts = allPodcasts.filter((p: typeof podcast) => p.id !== podcast.id);
 const { data } = podcast;
 const APP_URL = 'https://app.audioask.ai';
-const embedSrc = `https://app.audioask.ai/embed/${data.embedId}`;
+// Le lecteur intégré n'est pas encore servi par app.audioask.ai : il reste
+// sur le domaine de développement. Voir CLAUDE.md, « Deux domaines ».
+const embedSrc = `https://dev.audioask.ai/embed/${data.embedId}`;
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
