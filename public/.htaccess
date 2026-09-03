@@ -3,3 +3,7 @@
     Order allow,deny
     Deny from all
 </FilesMatch>
+
+# Page d'erreur du site plutôt que celle d'Apache. Le fichier est généré par
+# Astro depuis src/pages/404.astro.
+ErrorDocument 404 /404.html

@@ -50,7 +50,7 @@ const APP_URL = 'https://dev.audioask.ai';
 ---
 
 <Layout
-  title={`${post.data.title} — Audioask`}
+  title={post.data.title.length > 48 ? post.data.title : `${post.data.title} — Audioask`}
   description={post.data.description}
   activePage="blog"
   lang="fr"
