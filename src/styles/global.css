@@ -843,6 +843,25 @@ p { margin: 0; text-wrap: pretty; }
 .footer-grid .logo-mark { background: var(--cream); color: var(--ink); }
 .trust-row { display: flex; gap: 14px; font-size: 12px; color: var(--night-text-3); margin-top: 16px; }
 .trust-row span { display: inline-flex; align-items: center; gap: 6px; }
+/* Variante claire de la barre de confiance. Celle du pied de page est calibrée
+   pour le fond sombre : réutilisée telle quelle sur fond clair, elle serait
+   illisible. Mêmes variables, aucune couleur nouvelle. */
+.trust-row.on-light {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  margin: 22px auto 0;
+  max-width: 660px;
+  padding: 12px 18px;
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink-2);
+  font-size: 12.5px;
+  text-align: center;
+}
+.trust-row.on-light .trust-note { color: var(--ink-3); font-weight: 400; }
+
 .footer-bot {
   padding-top: 24px;
   display: flex; justify-content: space-between;
