@@ -699,6 +699,39 @@ p { margin: 0; text-wrap: pretty; }
 .plan-head { display: flex; align-items: center; justify-content: space-between; }
 .plan-name { font-size: 18px; font-weight: 600; }
 .plan-tag { font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 999px; background: var(--accent); color: white; letter-spacing: 0.08em; }
+/* Bascule mensuel / annuel de la page tarifs. Le tarif mensuel est celui rendu
+   au build : sans JavaScript, la page reste juste, elle perd seulement la
+   bascule. Variables existantes uniquement. */
+.billing-toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.billing-opt {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: inherit; font-size: 14px; color: var(--ink-2);
+  padding: 8px 18px;
+  border: 0; border-radius: 999px; background: none; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.billing-opt:hover { color: var(--ink); }
+.billing-opt.is-active {
+  background: var(--paper); color: var(--ink); font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+.billing-opt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.billing-save {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.06em;
+  padding: 2px 7px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent-ink);
+}
+.plan-savings {
+  font-size: 12.5px; color: var(--accent-ink); font-weight: 600; margin-top: -6px;
+}
+
 .plan .price { font-size: 48px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; display: flex; align-items: baseline; gap: 6px; }
 .plan .price small { font-size: 14px; color: var(--ink-3); font-weight: 400; letter-spacing: 0; }
 .plan-sub { font-size: 13px; color: var(--ink-3); margin-top: -8px; }
