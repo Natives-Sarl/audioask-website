@@ -67,6 +67,13 @@ const faqJsonLd = {
   <!-- PLANS -->
   <section class="section tight">
     <div class="container">
+      <div style="display: flex; justify-content: center; margin-bottom: 32px;">
+        <div class="billing-toggle" role="group" aria-label="Périodicité de facturation">
+          <button type="button" class="billing-opt is-active" data-cycle="monthly" aria-pressed="true">Mensuel</button>
+          <button type="button" class="billing-opt" data-cycle="annual" aria-pressed="false">Annuel <span class="billing-save">2 mois offerts</span></button>
+        </div>
+      </div>
+
       <div class="price-grid-3">
 
         <!-- Free -->
@@ -94,7 +101,11 @@ const faqJsonLd = {
             <div class="plan-name">Premium</div>
             <span class="plan-tag">RECOMMANDÉ</span>
           </div>
-          <div class="price">3€<small>&nbsp;/mois</small></div>
+          <div class="price">
+            <span class="cycle-monthly">3€<small>&nbsp;/mois</small></span>
+            <span class="cycle-annual" hidden>30€<small>&nbsp;/an</small></span>
+          </div>
+          <div class="plan-savings cycle-annual" hidden>Économisez 6€ / an</div>
           <div class="plan-sub">Pour les passionnés</div>
           <ul class="plan-feats">
             <li><b>5h de transcription / mois</b></li>
@@ -114,7 +125,11 @@ const faqJsonLd = {
             <div class="plan-name">Pro</div>
             <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.08em;">USAGE</span>
           </div>
-          <div class="price">19€<small>&nbsp;/mois + usage</small></div>
+          <div class="price">
+            <span class="cycle-monthly">19€<small>&nbsp;/mois + usage</small></span>
+            <span class="cycle-annual" hidden>190€<small>&nbsp;/an + usage</small></span>
+          </div>
+          <div class="plan-savings cycle-annual" hidden>Économisez 38€ / an</div>
           <div class="plan-sub">Pour les professionnels</div>
           <ul class="plan-feats">
             <li><b>20h de transcription / mois</b></li>
@@ -257,6 +272,30 @@ const faqJsonLd = {
       <a class="btn btn-primary lg" href={`${APP_URL}/signup`} style="height: 56px; font-size: 16px; padding: 0 28px;">Démarrer mon essai <span class="arrow">→</span></a>
     </div>
   </section>
+
+<script>
+// Bascule mensuel / annuel. Les deux tarifs sont dans le HTML ; seul l'annuel
+// est masqué au départ, si bien que la page reste correcte sans JavaScript.
+(function () {
+  var toggle = document.querySelector('.billing-toggle');
+  if (!toggle) return;
+  var opts = toggle.querySelectorAll('.billing-opt');
+
+  function apply(cycle) {
+    opts.forEach(function (o) {
+      var on = o.getAttribute('data-cycle') === cycle;
+      o.classList.toggle('is-active', on);
+      o.setAttribute('aria-pressed', String(on));
+    });
+    document.querySelectorAll('.cycle-monthly').forEach(function (e) { e.hidden = cycle !== 'monthly'; });
+    document.querySelectorAll('.cycle-annual').forEach(function (e) { e.hidden = cycle !== 'annual'; });
+  }
+
+  opts.forEach(function (o) {
+    o.addEventListener('click', function () { apply(o.getAttribute('data-cycle')); });
+  });
+})();
+</script>
 
 </Layout>
 
