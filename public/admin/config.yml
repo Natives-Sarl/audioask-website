@@ -100,7 +100,11 @@ collections:
                 widget: string
                 hint: 'HTML simple accepté : <br>, <span class="serif-it">…</span>.'
               - { name: lede, label: Chapeau, widget: text, i18n: true }
-              - { name: soonLabel, label: Étiquette « prochainement », widget: string, i18n: true }
+              - name: soonLabel
+                label: Étiquette « prochainement »
+                widget: string
+                i18n: true
+                hint: N'est affichée que sur les pastilles cochées « prochainement » ci-dessous — aujourd'hui la seule app mobile.
               - name: basics
                 i18n: true
                 label: Fonctionnalités de base (pastilles)
@@ -150,7 +154,6 @@ collections:
                 widget: string
                 hint: 'HTML simple accepté : <br>, <span class="serif-it">…</span>.'
               - { name: linkLabel, label: Libellé des liens, widget: string, i18n: true }
-              - { name: soonBadge, label: Badge « prochainement », widget: string, i18n: true }
               - name: cards
                 i18n: true
                 label: Cartes

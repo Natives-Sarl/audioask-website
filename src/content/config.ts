@@ -89,7 +89,6 @@ const home = defineCollection({
       eyebrow: z.string(),
       title: richText, // HTML
       linkLabel: z.string(),
-      soonBadge: z.string(),
       cards: z.object({
         transcribe: card,
         ask: card,
