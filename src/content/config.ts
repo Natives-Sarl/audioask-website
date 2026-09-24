@@ -6,6 +6,9 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    // Renseignée quand un article publié est retouché sur le fond. Alimente
+    // dateModified et article:modified_time, et s'affiche sous le titre.
+    updatedDate: z.coerce.date().optional(),
     author: z.string().default("L'équipe Audioask"),
     tags: z.array(z.string()).optional().default([]),
     image: z.string().optional(),
@@ -15,7 +18,12 @@ const blog = defineCollection({
     // vers l'index du blog et Google n'apparie pas les deux versions.
     translationSlug: z.string().optional(),
     draft: z.boolean().default(false),
-  }),
+  }).refine(
+    (d) => !d.updatedDate || d.updatedDate >= d.pubDate,
+    // Une mise à jour antérieure à la publication est une coquille de saisie,
+    // et Google traite une dateModified incohérente comme un signal douteux.
+    { message: 'updatedDate doit être postérieure à pubDate', path: ['updatedDate'] },
+  ),
 });
 
 const podcasts = defineCollection({

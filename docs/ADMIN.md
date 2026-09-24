@@ -118,6 +118,12 @@ langue** de chaque côté : le nom de fichier de l'article jumeau, sans `.md`.
 C'est ce qui dit à Google que les deux pages sont la même, dans deux langues.
 Laissé vide, le lien de langue de l'article renvoie vers l'index du blog.
 
+La **Date de mise à jour** ne se renseigne que lorsqu'un article déjà publié
+est corrigé sur le fond — un chiffre faux, une information qui a changé. Elle
+s'affiche sous le titre, et dit aux moteurs de recherche que le texte a bougé
+depuis sa publication. Une coquille ou une reformulation ne la justifient pas.
+Le site refuse de se publier si elle précède la date de publication.
+
 Un article coché **Brouillon** n'est ni listé ni publié : aucune page n'est
 créée pour lui, il reste invisible tant que la case n'est pas décochée.
 

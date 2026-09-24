@@ -2,6 +2,7 @@
 title: "Audioask est là — vos podcasts vous donnent enfin plus"
 description: "Nous lançons Audioask : l'application qui transforme vos podcasts en base de connaissances, par la transcription IA, l'interrogation sémantique et l'automatisation."
 pubDate: 2026-06-15
+updatedDate: 2026-09-24
 translationSlug: "audioask-launch"
 author: "L'équipe Audioask"
 tags: ["lancement", "produit", "transcription", "IA"]

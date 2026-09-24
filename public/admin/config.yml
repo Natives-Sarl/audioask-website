@@ -323,6 +323,18 @@ collections:
         date_format: 'DD.MM.YYYY'
         time_format: false
         picker_utc: true
+      - name: updatedDate
+        label: Date de mise à jour
+        widget: datetime
+        required: false
+        format: 'YYYY-MM-DD'
+        date_format: 'DD.MM.YYYY'
+        time_format: false
+        picker_utc: true
+        hint: >-
+          À renseigner quand un article déjà publié est corrigé sur le fond.
+          S'affiche sous le titre et signale la retouche à Google. Laissée
+          vide pour une simple coquille.
       - name: lang
         label: Langue
         widget: select
