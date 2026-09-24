@@ -9,6 +9,8 @@ interface Props {
   description?: string;
   activePage?: string;
   ogImage?: string;
+  /** « article » pour un billet de blog, « website » ailleurs. */
+  ogType?: 'website' | 'article';
   lang?: 'fr' | 'en';
   alternatePath?: string;
   noindex?: boolean;
@@ -19,6 +21,7 @@ const {
   description = 'AudioAsk — Transcription, IA et automatisation pour vos podcasts. Signets, recherche plein-texte, analyses IA avec citations vérifiables.',
   activePage = '',
   ogImage = '/og-default.png',
+  ogType = 'website',
   lang = 'fr',
   alternatePath,
   noindex = false,
@@ -128,7 +131,7 @@ const websiteSchema = {
   {alternateUrl && <link rel="alternate" hreflang="x-default" href={lang === 'fr' ? canonicalUrl : alternateUrl} />}
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content="Audioask" />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:title" content={title} />

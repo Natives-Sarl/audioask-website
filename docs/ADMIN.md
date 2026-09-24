@@ -113,6 +113,11 @@ les deux langues — c'est meilleur pour le référencement), sa propre date, et
 peut exister dans une seule langue. Pour une version anglaise d'un article
 français, on crée un second article avec la langue `English`.
 
+Quand les deux versions existent, renseigner **Slug de la version dans l'autre
+langue** de chaque côté : le nom de fichier de l'article jumeau, sans `.md`.
+C'est ce qui dit à Google que les deux pages sont la même, dans deux langues.
+Laissé vide, le lien de langue de l'article renvoie vers l'index du blog.
+
 Un article coché **Brouillon** n'est ni listé ni publié : aucune page n'est
 créée pour lui, il reste invisible tant que la case n'est pas décochée.
 

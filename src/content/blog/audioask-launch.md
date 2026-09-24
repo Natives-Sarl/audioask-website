@@ -2,6 +2,7 @@
 title: "Audioask is here — your podcasts finally give back more"
 description: "We're launching Audioask: the app that turns your podcasts into a knowledge base, through AI transcription, semantic search and automation."
 pubDate: 2026-06-15
+translationSlug: "audioask-lancement"
 author: "The Audioask Team"
 tags: ["launch", "product", "transcription", "AI"]
 lang: "en"
