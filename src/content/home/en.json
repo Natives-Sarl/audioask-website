@@ -80,7 +80,6 @@
     "eyebrow": "Explore in detail",
     "title": "Key features<br>at a glance.",
     "linkLabel": "Learn more",
-    "soonBadge": "COMING SOON",
     "cards": {
       "transcribe": {
         "title": "Transcribe",
@@ -163,7 +162,7 @@
         },
         {
           "label": "Multilingual translation",
-          "soon": true
+          "soon": false
         },
         {
           "label": "1 automated channel",
