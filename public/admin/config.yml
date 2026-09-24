@@ -331,6 +331,14 @@ collections:
           - { label: Français, value: fr }
           - { label: English, value: en }
         hint: Détermine si l'article est publié sous /blog/ (fr) ou /en/blog/ (en).
+      - name: translationSlug
+        label: Slug de la version dans l'autre langue
+        widget: string
+        required: false
+        hint: >-
+          Le nom de fichier (sans .md) de l'article équivalent dans l'autre
+          langue, s'il existe. Indique à Google que les deux versions sont la
+          même page — à renseigner des deux côtés.
       - { name: author, label: Auteur, widget: string, default: "L'équipe Audioask" }
       - name: tags
         label: Mots-clés

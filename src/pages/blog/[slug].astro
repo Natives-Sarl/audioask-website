@@ -13,6 +13,15 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
+const pageUrl = new URL(`/blog/${post.slug}/`, Astro.site).href;
+// Un article n'existe que dans une langue ; sa traduction est un second
+// article. Quand elle existe, hreflang doit la désigner nommément —
+// sinon on retombe sur l'index du blog, qui n'est pas la même page.
+const alternatePath = post.data.translationSlug
+  ? `/en/blog/${post.data.translationSlug}/`
+  : '/en/blog';
+const ogImage = post.data.image;
+
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -29,14 +38,17 @@ const articleJsonLd = {
       },
       "publisher": { "@id": "https://www.audioask.ai/#organization" },
       "inLanguage": "fr",
-      "url": `https://www.audioask.ai/blog/${post.slug}`
+      "url": pageUrl,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+      "image": [new URL(post.data.image ?? '/og-default.png', Astro.site).href],
+      ...(post.data.tags.length ? { "keywords": post.data.tags.join(', ') } : {})
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.audioask.ai" },
         { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.audioask.ai/blog" },
-        { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://www.audioask.ai/blog/${post.slug}` }
+        { "@type": "ListItem", "position": 3, "name": post.data.title, "item": pageUrl }
       ]
     }
   ]
@@ -54,10 +66,11 @@ const APP_URL = 'https://app.audioask.ai';
   description={post.data.description}
   activePage="blog"
   lang="fr"
-  alternatePath="/en/blog"
+  alternatePath={alternatePath}
+  ogType="article"
+  ogImage={ogImage}
 >
 <Fragment slot="head">
-  <meta property="og:type" content="article" />
   <meta property="article:published_time" content={post.data.pubDate.toISOString()} />
   <meta property="article:author" content={post.data.author} />
   {post.data.tags && post.data.tags.map((tag: string) => (

@@ -10,6 +10,10 @@ const blog = defineCollection({
     tags: z.array(z.string()).optional().default([]),
     image: z.string().optional(),
     lang: z.enum(['fr', 'en']).default('fr'),
+    // Slug de l'article équivalent dans l'autre langue, quand il existe.
+    // Alimente les balises hreflang de l'article : sans lui, elles pointent
+    // vers l'index du blog et Google n'apparie pas les deux versions.
+    translationSlug: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
