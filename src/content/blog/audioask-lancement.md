@@ -33,9 +33,9 @@ On a voulu changer ça.
 
 On a voulu qu'Audioask soit accessible dès le premier jour.
 
-Le plan **Free** à **0 €/mois** couvre l'essentiel : 3 heures de transcription, 5 prompts IA par épisode, accès à la recherche plein-texte. C'est suffisant pour explorer le produit sérieusement.
+Le plan **Free** à **0 €/mois** couvre l'essentiel : 1 heure de transcription par mois, 3 analyses IA par mois, la bibliothèque communautaire et la recherche plein-texte. C'est suffisant pour explorer le produit sérieusement.
 
-Le plan **Premium** à **3 €/mois** ouvre l'automatisation complète, les transcriptions illimitées, les exports, et la priorité sur les nouvelles fonctionnalités. Moins qu'un café — pour un outil qui vous fait gagner des heures.
+Le plan **Premium** à **3 €/mois** passe à 5 heures de transcription et 30 analyses IA par mois, ajoute les channels, playlists et signets illimités, et ouvre l'automatisation : un channel suivi automatiquement, avec deux prompts personnalisés. Moins qu'un café — pour un outil qui vous fait gagner des heures.
 
 ## 185 millions d'épisodes disponibles
 
