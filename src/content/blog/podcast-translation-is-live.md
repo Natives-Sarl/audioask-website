@@ -2,6 +2,7 @@
 title: "Podcast translation is live on Audioask — 12 languages"
 description: "Announced at launch, translation has shipped: any podcast in 12 languages, with a fully dubbed audio episode to go with it. Here is how it works."
 pubDate: 2026-09-24
+updatedDate: 2026-09-29
 author: "The Audioask team"
 tags: ["translation", "release", "product", "podcast"]
 lang: en
@@ -48,7 +49,7 @@ You wake up with today's episode already waiting in English. You did not start a
 
 ## Which plan do you need?
 
-**Transcript translation is included in the Premium plan**, at €3/month. **Dubbed audio and voice cloning belong to the Pro plan.** Full quotas are on the [pricing page](/en/pricing), with the monthly / annual toggle.
+**Transcript translation and dubbed audio are both included in the Premium plan**, at €3/month. Dubbing draws on the monthly transcription quota at five minutes per minute of episode. **Voice cloning** belongs to the Pro plan. Full quotas are on the [pricing page](/en/pricing), with the monthly / annual toggle.
 
 ## Where to start
 

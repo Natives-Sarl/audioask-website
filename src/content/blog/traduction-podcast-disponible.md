@@ -2,6 +2,7 @@
 title: "La traduction de podcasts est disponible sur Audioask"
 description: "Annoncée au lancement, la traduction est là : n'importe quel podcast dans 12 langues, avec un épisode audio doublé à la clé. Voici comment elle marche."
 pubDate: 2026-09-24
+updatedDate: 2026-09-29
 author: "L'équipe Audioask"
 tags: ["traduction", "nouveauté", "produit", "podcast"]
 lang: fr
@@ -48,7 +49,7 @@ Vous vous réveillez avec l'épisode du jour déjà disponible en français. Vou
 
 ## Quel plan faut-il ?
 
-La **traduction des transcriptions est incluse dans le plan Premium**, à 3 €/mois. L'**audio doublé et le clonage de voix relèvent du plan Pro**. Le détail des quotas est sur la [page tarifs](/tarifs), avec la bascule mensuel / annuel.
+La **traduction des transcriptions et l'audio doublé sont inclus dans le plan Premium**, à 3 €/mois. Le doublage puise dans le quota mensuel de transcription, à raison de cinq minutes par minute d'épisode. Le **clonage de voix** relève du plan Pro. Le détail des quotas est sur la [page tarifs](/tarifs), avec la bascule mensuel / annuel.
 
 ## Par où commencer
 
