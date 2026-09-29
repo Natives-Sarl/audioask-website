@@ -773,6 +773,24 @@ p { margin: 0; text-wrap: pretty; }
 .compare tr:last-child td { border-bottom: 0; }
 .compare .check { color: var(--accent); font-weight: 700; }
 .compare .dash { color: var(--ink-4); }
+/* Quota et ses deux lectures : une même réserve d'heures, dépensée autrement.
+   Les trois lignes se lisent comme un bloc, d'où les traits de séparation
+   retirés à l'intérieur du groupe et rétabli après la dernière sous-ligne. */
+.compare tr.q-head td { border-bottom: 0; padding-bottom: 6px; }
+.compare tr.sub td {
+  border-bottom: 0;
+  padding-top: 5px; padding-bottom: 5px;
+  color: var(--ink-2);
+}
+.compare tr.sub td.feature-cell { padding-left: 34px; font-weight: 400; color: var(--ink-2); }
+.compare tr.sub-last td { padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.compare-note {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-3);
+  max-width: 78ch;
+}
 
 /* usage cards */
 .usage-grid {

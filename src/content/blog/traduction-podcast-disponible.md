@@ -49,7 +49,11 @@ Vous vous réveillez avec l'épisode du jour déjà disponible en français. Vou
 
 ## Quel plan faut-il ?
 
-La **traduction des transcriptions et l'audio doublé sont inclus dans le plan Premium**, à 3 €/mois. Le doublage puise dans le quota mensuel de transcription, à raison de cinq minutes par minute d'épisode. Le **clonage de voix** relève du plan Pro. Le détail des quotas est sur la [page tarifs](/tarifs), avec la bascule mensuel / annuel.
+La **traduction des transcriptions et l'audio doublé sont inclus dans le plan Premium**, à 3 €/mois.
+
+Une précision qui compte : transcription et doublage puisent dans le même quota mensuel, à deux taux différents. Transcrire une heure d'épisode coûte une heure ; la doubler en coûte cinq. Les 5 heures du plan Premium, ce sont donc 5 heures de transcription **ou** 1 heure d'audio doublé — les 20 heures du plan Pro, 20 heures de transcription ou 4 heures de doublage. Le **clonage de voix** relève du plan Pro.
+
+Le détail est sur la [page tarifs](/tarifs), avec la bascule mensuel / annuel.
 
 ## Par où commencer
 
