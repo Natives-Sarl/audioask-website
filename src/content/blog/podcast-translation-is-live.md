@@ -19,7 +19,7 @@ Three things, chained together so you do not have to think about them:
 
 - **A translated transcript**, aligned with the original one, timestamp by timestamp. You keep both versions side by side.
 - **A dubbed audio episode**, generated from that translation: a real audio file that keeps the pace of the conversation.
-- **One voice per speaker**, picked from our library — or cloned from your own.
+- **One voice per speaker**, picked from the catalogue of ten and remembered for that podcast.
 
 And because the translated transcript is indexed like any other, everything that already worked keeps working on it: full-text search, bookmarks, and [questions put to the episode](/en/features/ask) — in your language, with citations that point back to the right passage.
 
@@ -33,7 +33,7 @@ This is the part we are proudest of. Plenty of tools translate a transcript. Pro
 
 Audioask detects the speakers, assigns each one a distinct voice, and generates a complete audio file. For a one-hour episode, expect a few minutes. What comes out sounds like an episode — not like a screen reader working through a document.
 
-Pro users can go further and **clone their own voice**: a few minutes of recording are enough to create a clone you can reuse for every dub.
+Voices are set once per podcast: later episodes are dubbed with the same ones, with nothing to set up again.
 
 ## Every translation benefits everyone
 
@@ -51,7 +51,7 @@ You wake up with today's episode already waiting in English. You did not start a
 
 **Transcript translation and dubbed audio are both included in the Premium plan**, at €3/month.
 
-One detail worth knowing: transcription and dubbing draw on the same monthly quota, at two different rates. Transcribing an hour of episode costs an hour; dubbing it costs five. Premium's 5 hours are therefore 5 hours of transcription **or** 1 hour of dubbed audio — Pro's 20 hours, 20 hours of transcription or 4 hours of dubbing. **Voice cloning** belongs to the Pro plan.
+One detail worth knowing: transcription and dubbing draw on the same monthly quota, at two different rates. Transcribing an hour of episode costs an hour; dubbing it costs five. Premium's 5 hours are therefore 5 hours of transcription **or** 1 hour of dubbed audio — Pro's 20 hours, 20 hours of transcription or 4 hours of dubbing.
 
 The full picture is on the [pricing page](/en/pricing), with the monthly / annual toggle.
 
