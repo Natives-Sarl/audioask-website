@@ -19,7 +19,7 @@ Trois choses, qui s'enchaînent sans que vous ayez à y penser :
 
 - **La transcription traduite**, alignée sur l'originale, horodatage par horodatage. Vous gardez les deux versions côte à côte.
 - **Un épisode audio doublé**, généré à partir de cette traduction : un vrai fichier audio, qui respecte la cadence de la conversation.
-- **Une voix par intervenant**, choisie dans notre bibliothèque — ou clonée à partir de la vôtre.
+- **Une voix par intervenant**, choisie parmi les dix du catalogue et mémorisée pour le podcast.
 
 Et parce que la transcription traduite est indexée comme les autres, tout ce qui marchait déjà continue de marcher dessus : la recherche plein-texte, les signets, et les [questions posées à l'épisode](/fonctionnalites/interroger) — dans votre langue, avec des citations qui pointent vers le bon passage.
 
@@ -33,7 +33,7 @@ C'est la partie dont nous sommes le plus fiers. Traduire une transcription, beau
 
 Audioask détecte les intervenants, leur attribue une voix distincte, et génère un fichier audio complet. Pour un épisode d'une heure, comptez quelques minutes. Vous récupérez un épisode qui sonne comme un épisode — pas comme une synthèse vocale qui lit un document.
 
-Les utilisateurs du plan Pro peuvent aller plus loin et **cloner leur propre voix** : quelques minutes d'enregistrement suffisent à créer un clone réutilisable pour tous les doublages.
+Les voix se règlent une fois par podcast : les épisodes suivants sont doublés avec les mêmes, sans rien reparamétrer.
 
 ## Chaque traduction profite à tout le monde
 
@@ -51,7 +51,7 @@ Vous vous réveillez avec l'épisode du jour déjà disponible en français. Vou
 
 La **traduction des transcriptions et l'audio doublé sont inclus dans le plan Premium**, à 3 €/mois.
 
-Une précision qui compte : transcription et doublage puisent dans le même quota mensuel, à deux taux différents. Transcrire une heure d'épisode coûte une heure ; la doubler en coûte cinq. Les 5 heures du plan Premium, ce sont donc 5 heures de transcription **ou** 1 heure d'audio doublé — les 20 heures du plan Pro, 20 heures de transcription ou 4 heures de doublage. Le **clonage de voix** relève du plan Pro.
+Une précision qui compte : transcription et doublage puisent dans le même quota mensuel, à deux taux différents. Transcrire une heure d'épisode coûte une heure ; la doubler en coûte cinq. Les 5 heures du plan Premium, ce sont donc 5 heures de transcription **ou** 1 heure d'audio doublé — les 20 heures du plan Pro, 20 heures de transcription ou 4 heures de doublage.
 
 Le détail est sur la [page tarifs](/tarifs), avec la bascule mensuel / annuel.
 
