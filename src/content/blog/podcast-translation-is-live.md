@@ -49,7 +49,11 @@ You wake up with today's episode already waiting in English. You did not start a
 
 ## Which plan do you need?
 
-**Transcript translation and dubbed audio are both included in the Premium plan**, at €3/month. Dubbing draws on the monthly transcription quota at five minutes per minute of episode. **Voice cloning** belongs to the Pro plan. Full quotas are on the [pricing page](/en/pricing), with the monthly / annual toggle.
+**Transcript translation and dubbed audio are both included in the Premium plan**, at €3/month.
+
+One detail worth knowing: transcription and dubbing draw on the same monthly quota, at two different rates. Transcribing an hour of episode costs an hour; dubbing it costs five. Premium's 5 hours are therefore 5 hours of transcription **or** 1 hour of dubbed audio — Pro's 20 hours, 20 hours of transcription or 4 hours of dubbing. **Voice cloning** belongs to the Pro plan.
+
+The full picture is on the [pricing page](/en/pricing), with the monthly / annual toggle.
 
 ## Where to start
 
